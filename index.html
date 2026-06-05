@@ -791,8 +791,92 @@ footer {
 }
 footer strong { color:rgba(255,255,255,.7); }
 
+/* ─── HERO TAMBAHAN ─── */
+.hero-harga-hint {
+  display: inline-block;
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.2);
+  color: rgba(255,255,255,.85);
+  font-size: 13.5px; padding: 7px 14px;
+  border-radius: 100px; margin-bottom: 20px;
+  letter-spacing: .2px;
+}
+.hero-harga-hint strong { color: white; font-weight: 700; }
+.hero-urgency {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px; color: rgba(255,255,255,.6);
+  margin-top: 16px; margin-bottom: 32px;
+}
+.urgency-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: #4ade80; flex-shrink: 0;
+  animation: denyut 2s ease infinite;
+}
+@keyframes denyut {
+  0% { box-shadow: 0 0 0 0 rgba(74,222,128,.5); }
+  70% { box-shadow: 0 0 0 8px rgba(74,222,128,0); }
+  100% { box-shadow: 0 0 0 0 rgba(74,222,128,0); }
+}
+
+/* ─── STICKY CTA ─── */
+.sticky-cta {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  z-index: 700;
+  transform: translateY(100%);
+  transition: transform .4s cubic-bezier(.4,0,.2,1);
+  pointer-events: none;
+}
+.sticky-cta.nampak { transform: translateY(0); pointer-events: all; }
+.sticky-cta-dalam {
+  background: var(--hijau);
+  border-top: 1px solid rgba(255,255,255,.1);
+  padding: 12px 20px;
+  display: flex; align-items: center;
+  justify-content: space-between; gap: 12px;
+  box-shadow: 0 -4px 24px rgba(0,0,0,.2);
+}
+.sticky-cta-teks { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+.sticky-cta-teks strong { font-size: 13.5px; font-weight: 700; color: white; white-space:nowrap; }
+.sticky-cta-teks span { font-size: 11.5px; color: rgba(255,255,255,.55); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.sticky-cta-btn {
+  background: var(--emas); color: white;
+  padding: 10px 20px; border-radius: 7px;
+  font-size: 13.5px; font-weight: 700;
+  text-decoration: none; white-space: nowrap; flex-shrink: 0;
+  transition: background .2s;
+}
+.sticky-cta-btn:hover { background: #8f6228; }
+
+/* ─── PENGUSAHA PLACEHOLDER ─── */
+.pengusaha-placeholder {
+  background: rgba(255,255,255,.06);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  min-height: 180px;
+  display: flex; align-items: center; justify-content: center;
+}
+.pengusaha-placeholder-dalam { text-align: center; padding: 32px 20px; }
+.pengusaha-siluet { margin-bottom: 12px; opacity: .4; }
+.pengusaha-placeholder-teks { font-size: 13px; color: rgba(255,255,255,.4); line-height: 1.6; }
+.pengusaha-placeholder-teks span { display:block; font-size: 11.5px; color: rgba(255,255,255,.25); margin-top: 4px; font-style:italic; }
+.pengusaha-info { padding: 16px 22px 4px; }
+.pengusaha-nama { font-family:'Lora',serif; font-size: 18px; font-weight: 700; color: white; }
+.pengusaha-jawatan { font-size: 12.5px; color: rgba(255,255,255,.5); margin-top: 3px; line-height: 1.5; }
+
+/* ─── CONFIRM CHECKBOX ─── */
+.confirm-check {
+  display: flex; align-items: flex-start; gap: 10px;
+  background: rgba(30,58,30,.05);
+  border: 1.5px solid var(--krim2);
+  border-radius: 8px; padding: 12px 14px;
+  cursor: pointer; margin-top: 14px;
+  transition: border-color .2s;
+}
+.confirm-check:hover { border-color: var(--hijau3); }
+.confirm-check input { margin-top: 2px; flex-shrink: 0; width: 16px; height: 16px; accent-color: var(--hijau); cursor:pointer; }
+.confirm-check span { font-size: 13.5px; color: var(--teks2); line-height: 1.5; }
+.confirm-check strong { color: var(--hijau); }
+
 @media(max-width:640px){
-  .hero-angka { flex-wrap:wrap; gap:16px; }
   .hstat { border:none; padding:0; margin:0; }
   .dua-gambar { grid-template-columns:1fr; }
   .fakta-grid { grid-template-columns:1fr; }
@@ -931,6 +1015,10 @@ footer strong { color:rgba(255,255,255,.7); }
           <label class="label">Catatan (kalau ada)</label>
           <textarea class="input" id="catatan" rows="2" placeholder="Ada permintaan khas?"></textarea>
         </div>
+        <label class="confirm-check" id="confirmCheck">
+          <input type="checkbox" id="cbConfirm" onchange="semakConfirm()">
+          <span>Saya <strong>dah buat bayaran</strong> dan resit di atas adalah buktinya</span>
+        </label>
       </div>
       <div class="modal-kaki"><button class="btn-balik" onclick="keLangkah2()">← Balik</button><button class="btn-terus" id="btnHantar" onclick="hantarPesanan()">Hantar Pesanan</button></div>
     </div>
@@ -964,13 +1052,18 @@ footer strong { color:rgba(255,255,255,.7); }
 <section class="hero">
   <div class="hero-dalam">
     <div class="hero-sumber">Kampung Kundur Ulu, Rembau, Negeri Sembilan</div>
-    <h1>Buluh yang <em>panda pun pilih.</em><br>Kini kau boleh tanam sendiri.</h1>
+    <h1>Ini ladang yang<br><em>panda pilih.</em></h1>
     <p class="hero-teks">
-      Dari 7 jenis buluh Malaysia yang ditawarkan, panda Zoo Negara hanya mahu satu — buluh betong dari Kampung Kundur Ulu. Ladang yang sama sudah bekalan panda sejak 2014. Ini anak pokok dari ladang itu.
+      Dari 7 jenis buluh Malaysia yang ditawarkan, Zoo Negara hanya terima satu — dari Kundur. Ladang yang sama bekalan panda sejak 2014. Anak pokok dari ladang itu kini boleh kau tanam sendiri.
     </p>
+    <div class="hero-harga-hint">Mulai <strong>RM15</strong> sepokok &nbsp;·&nbsp; Hantar seluruh Semenanjung</div>
     <div class="hero-btn-wrap">
-      <a href="#produk" class="btn-hijau">Beli Anak Buluh</a>
+      <a href="#produk" class="btn-hijau">Beli Anak Buluh Sekarang</a>
       <a href="#cerita" class="btn-lutsinar">Baca cerita Kundur</a>
+    </div>
+    <div class="hero-urgency">
+      <span class="urgency-dot"></span>
+      Stok terhad — musim rebung sedang berjalan. Ramai yang dah order minggu ni.
     </div>
     <div class="hero-angka">
       <div class="hstat"><div class="hstat-num">10</div><div class="hstat-label">Tahun kontrak<br>bekalan panda</div></div>
@@ -991,7 +1084,16 @@ footer strong { color:rgba(255,255,255,.7); }
   </div>
 </div>
 
-<!-- ═══ KANDUNGAN UTAMA ═══ -->
+<!-- STICKY CTA BAR — muncul selepas hero -->
+<div class="sticky-cta" id="stickyCta">
+  <div class="sticky-cta-dalam">
+    <div class="sticky-cta-teks">
+      <strong>Anak Buluh Betong</strong>
+      <span>Mulai RM15 sepokok · Hantar seluruh Semenanjung</span>
+    </div>
+    <a href="#produk" class="sticky-cta-btn">Beli Sekarang</a>
+  </div>
+</div>
 <div class="konten">
 
   <!-- CERITA -->
@@ -1054,16 +1156,28 @@ footer strong { color:rgba(255,255,255,.7); }
 
     <!-- PENGUSAHA -->
     <div class="pengusaha-kad">
-      <div class="pengusaha-gambar">
-        <div class="pengusaha-nama-overlay">
-          <div class="pengusaha-nama">Mohammad Sharif Rasid</div>
-          <div class="pengusaha-jawatan">Pengusaha Ladang Buluh Betong, Kg. Kundur Ulu — Bekalan Panda Zoo Negara sejak 2015</div>
+      <div class="pengusaha-placeholder">
+        <div class="pengusaha-placeholder-dalam">
+          <div class="pengusaha-siluet">
+            <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="36" cy="26" r="16" fill="rgba(255,255,255,.2)"/>
+              <path d="M4 68c0-17.7 14.3-32 32-32s32 14.3 32 32" fill="rgba(255,255,255,.15)"/>
+            </svg>
+          </div>
+          <div class="pengusaha-placeholder-teks">
+            Gambar Mohammad Sharif Rasid<br>
+            <span>[ Gantikan dengan gambar real pengusaha ]</span>
+          </div>
         </div>
+      </div>
+      <div class="pengusaha-info">
+        <div class="pengusaha-nama">Mohammad Sharif Rasid</div>
+        <div class="pengusaha-jawatan">Pengusaha Ladang Buluh Betong, Kg. Kundur Ulu<br>Bekalan Panda Zoo Negara sejak 2015</div>
       </div>
       <div class="pengusaha-petikan">
         "Buluh betong di ladang saya sangat istimewa berbanding kawasan lain. Ia ditanam di atas tanah bekas tapak sawah padi — ini sekali gus membolehkannya hidup subur, menghasilkan rebung yang berkualiti, mengandungi air yang banyak."
       </div>
-      <div class="pengusaha-note">— Malaysia Aktif, Jun 2017. [ Tukar dengan gambar Pak Sharif yang sebenar ]</div>
+      <div class="pengusaha-note">— Malaysia Aktif, Jun 2017</div>
     </div>
 
     <div class="fakta-grid">
@@ -1406,7 +1520,10 @@ function resetSemua(){
   tutupModal();
   document.getElementById('l1').style.display='block';
   ['l2','l3','lTY'].forEach(id=>document.getElementById(id).style.display='none');
-  document.getElementById('btnHantar').innerHTML='Hantar Pesanan';document.getElementById('btnHantar').disabled=false;
+  document.getElementById('btnHantar').innerHTML='Hantar Pesanan';
+  document.getElementById('btnHantar').disabled=true;
+  const cb = document.getElementById('cbConfirm');
+  if(cb) cb.checked = false;
   ['nama','telefon','alamat','catatan'].forEach(id=>document.getElementById(id).value='');
   document.getElementById('pratonton').classList.remove('tunjuk');document.getElementById('zonUpload').classList.remove('ada-fail');
   ['pil-qr','pil-transfer'].forEach(id=>document.getElementById(id).classList.remove('dipilih'));
@@ -1447,6 +1564,13 @@ function kemaskiniNav(){
   const skrol = window.scrollY > 20;
   document.getElementById('nav').classList.toggle('skrol', skrol);
 
+  // Sticky CTA — nampak selepas keluar dari hero
+  const heroH = document.querySelector('.hero').offsetHeight;
+  const produkEl = document.getElementById('produk');
+  const produkBawah = produkEl ? produkEl.offsetTop + produkEl.offsetHeight : 99999;
+  const patutNampak = window.scrollY > heroH * 0.7 && window.scrollY < produkBawah;
+  document.getElementById('stickyCta').classList.toggle('nampak', patutNampak);
+
   // Active link tracking
   let semasaAktif = '';
   seksyen.forEach(id => {
@@ -1460,6 +1584,17 @@ function kemaskiniNav(){
 }
 window.addEventListener('scroll', kemaskiniNav);
 kemaskiniNav();
+
+// Confirm checkbox — kena tick sebelum hantar
+function semakConfirm(){
+  const ticked = document.getElementById('cbConfirm').checked;
+  document.getElementById('btnHantar').disabled = !ticked;
+}
+// Disable hantar button by default sampai checkbox ditick
+document.addEventListener('DOMContentLoaded', ()=>{
+  const btn = document.getElementById('btnHantar');
+  if(btn) btn.disabled = true;
+});
 document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{
   const href = a.getAttribute('href');
   if(href==='#')return;
@@ -1472,7 +1607,8 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',
 }));
 
 renderProduk();
-setTimeout(()=>pamerNotif(),20000);
+// Notif mula awal — 5 saat, bukan 20
+setTimeout(()=>pamerNotif(), 5000);
 </script>
 </body>
 </html>
