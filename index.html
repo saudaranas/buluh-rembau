@@ -35,33 +35,69 @@ body {
 /* ─── NAV ─── */
 .nav {
   position: fixed; top:0; left:0; right:0; z-index:900;
-  padding: 18px 24px;
+  background: rgba(26,46,26,.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  padding: 0 24px;
   display: flex; align-items:center; justify-content:space-between;
-  transition: all .35s;
+  gap: 16px;
+  height: 54px;
+  transition: background .35s, box-shadow .35s;
 }
-.nav.gelap {
-  background: rgba(247,243,236,.96);
-  backdrop-filter: blur(10px);
+.nav.skrol {
+  background: rgba(247,243,236,.97);
   border-bottom: 1px solid var(--krim2);
-  padding: 12px 24px;
+  box-shadow: 0 2px 16px rgba(0,0,0,.06);
 }
 .nav-logo {
   font-family: 'Lora', serif;
-  font-size: 17px; font-weight:700;
-  color: white; transition: color .35s;
-  letter-spacing: -.2px;
+  font-size: 16px; font-weight:700;
+  color: rgba(255,255,255,.9);
+  letter-spacing: -.2px; white-space:nowrap;
+  text-decoration:none;
+  transition: color .35s;
+  flex-shrink:0;
 }
-.nav.gelap .nav-logo { color: var(--hijau); }
+.nav.skrol .nav-logo { color: var(--hijau); }
+
+/* Nav links — section guide */
+.nav-links {
+  display: flex; align-items:center; gap:0;
+  flex:1; justify-content:center;
+  overflow-x:auto; scrollbar-width:none;
+}
+.nav-links::-webkit-scrollbar { display:none; }
+.nav-link {
+  font-size: 12.5px; font-weight:600;
+  color: rgba(255,255,255,.55);
+  text-decoration:none; white-space:nowrap;
+  padding: 0 14px; height:54px;
+  display:flex; align-items:center;
+  border-bottom: 2px solid transparent;
+  transition: color .2s, border-color .2s;
+  letter-spacing:.2px;
+}
+.nav-link:hover { color: rgba(255,255,255,.9); }
+.nav-link.aktif { color: white; border-bottom-color: rgba(255,255,255,.5); }
+.nav.skrol .nav-link { color: var(--teks3); }
+.nav.skrol .nav-link:hover { color: var(--hijau); }
+.nav.skrol .nav-link.aktif { color: var(--hijau); border-bottom-color: var(--hijau3); }
+
 .nav-beli {
   background: var(--emas); color: white;
-  padding: 9px 20px; border-radius: 6px;
-  font-size: 13.5px; font-weight:600;
+  padding: 8px 18px; border-radius: 6px;
+  font-size: 13px; font-weight:700;
   border:none; cursor:pointer;
-  text-decoration:none;
-  opacity:0; transition: opacity .35s, background .2s;
+  text-decoration:none; white-space:nowrap;
+  flex-shrink:0;
+  transition: background .2s, transform .15s;
 }
-.nav.gelap .nav-beli { opacity:1; }
-.nav-beli:hover { background: #8f6228; }
+.nav-beli:hover { background: #8f6228; transform:translateY(-1px); }
+
+@media(max-width:640px){
+  .nav-links { display:none; }
+  .nav { justify-content:space-between; }
+}
 
 /* ─── TOAST ─── */
 .toast {
@@ -318,6 +354,7 @@ body {
 /* ─── HERO — fullscreen gambar panda ─── */
 .hero {
   min-height: 100vh;
+  padding-top: 54px;
   background-image: url('https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?w=1600&q=85');
   background-size: cover;
   background-position: center 25%;
@@ -912,8 +949,15 @@ footer strong { color:rgba(255,255,255,.7); }
 
 <!-- ═══ NAV ═══ -->
 <nav class="nav" id="nav">
-  <div class="nav-logo">Buluh Kundur</div>
-  <a href="#produk" class="nav-beli">Beli Anak Buluh</a>
+  <a href="#" class="nav-logo">Buluh Kundur</a>
+  <div class="nav-links" id="navLinks">
+    <a class="nav-link" href="#cerita" data-seksyen="cerita">Cerita Kundur</a>
+    <a class="nav-link" href="#kenapa">Kenapa Buluh</a>
+    <a class="nav-link" href="#testimoni">Testimoni</a>
+    <a class="nav-link" href="#produk">Produk</a>
+    <a class="nav-link" href="#faq">Soal Jawab</a>
+  </div>
+  <a href="#produk" class="nav-beli">Beli Sekarang</a>
 </nav>
 
 <!-- ═══ HERO ═══ -->
@@ -1051,7 +1095,7 @@ footer strong { color:rgba(255,255,255,.7); }
   <p style="font-size:12px;color:var(--teks3);text-align:center;margin-top:8px;margin-bottom:40px;font-style:italic">[ Tukar dengan gambar real Kg. Kundur Ulu — ladang, penduduk, suasana kampung ]</p>
 
   <!-- KENAPA BULUH -->
-  <div class="bahagian">
+  <div class="bahagian" id="kenapa">
     <span class="seksyen-label">Kenapa Buluh Betong</span>
     <h2 class="tajuk-besar">Satu pokok, <em>banyak guna.</em></h2>
 
@@ -1099,7 +1143,7 @@ footer strong { color:rgba(255,255,255,.7); }
   </div>
 
   <!-- TESTIMONI -->
-  <div class="bahagian">
+  <div class="bahagian" id="testimoni">
     <span class="seksyen-label">Kata Pembeli</span>
     <h2 class="tajuk-besar">Mereka dah tanam.<br><em>Ini kata mereka.</em></h2>
 
@@ -1150,7 +1194,7 @@ footer strong { color:rgba(255,255,255,.7); }
   </div>
 
   <!-- FAQ -->
-  <div class="bahagian">
+  <div class="bahagian" id="faq">
     <span class="seksyen-label">Soal Jawab</span>
     <h2 class="tajuk-besar">Soalan yang <em>selalu ditanya.</em></h2>
 
@@ -1397,10 +1441,34 @@ function toggelFAQ(btn){
   if(!adaBuka)item.classList.add('buka');
 }
 
-window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('gelap',window.scrollY>60));
+// Nav scroll + active link
+const seksyen = ['cerita','kenapa','testimoni','produk','faq'];
+function kemaskiniNav(){
+  const skrol = window.scrollY > 20;
+  document.getElementById('nav').classList.toggle('skrol', skrol);
+
+  // Active link tracking
+  let semasaAktif = '';
+  seksyen.forEach(id => {
+    const el = document.getElementById(id);
+    if(el && window.scrollY >= el.offsetTop - 100) semasaAktif = id;
+  });
+  document.querySelectorAll('.nav-link').forEach(a => {
+    const href = a.getAttribute('href').replace('#','');
+    a.classList.toggle('aktif', href === semasaAktif);
+  });
+}
+window.addEventListener('scroll', kemaskiniNav);
+kemaskiniNav();
 document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{
-  const t=document.querySelector(a.getAttribute('href'));
-  if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}
+  const href = a.getAttribute('href');
+  if(href==='#')return;
+  const t=document.querySelector(href);
+  if(t){
+    e.preventDefault();
+    const offset = t.getBoundingClientRect().top + window.scrollY - 60;
+    window.scrollTo({top:offset, behavior:'smooth'});
+  }
 }));
 
 renderProduk();
