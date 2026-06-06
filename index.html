@@ -739,7 +739,26 @@ body {
 .tg3 { background-image:url('https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80'); }
 .testi-nama { font-weight:700; color:var(--hijau); }
 
-/* ─── PRODUK — 3 kolum desktop ─── */
+/* ─── PRODUK SECTION — full width, wider container ─── */
+.produk-seksyen-luar {
+  background: var(--hijau);
+  padding: 56px 40px;
+}
+.produk-dalam {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.produk-seksyen-luar .produk-list {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media(max-width: 960px) {
+  .produk-seksyen-luar { padding: 48px 24px; }
+  .produk-seksyen-luar .produk-list { grid-template-columns: repeat(2, 1fr); }
+}
+@media(max-width: 580px) {
+  .produk-seksyen-luar .produk-list { grid-template-columns: 1fr; }
+}
 .produk-list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -983,11 +1002,7 @@ footer strong { color:rgba(255,255,255,.7); }
 /* H1 em — selaras palette */
 .hero h1 em { color: var(--krim2) !important; font-style: italic; }
 
-/* Produk section text colours */
-#produk .seksyen-label { color: #d4a96a !important; }
-#produk .tajuk-besar { color: white !important; }
-#produk .perenggan { color: rgba(255,255,255,.65) !important; }
-#produk .produk-kad { background: var(--putih) !important; }
+/* Produk section text colours — handled inline in HTML now */
 
 /* Amanah bar */
 .amanah-bar { margin: 0 -24px !important; border-radius: 0 !important; padding: 36px 24px !important; }
@@ -1693,15 +1708,20 @@ footer {
     <p style="font-size:12.5px;color:var(--teks3);text-align:center;margin-top:16px;font-style:italic">[ Tambah testimoni pembeli sebenar anda di sini — nama, lokasi dan ulasan mereka ]</p>
   </div>
 
-  <!-- PRODUK -->
-  <div class="bahagian" id="produk">
-    <span class="seksyen-label">Anak Pokok Untuk Dijual</span>
-    <h2 class="tajuk-besar">Pilih pakej <em>yang sesuai</em> untuk anda.</h2>
+  <!-- TESTIMONI ends, close konten temporarily for produk -->
+</div><!-- /konten sebelum produk -->
 
-    <p class="perenggan">Semua anak pokok adalah dari ladang yang sama — ladang yang telah membekal panda Zoo Negara sejak 2015.</p>
-
+<!-- PRODUK — full width, wrapper sendiri -->
+<section class="produk-seksyen-luar" id="produk">
+  <div class="produk-dalam">
+    <span class="seksyen-label" style="color:#d4a96a">Anak Pokok Untuk Dijual</span>
+    <h2 class="tajuk-besar" style="color:white">Pilih pakej <em>yang sesuai</em> untuk anda.</h2>
+    <p class="perenggan" style="color:rgba(255,255,255,.65)">Semua anak pokok adalah dari ladang yang sama — ladang yang telah membekal panda Zoo Negara sejak 2015.</p>
     <div class="produk-list" id="gridProduk"></div>
   </div>
+</section>
+
+<div class="konten"><!-- buka balik konten -->
 
   <!-- FAQ -->
   <div class="bahagian" id="faq">
