@@ -742,21 +742,23 @@ body {
 /* ─── PRODUK SECTION — full width, wider container ─── */
 .produk-seksyen-luar {
   background: var(--hijau);
-  padding: 56px 40px;
+  padding: 56px 0;
 }
 .produk-dalam {
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 48px;
 }
 .produk-seksyen-luar .produk-list {
   grid-template-columns: repeat(3, 1fr);
 }
 
 @media(max-width: 960px) {
-  .produk-seksyen-luar { padding: 48px 24px; }
+  .produk-dalam { padding: 0 28px; }
   .produk-seksyen-luar .produk-list { grid-template-columns: repeat(2, 1fr); }
 }
 @media(max-width: 580px) {
+  .produk-dalam { padding: 0 18px; }
   .produk-seksyen-luar .produk-list { grid-template-columns: 1fr; }
 }
 .produk-list {
