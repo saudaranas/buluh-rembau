@@ -447,9 +447,8 @@ body {
   color:rgba(255,255,255,.7);
   padding:5px 14px; border-radius:4px;
   font-size:12px; font-weight:700; letter-spacing:.5px;
-  text-decoration:none; transition:background .2s; white-space:nowrap;
+  white-space:nowrap;
 }
-.berita-logo:hover { background:rgba(255,255,255,.18); color:white; }
 
 /* ─── WRAPPER KONTEN ─── */
 .konten {
@@ -458,30 +457,38 @@ body {
   padding: 0 24px;
 }
 
-/* ─── BAHAGIAN ─── */
-.bahagian { padding: 72px 0; border-bottom:1px solid var(--krim2); }
+/* ─── BAHAGIAN — padding dikurangkan ─── */
+.bahagian { padding: 48px 0; border-bottom:1px solid var(--krim2); }
 .bahagian:last-child { border-bottom:none; }
+
+/* Override untuk section yang full-width */
+#cerita { background: var(--putih); margin: 0 -24px; padding: 48px 24px !important; }
+#testimoni { background: var(--putih); margin: 0 -24px; padding: 48px 24px !important; }
+#produk { background: var(--hijau); margin: 0 -24px; padding: 48px 24px !important; border-bottom: none !important; }
+#kenapa { background: var(--krim); }
+#faq { background: var(--krim2); margin: 0 -24px; padding: 48px 24px !important; }
+.heritage-seksyen { background: var(--putih); margin: 0 -24px; padding: 48px 24px !important; }
 
 /* ─── LABEL SEKSYEN ─── */
 .seksyen-label {
   font-size:11px; font-weight:700; letter-spacing:2.5px;
   text-transform:uppercase; color:var(--emas);
-  margin-bottom:12px; display:block;
+  margin-bottom:8px; display:block;
 }
 
 /* ─── TAJUK H2 ─── */
 .tajuk-besar {
   font-family:'Lora',serif;
-  font-size: clamp(26px, 4vw, 38px);
+  font-size: clamp(24px, 3.5vw, 34px);
   color:var(--hijau); line-height:1.15;
-  margin-bottom:24px; font-weight:700;
+  margin-bottom:16px; font-weight:700;
 }
 .tajuk-besar em { font-style:italic; }
 
 /* ─── PERENGGAN ─── */
 .perenggan {
-  font-size:17px; color:var(--teks2);
-  line-height:1.85; margin-bottom:18px;
+  font-size:16px; color:var(--teks2);
+  line-height:1.8; margin-bottom:16px;
 }
 .perenggan strong { color:var(--hijau); }
 
@@ -559,13 +566,7 @@ body {
   line-height:1.7; font-style:italic;
   margin-bottom:10px;
 }
-.keratan-link {
-  font-size:12px; color:var(--hijau3);
-  font-weight:600; text-decoration:none;
-  display:inline-flex; align-items:center; gap:4px;
-}
-.keratan-link:hover { text-decoration:underline; }
-.keratan-link::after { content:'→'; }
+/* keratan-link dihapus — tiada link keluar */
 
 /* ─── PENGUSAHA ─── */
 .pengusaha-kad {
@@ -738,18 +739,25 @@ body {
 .tg3 { background-image:url('https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80'); }
 .testi-nama { font-weight:700; color:var(--hijau); }
 
-/* ─── PRODUK ─── */
-.produk-list { display:grid; gap:16px; margin:24px 0; }
+/* ─── PRODUK — 3 kolum desktop ─── */
+.produk-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 24px 0;
+}
 .produk-kad {
-  background:white; border:1.5px solid var(--krim2);
+  background:white; border:1.5px solid rgba(255,255,255,.15);
   border-radius:10px; overflow:hidden;
   transition:all .25s;
+  display: flex; flex-direction: column;
 }
-.produk-kad:hover { border-color:var(--hijau3); box-shadow:0 4px 20px rgba(30,58,30,.1); }
+.produk-kad:hover { border-color:rgba(255,255,255,.4); box-shadow:0 8px 28px rgba(0,0,0,.2); transform: translateY(-2px); }
 .produk-gambar {
-  width:100%; height:220px;
+  width:100%; height:160px;
   background-size:cover; background-position:center;
   position:relative;
+  flex-shrink: 0;
 }
 .pk1 { background-image:url('https://images.unsplash.com/photo-1542601906897-edc9d702a8e2?w=700&q=80'); }
 .pk2 { background-image:url('https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?w=700&q=80'); }
@@ -970,52 +978,43 @@ footer strong { color:rgba(255,255,255,.7); }
 
 /* Fakta grid — nombor dalam emas */
 .fakta-num { color: var(--emas) !important; }
-.fakta-kotak {
-  border-left: 3px solid var(--emas) !important;
-  border-radius: 0 10px 10px 0 !important;
-}
+.fakta-kotak { border-left: 3px solid var(--emas) !important; border-radius: 0 10px 10px 0 !important; }
 
 /* H1 em — selaras palette */
 .hero h1 em { color: var(--krim2) !important; font-style: italic; }
 
-/* ═══════════════════════════
-   RHYTHM — SECTION CONTRAST
-═══════════════════════════ */
-
-/* Section cerita — putih */
-#cerita { background: var(--putih); margin: 0 -24px; padding: 72px 24px !important; }
-
-/* Section kenapa buluh — krim (default, okay) */
-#kenapa { background: var(--krim); }
-
-/* Section testimoni — putih bersih */
-#testimoni { background: var(--putih); margin: 0 -24px; padding: 72px 24px !important; }
-
-/* Section produk — hijau gelap, dramatik */
-#produk {
-  background: var(--hijau);
-  margin: 0 -24px;
-  padding: 72px 24px !important;
-  border-bottom: none !important;
-}
-#produk .seksyen-label { color: var(--emas-muda, #d4a96a) !important; }
+/* Produk section text colours */
+#produk .seksyen-label { color: #d4a96a !important; }
 #produk .tajuk-besar { color: white !important; }
 #produk .perenggan { color: rgba(255,255,255,.65) !important; }
 #produk .produk-kad { background: var(--putih) !important; }
 
-/* Section faq — krim2 lebih gelap sikit */
-#faq { background: var(--krim2); margin: 0 -24px; padding: 72px 24px !important; }
+/* Amanah bar */
+.amanah-bar { margin: 0 -24px !important; border-radius: 0 !important; padding: 36px 24px !important; }
 
-/* Amanah bar — buang border-radius, bagi full width feel */
-.amanah-bar {
-  margin: 0 -24px !important;
-  border-radius: 0 !important;
-  padding: 40px 24px !important;
+/* CTA akhir */
+.cta-akhir { background: var(--hijau2) !important; padding: 48px 24px !important; }
+.cta-akhir h2 { font-size: 28px !important; }
+
+/* Gambar penuh — kurangkan tinggi */
+.gambar-penuh img { height: 300px; }
+
+/* Petikan — kurangkan margin */
+.petikan { margin: 20px 0; padding: 14px 18px; }
+
+/* Keratan akhbar — kurangkan margin */
+.keratan { margin: 20px 0; }
+
+/* Manfaat blok — kurangkan margin atas bawah */
+.manfaat-blok { margin: 32px -24px; }
+
+/* Produk responsive */
+@media(max-width: 900px) {
+  .produk-list { grid-template-columns: repeat(2, 1fr); }
 }
-
-/* CTA akhir — buang margin negatif, background sama hijau */
-.cta-akhir { background: var(--hijau2) !important; padding: 56px 24px !important; }
-.cta-akhir h2 { font-size: 30px !important; }
+@media(max-width: 580px) {
+  .produk-list { grid-template-columns: 1fr; }
+}
 
 /* ═══════════════════════════
    FOOTER PENUH
@@ -1082,7 +1081,10 @@ footer {
 
 @media(max-width: 640px) {
   .footer-grid { grid-template-columns: 1fr; gap: 28px; padding: 36px 20px 28px; }
-  #cerita, #testimoni, #produk, #faq, .amanah-bar, .cta-akhir { margin: 0 -18px !important; padding-left: 18px !important; padding-right: 18px !important; }
+  #cerita, #testimoni, #produk, #faq, .amanah-bar, .cta-akhir, .heritage-seksyen { margin: 0 -18px !important; padding-left: 18px !important; padding-right: 18px !important; }
+  .produk-list { grid-template-columns: 1fr; }
+  .bahagian { padding: 36px 0; }
+  .tajuk-besar { font-size: 24px; }
 }
 .hero-harga-hint {
   display: inline-block;
@@ -1373,10 +1375,10 @@ footer {
 <div class="berita-strip">
   <div class="berita-strip-label">Sebagaimana dilaporkan oleh</div>
   <div class="berita-logos">
-    <a class="berita-logo" href="https://www.utusan.com.my/nasional/2025/11/buluh-kg-kundur-ulu-kekal-jadi-pilihan-panda-zoo-negara/" target="_blank">Utusan Malaysia</a>
-    <a class="berita-logo" href="https://www.kosmo.com.my/2021/07/23/buluh-betung-kampung-kundur-hulu-penuhi-selera-panda/" target="_blank">Kosmo!</a>
-    <a class="berita-logo" href="https://malaysiaaktif.my/2017/06/xing-xing-liang-liang-gemar-buluh-kg-kundur-ulu/" target="_blank">Malaysia Aktif</a>
-    <a class="berita-logo" href="https://www.bernama.com/en/general/news.php?id=2510354" target="_blank">Bernama</a>
+    <span class="berita-logo">Utusan Malaysia</span>
+    <span class="berita-logo">Kosmo!</span>
+    <span class="berita-logo">Malaysia Aktif</span>
+    <span class="berita-logo">Bernama</span>
   </div>
 </div>
 
@@ -1419,7 +1421,6 @@ footer {
       <div class="keratan-badan">
         <div class="keratan-headline">Buluh Kg. Kundur Ulu kekal jadi pilihan panda Zoo Negara</div>
         <div class="keratan-petikan">"Kehadiran pasangan panda gergasi baharu, Chen Xing dan Xiao Yue ke negara ini bukan sahaja mencuri tumpuan di Zoo Negara, malah turut menjadikan Kampung Kundur Ulu sebagai lokasi tumpuan penting sejak sedekad lalu..."</div>
-        <a class="keratan-link" href="https://www.utusan.com.my/nasional/2025/11/buluh-kg-kundur-ulu-kekal-jadi-pilihan-panda-zoo-negara/" target="_blank">Baca berita penuh</a>
       </div>
     </div>
 
@@ -1427,12 +1428,11 @@ footer {
     <div class="keratan">
       <div class="keratan-header">
         <div class="keratan-sumber">Kosmo!</div>
-        <div class="keratan-tarikh">2021</div>
+        <div class="keratan-tarikh">23 Julai 2021</div>
       </div>
       <div class="keratan-badan">
         <div class="keratan-headline">Buluh betung Kampung Kundur Hulu penuhi selera panda</div>
         <div class="keratan-petikan">"Hanya buluh di Rembau ini sahaja panda makan. Buluh Kundur Hulu ini semua panda makan baik batang, daun dan rebungnya."</div>
-        <a class="keratan-link" href="https://www.kosmo.com.my/2021/07/23/buluh-betung-kampung-kundur-hulu-penuhi-selera-panda/" target="_blank">Baca berita penuh</a>
       </div>
     </div>
 
