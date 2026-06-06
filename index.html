@@ -628,23 +628,90 @@ body {
 .sg2 { background-image:url('https://images.unsplash.com/photo-1591871937573-74dbba515c4c?w=500&q=80'); }
 .sg3 { background-image:url('https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?w=500&q=80'); }
 
-/* ─── MANFAAT LIST ─── */
-.manfaat-list { list-style:none; margin:24px 0; }
-.manfaat-list li {
-  padding:14px 0;
-  border-bottom:1px solid var(--krim2);
-  display:grid; grid-template-columns:auto 1fr;
-  gap:14px; align-items:start;
+/* ─── MANFAAT BLOK — feature spread ─── */
+.manfaat-blok {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  margin: 48px -24px;
+  background: var(--putih);
+  border: 1px solid var(--krim2);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 16px rgba(0,0,0,.06);
 }
-.manfaat-list li:last-child { border:none; }
-.manfaat-num {
-  font-family:'Lora',serif; font-size:13px;
-  color:var(--emas); font-weight:700;
-  width:24px; text-align:right;
-  padding-top:1px;
+.manfaat-blok.terbalik {
+  direction: rtl;
 }
-.manfaat-tajuk { font-weight:700; color:var(--hijau); font-size:16px; margin-bottom:4px; }
-.manfaat-hurai { font-size:14.5px; color:var(--teks2); line-height:1.65; }
+.manfaat-blok.terbalik > * {
+  direction: ltr;
+}
+
+.manfaat-blok-gambar {
+  position: relative;
+  min-height: 320px;
+  overflow: hidden;
+}
+.manfaat-blok-gambar img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  transition: transform .6s ease;
+}
+.manfaat-blok:hover .manfaat-blok-gambar img {
+  transform: scale(1.04);
+}
+.manfaat-blok-nombor {
+  position: absolute; top: 16px; left: 16px;
+  font-family: 'Lora', serif;
+  font-size: 13px; font-weight: 700;
+  color: white; letter-spacing: 1px;
+  background: rgba(0,0,0,.35);
+  padding: 4px 10px; border-radius: 4px;
+  backdrop-filter: blur(4px);
+}
+
+.manfaat-blok-teks {
+  padding: 36px 32px;
+  display: flex; flex-direction: column;
+  justify-content: center;
+}
+.manfaat-blok-label {
+  font-size: 10.5px; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--emas); margin-bottom: 10px;
+}
+.manfaat-blok-tajuk {
+  font-family: 'Lora', serif;
+  font-size: clamp(18px, 2.5vw, 22px);
+  font-weight: 700; color: var(--hijau);
+  line-height: 1.25; margin-bottom: 16px;
+}
+.manfaat-blok-hurai {
+  font-size: 15px; color: var(--teks2);
+  line-height: 1.8; margin-bottom: 12px;
+}
+.manfaat-blok-hurai:last-of-type { margin-bottom: 16px; }
+.manfaat-blok-hurai strong { color: var(--hijau); }
+.manfaat-blok-hurai em { font-style: italic; color: var(--teks2); }
+.manfaat-blok-fakta {
+  font-size: 12px; color: var(--teks3);
+  padding: 10px 14px;
+  background: var(--krim);
+  border-radius: 6px;
+  border-left: 3px solid var(--emas);
+  line-height: 1.6;
+}
+
+@media(max-width: 640px) {
+  .manfaat-blok {
+    grid-template-columns: 1fr;
+    margin: 32px 0;
+    direction: ltr !important;
+  }
+  .manfaat-blok.terbalik > * { direction: ltr; }
+  .manfaat-blok-gambar { min-height: 220px; }
+  .manfaat-blok-teks { padding: 24px 20px; }
+}
 
 /* ─── TESTIMONI ─── */
 .testi-grid { display:grid; gap:12px; margin:24px 0; }
@@ -1473,49 +1540,117 @@ footer {
   <div class="bahagian" id="kenapa">
     <span class="seksyen-label">Kenapa Buluh Betong</span>
     <h2 class="tajuk-besar">Satu pokok, <em>banyak guna.</em></h2>
-
     <p class="perenggan">
-      Ramai yang tanam buluh kerana cantik. Tetapi buluh betong dari Kundur ini lain ceritanya — ia ada nilai ekonomi yang ramai belum ketahui.
+      Ramai yang tanam buluh kerana cantik. Tetapi buluh betong dari Kundur ini lain ceritanya — setiap bahagian pokok ini ada nilai ekonomi yang nyata.
     </p>
 
-    <ul class="manfaat-list">
-      <li>
-        <div class="manfaat-num">01</div>
-        <div>
-          <div class="manfaat-tajuk">Rebung — boleh dimakan terus, manis semula jadi</div>
-          <div class="manfaat-hurai">Rebung buluh betong Kundur terkenal kerana boleh dimakan terus tanpa dimasak. Kaya serat, protein dan vitamin. Permintaan dari restoran dan pasar tani terus naik.</div>
+    <!-- MANFAAT 01 — Rebung -->
+    <div class="manfaat-blok">
+      <div class="manfaat-blok-gambar">
+        <img src="https://images.unsplash.com/photo-1591871937573-74dbba515c4c?w=700&q=85" alt="Rebung segar">
+        <div class="manfaat-blok-nombor">01</div>
+      </div>
+      <div class="manfaat-blok-teks">
+        <div class="manfaat-blok-label">Makanan</div>
+        <h3 class="manfaat-blok-tajuk">Rebung — manis, segar, terus boleh makan</h3>
+        <p class="manfaat-blok-hurai">
+          Rebung buluh betong dari Kundur terkenal kerana sesuatu yang luar biasa — boleh dimakan terus tanpa direbus. Manis semula jadi, rangup, dan tidak pahit seperti rebung biasa.
+        </p>
+        <p class="manfaat-blok-hurai">
+          Ini kerana tanah bekas sawah padi di Kundur mengandungi mineral yang kaya dan kelembapan yang sesuai — menjadikan rebungnya berbeza dari ladang lain. Pengusaha Mohammad Sharif sendiri menyebutnya sebagai keistimewaan yang beliau tidak jumpa di tempat lain.
+        </p>
+        <div class="manfaat-blok-fakta">
+          Kaya serat, protein, kalium, dan vitamin B6 · Permintaan restoran dan pasar tani terus meningkat
         </div>
-      </li>
-      <li>
-        <div class="manfaat-num">02</div>
-        <div>
-          <div class="manfaat-tajuk">Carbon credit — pokok penyerap CO₂ terbaik</div>
-          <div class="manfaat-hurai">Satu hektar buluh boleh serap 17 tan CO₂ setahun — 2.6 kali lebih banyak dari hutan biasa. Syarikat yang nak offset karbon bayar pemilik ladang buluh. Ini peluang pendapatan pasif yang ramai belum tahu.</div>
+      </div>
+    </div>
+
+    <!-- MANFAAT 02 — Carbon Credit -->
+    <div class="manfaat-blok terbalik">
+      <div class="manfaat-blok-gambar">
+        <img src="https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?w=700&q=85" alt="Hutan buluh hijau">
+        <div class="manfaat-blok-nombor">02</div>
+      </div>
+      <div class="manfaat-blok-teks">
+        <div class="manfaat-blok-label">Iklim & Pendapatan</div>
+        <h3 class="manfaat-blok-tajuk">Carbon credit — ladang anda jana wang semasa tidur</h3>
+        <p class="manfaat-blok-hurai">
+          Syarikat-syarikat besar di seluruh dunia wajib bayar untuk karbon yang mereka hasilkan. Mereka membeli <em>carbon credit</em> daripada pemilik ladang yang pokok-pokoknya menyerap karbon — dan membayar terus kepada pemilik ladang tersebut.
+        </p>
+        <p class="manfaat-blok-hurai">
+          Buluh betong adalah antara tumbuhan paling cekap menyerap CO₂ di dunia. Satu hektar ladang buluh boleh menyerap <strong>17 tan CO₂ setahun</strong> — 2.6 kali lebih banyak berbanding hutan pokok biasa, dan hampir 5 kali ganda berbanding pokok pain.
+        </p>
+        <div class="manfaat-blok-fakta">
+          17 tan CO₂ / hektar / tahun · Potensi pendapatan pasif dalam 5–7 tahun
         </div>
-      </li>
-      <li>
-        <div class="manfaat-num">03</div>
-        <div>
-          <div class="manfaat-tajuk">Arang aktif — bukan sekadar arang kelapa</div>
-          <div class="manfaat-hurai">Buluh adalah sumber utama arang aktif di Asia — dipakai dalam ubat gigi, topeng muka, penyahbau rumah dan tulen air. Lebih mampan dari kelapa kerana buluh tumbuh balik selepas dipotong.</div>
+      </div>
+    </div>
+
+    <!-- MANFAAT 03 — Arang Aktif -->
+    <div class="manfaat-blok">
+      <div class="manfaat-blok-gambar" style="background:#111;">
+        <img src="https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=700&q=85" alt="Arang aktif charcoal produk">
+        <div class="manfaat-blok-nombor">03</div>
+      </div>
+      <div class="manfaat-blok-teks">
+        <div class="manfaat-blok-label">Industri Kecantikan & Kesihatan</div>
+        <h3 class="manfaat-blok-tajuk">Arang aktif — bukan sekadar arang kelapa</h3>
+        <p class="manfaat-blok-hurai">
+          Ramai yang kenal arang aktif dari tempurung kelapa. Tetapi di Asia, buluh adalah sumber utamanya. Proses pengaktifan mengubah arang biasa menjadi "span gergasi" — luas permukaannya boleh mencapai 1,000 meter persegi dalam satu gram sahaja. Lebih kurang saiz dua padang tenis.
+        </p>
+        <p class="manfaat-blok-hurai">
+          Ia menyerap toksin, bau, dan kekotoran seperti magnet — digunakan dalam ubat gigi, topeng muka, penyahbau rumah, penapis air, dan pemprosesan makanan. Dan berbanding kelapa yang perlu ditebang, buluh hanya perlu dipotong — dan tumbuh semula dalam 3–5 tahun.
+        </p>
+        <div class="manfaat-blok-fakta">
+          Oral care · Skincare · Penapis udara & air · Industri makanan
         </div>
-      </li>
-      <li>
-        <div class="manfaat-num">04</div>
-        <div>
-          <div class="manfaat-tajuk">Bahan bangunan — kuat macam keluli</div>
-          <div class="manfaat-hurai">Kekuatan tegangan buluh betong setanding keluli. Matang dalam 3–5 tahun je, berbanding kayu keras yang ambil 30–50 tahun. Makin popular dalam seni bina hijau.</div>
+      </div>
+    </div>
+
+    <!-- MANFAAT 04 — Bahan Bangunan -->
+    <div class="manfaat-blok terbalik">
+      <div class="manfaat-blok-gambar">
+        <img src="https://images.unsplash.com/photo-1542621334-a254cf47733d?w=700&q=85" alt="Bahan bangunan buluh">
+        <div class="manfaat-blok-nombor">04</div>
+      </div>
+      <div class="manfaat-blok-teks">
+        <div class="manfaat-blok-label">Pembinaan</div>
+        <h3 class="manfaat-blok-tajuk">Bahan bangunan — ringan, kuat, setanding keluli</h3>
+        <p class="manfaat-blok-hurai">
+          Kekuatan tegangan buluh betong setanding keluli — namun jauh lebih ringan dan lentur. Apabila gempa berlaku, bangunan buluh lentur mengikut getaran berbanding konkrit yang pecah. Inilah sebabnya ia makin popular dalam seni bina hijau dan projek bangunan mampan di seluruh dunia.
+        </p>
+        <p class="manfaat-blok-hurai">
+          Yang lebih menarik — buluh betong matang sepenuhnya dalam <strong>3 hingga 5 tahun</strong> sahaja. Berbanding kayu keras seperti cengal atau merbau yang memerlukan 30 hingga 50 tahun. Bekalan tidak akan putus.
+        </p>
+        <div class="manfaat-blok-fakta">
+          Lantai · Dinding · Perabot · Scaffolding · Jambatan · Bumbung
         </div>
-      </li>
-      <li>
-        <div class="manfaat-num">05</div>
-        <div>
-          <div class="manfaat-tajuk">Pulih tanah yang dah rosak</div>
-          <div class="manfaat-hurai">Buluh boleh tumbuh kat tanah tandus dan bekas lombong. Akarnya yang padat elak hakisan tanah dan pulihkan kesuburan tanah secara semula jadi.</div>
+      </div>
+    </div>
+
+    <!-- MANFAAT 05 — Pulih Tanah -->
+    <div class="manfaat-blok">
+      <div class="manfaat-blok-gambar">
+        <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=700&q=85" alt="Tanah subur hijau">
+        <div class="manfaat-blok-nombor">05</div>
+      </div>
+      <div class="manfaat-blok-teks">
+        <div class="manfaat-blok-label">Alam Sekitar</div>
+        <h3 class="manfaat-blok-tajuk">Pemulih tanah — tumbuh di mana pokok lain tak mampu</h3>
+        <p class="manfaat-blok-hurai">
+          Kisah Kampung Kundur sendiri adalah bukti terbaik. Tanah bekas sawah yang kering dan tidak subur — menjadi ladang buluh yang begitu istimewa hingga dipilih panda Zoo Negara. Akar buluh yang padat dan dalam bukan sahaja mencegah hakisan tanah, malah secara perlahan-lahan memulihkan kesuburan lapisan tanah yang rosak.
+        </p>
+        <p class="manfaat-blok-hurai">
+          Ini bermakna buluh betong sesuai ditanam di tanah tandus, kawasan bekas lombong, lereng bukit yang terdedah kepada hakisan — dan buluh akan memulihkan tanah tersebut secara semula jadi tanpa baja kimia.
+        </p>
+        <div class="manfaat-blok-fakta">
+          Elak hakisan · Pulih kesuburan tanah · Tumbuh tanpa baja kimia
         </div>
-      </li>
-    </ul>
+      </div>
+    </div>
+
   </div>
+
 
   <!-- TESTIMONI -->
   <div class="bahagian" id="testimoni">
