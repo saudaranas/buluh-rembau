@@ -375,8 +375,9 @@ body {
 }
 .hero-dalam {
   position:relative; z-index:1;
-  max-width:720px;
-  padding: 0 32px 64px;
+  max-width: 800px;
+  width: 100%;
+  padding: 0 48px 64px;
 }
 .hero-sumber {
   display:inline-block;
@@ -1097,6 +1098,7 @@ footer {
 }
 
 @media(max-width: 640px) {
+  .hero-dalam { padding: 0 20px 48px; }
   .footer-grid { grid-template-columns: 1fr; gap: 28px; padding: 36px 20px 28px; }
   #cerita, #testimoni, #produk, #faq, .amanah-bar, .cta-akhir, .heritage-seksyen { margin: 0 -18px !important; padding-left: 18px !important; padding-right: 18px !important; }
   .produk-list { grid-template-columns: 1fr; }
