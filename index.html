@@ -23,7 +23,37 @@ html{scroll-behavior:smooth}
   --tembaga:#c9a35c;      /* aksen / CTA */
   --tembaga2:#a8854a;
   --pucuk:#9fc97e;        /* hijau pucuk — kejayaan / dipilih */
+  --garis:rgba(240,234,217,.1);   /* garisan & border — ikut background */
 }
+
+/* ── SEKSYEN TERANG (background putih) ──
+   Semua warna teks/border auto-sesuai melalui variable */
+.terang{
+  --gading:#1a2c20;
+  --gading2:rgba(26,44,32,.68);
+  --gading3:rgba(26,44,32,.45);
+  --lumut:#ffffff;
+  --tembaga:#9d7a39;
+  --pucuk:#4f7d36;
+  --garis:rgba(26,44,32,.14);
+  background:#ffffff;
+  color:var(--gading);
+}
+.terang .ujian,.terang .keratan,.terang .m-kad{
+  box-shadow:0 2px 18px rgba(26,44,32,.07);
+}
+.terang .batang{
+  background:linear-gradient(to bottom,rgba(26,44,32,.16),rgba(26,44,32,.05));
+  border-color:rgba(26,44,32,.18);
+}
+.terang .batang::before,.terang .batang::after{background:rgba(26,44,32,.22)}
+.terang .batang.pilih{
+  background:linear-gradient(to bottom,#7fb35c,#4f7d36);
+  border-color:#4f7d36;
+  box-shadow:0 0 30px rgba(79,125,54,.3);
+}
+.terang .batang.pilih::before,.terang .batang.pilih::after{background:rgba(255,255,255,.25)}
+.terang ::selection{background:#1a2c20;color:#f8f5ee}
 
 body{
   font-family:'Albert Sans',sans-serif;
@@ -173,7 +203,7 @@ h2 em{font-style:italic;color:var(--tembaga)}
 /* ───── SIGNATURE: UJIAN 7 BULUH ───── */
 .ujian{
   background:var(--lumut);
-  border:1px solid rgba(240,234,217,.08);
+  border:1px solid var(--garis);
   border-radius:18px;
   padding:42px 30px 34px;
   margin:40px 0;
@@ -241,12 +271,12 @@ h2 em{font-style:italic;color:var(--tembaga)}
 /* ───── KERATAN AKHBAR ───── */
 .keratan{
   background:var(--lumut);
-  border:1px solid rgba(240,234,217,.08);
+  border:1px solid var(--garis);
   border-radius:14px;overflow:hidden;margin:18px 0;
 }
 .keratan-atas{
   display:flex;justify-content:space-between;align-items:center;gap:10px;
-  padding:11px 18px;border-bottom:1px solid rgba(240,234,217,.07);
+  padding:11px 18px;border-bottom:1px solid var(--garis);
 }
 .keratan-sumber{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--tembaga)}
 .keratan-tarikh{font-size:11.5px;color:var(--gading3)}
@@ -296,7 +326,7 @@ h2 em{font-style:italic;color:var(--tembaga)}
 .manfaat-grid{display:grid;gap:14px;margin-top:42px}
 .m-kad{
   background:var(--lumut);
-  border:1px solid rgba(240,234,217,.08);
+  border:1px solid var(--garis);
   border-radius:16px;overflow:hidden;
   display:grid;grid-template-columns:200px 1fr;
   transition:border-color .25s;
@@ -372,7 +402,7 @@ h2 em{font-style:italic;color:var(--tembaga)}
 
 /* ───── FAQ ───── */
 .faq-list{margin-top:36px}
-.faq-item{border-bottom:1px solid rgba(240,234,217,.1)}
+.faq-item{border-bottom:1px solid var(--garis)}
 .faq-soal{
   width:100%;text-align:left;background:none;border:none;
   padding:19px 0;display:flex;justify-content:space-between;
@@ -393,8 +423,9 @@ h2 em{font-style:italic;color:var(--tembaga)}
 .amanah{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:40px}
 @media(max-width:560px){.amanah{grid-template-columns:1fr}}
 .a-item{
-  border:1px solid rgba(240,234,217,.1);
+  border:1px solid var(--garis);
   border-radius:14px;padding:20px 22px;
+  background:var(--lumut);
 }
 .a-item strong{display:block;font-size:14.5px;color:var(--gading);margin-bottom:5px}
 .a-item p{font-size:13px;color:var(--gading2);line-height:1.65}
@@ -616,7 +647,7 @@ footer{background:#07120b;font-size:13.5px;color:var(--gading3)}
 </div>
 
 <!-- ═══ CERITA ═══ -->
-<section class="seksyen" id="cerita">
+<section class="seksyen terang" id="cerita">
   <div class="seksyen-dalam">
     <div class="reveal">
       <span class="eyebrow">Cerita Kundur</span>
@@ -682,7 +713,7 @@ footer{background:#07120b;font-size:13.5px;color:var(--gading3)}
 </section>
 
 <!-- ═══ PENGIKTIRAFAN / TIMELINE ═══ -->
-<section class="seksyen" id="iktiraf" style="padding-top:30px">
+<section class="seksyen" id="iktiraf">
   <div class="seksyen-dalam">
     <div class="reveal">
       <span class="eyebrow">Pengiktirafan</span>
@@ -737,7 +768,7 @@ footer{background:#07120b;font-size:13.5px;color:var(--gading3)}
 </section>
 
 <!-- ═══ KENAPA BULUH ═══ -->
-<section class="seksyen" id="kenapa" style="padding-top:20px">
+<section class="seksyen terang" id="kenapa">
   <div class="seksyen-dalam">
     <div class="reveal">
       <span class="eyebrow">Kenapa Buluh Betong</span>
@@ -817,7 +848,7 @@ footer{background:#07120b;font-size:13.5px;color:var(--gading3)}
 </section>
 
 <!-- ═══ FAQ ═══ -->
-<section class="seksyen" id="faq">
+<section class="seksyen terang" id="faq">
   <div class="seksyen-dalam">
     <div class="reveal">
       <span class="eyebrow">Soal Jawab</span>
