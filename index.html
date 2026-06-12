@@ -102,8 +102,17 @@ button{font-family:inherit;cursor:pointer}
 }
 .hero::before{
   content:'';position:absolute;inset:0;z-index:-2;
-  background-image:url('https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?w=1600&q=85');
-  background-size:cover;background-position:center 28%;
+  /* GAMBAR DESKTOP & TABLET (landscape 16:9) */
+  background-image:url('https://i.postimg.cc/cLfrfFzS/b3ce6989-9033-4995-9d85-4a30e17a2b2a.jpg');
+  background-size:cover;
+  background-position:center;
+}
+@media(max-width:700px){
+  .hero::before{
+    /* GAMBAR MOBILE (portrait 9:16) */
+    background-image:url('https://i.postimg.cc/qqf7tnGV/708aedf6-5ee2-49c6-bb95-6d44b971675a.jpg');
+    background-position:center top;
+  }
 }
 .hero::after{
   content:'';position:absolute;inset:0;z-index:-1;
@@ -608,7 +617,7 @@ footer{background:#07120b;font-size:13.5px;color:var(--gading3)}
       Dari daun, batang, hingga rebung — habis semuanya dimakan. Sepanjang sedekad menikmati buluh dari ladang ini, panda Zoo Negara melahirkan 3 anak. Anak pokok dari ladang yang sama — kini anda juga boleh menanamnya sendiri.
     </p>
     <div class="hero-cta">
-      <a href="#harga" class="btn-utama">Beli Anak Buluh — dari RM50</a>
+      <a href="#harga" class="btn-utama">Dapatkan Anak Buluh Kundur!</a>
       <a href="#cerita" class="btn-senyap">Baca cerita Kundur ↓</a>
     </div>
     <div class="hero-fpx">
