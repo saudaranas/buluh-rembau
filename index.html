@@ -42,17 +42,6 @@ html{scroll-behavior:smooth}
 .terang .ujian,.terang .keratan,.terang .m-kad{
   box-shadow:0 2px 18px rgba(26,44,32,.07);
 }
-.terang .batang{
-  background:linear-gradient(to bottom,rgba(26,44,32,.16),rgba(26,44,32,.05));
-  border-color:rgba(26,44,32,.18);
-}
-.terang .batang::before,.terang .batang::after{background:rgba(26,44,32,.22)}
-.terang .batang.pilih{
-  background:linear-gradient(to bottom,#7fb35c,#4f7d36);
-  border-color:#4f7d36;
-  box-shadow:0 0 30px rgba(79,125,54,.3);
-}
-.terang .batang.pilih::before,.terang .batang.pilih::after{background:rgba(255,255,255,.25)}
 .terang ::selection{background:#1a2c20;color:#f8f5ee}
 
 body{
@@ -212,40 +201,16 @@ h2 em{font-style:italic;color:var(--tembaga)}
   font-family:'Fraunces',serif;font-size:15px;font-style:italic;
   color:var(--gading2);text-align:center;margin-bottom:30px;
 }
-.ujian-baris{
-  display:flex;justify-content:center;align-items:flex-end;
-  gap:clamp(8px,2.4vw,20px);height:190px;margin-bottom:26px;
-}
-.batang{
-  position:relative;width:clamp(20px,4vw,30px);
-  border-radius:10px 10px 4px 4px;
-  background:linear-gradient(to bottom,rgba(240,234,217,.14),rgba(240,234,217,.05));
-  border:1px solid rgba(240,234,217,.1);
-}
-.batang::before,.batang::after{
-  content:'';position:absolute;left:0;right:0;height:1px;
-  background:rgba(11,26,16,.55);
-}
-.batang::before{top:33%}
-.batang::after{top:66%}
-.batang.tolak{opacity:.55}
-.batang.pilih{
-  background:linear-gradient(to bottom,var(--pucuk),#5e8a44);
-  border-color:var(--pucuk);
-  box-shadow:0 0 34px rgba(159,201,126,.35);
-  opacity:1;
-}
-.batang.pilih::before,.batang.pilih::after{background:rgba(11,26,16,.3)}
-.b1{height:58%}.b2{height:74%}.b3{height:64%}
-.b4{height:100%}
-.b5{height:70%}.b6{height:80%}.b7{height:60%}
-.batang .tanda{
-  position:absolute;top:-26px;left:50%;transform:translateX(-50%);
-  font-size:13px;color:var(--gading3);
-}
-.batang.pilih .tanda{
+.ujian-foto{position:relative;border-radius:12px;overflow:hidden;margin-bottom:22px}
+.ujian-foto img{width:100%;display:block}
+.ujian-label{
+  position:absolute;top:5%;left:50%;transform:translateX(-50%);
   font-family:'Fraunces',serif;font-style:italic;
-  font-size:14px;color:var(--pucuk);white-space:nowrap;top:-30px;
+  font-size:clamp(14px,2.4vw,19px);color:#3f6b2a;
+  background:rgba(255,255,255,.88);
+  padding:5px 16px;border-radius:99px;
+  white-space:nowrap;
+  box-shadow:0 2px 10px rgba(26,44,32,.12);
 }
 .ujian-kapsi{
   text-align:center;font-size:13.5px;color:var(--gading2);
@@ -680,14 +645,9 @@ footer{background:#07120b;font-size:13.5px;color:var(--gading3)}
     <!-- SIGNATURE -->
     <div class="ujian reveal">
       <div class="ujian-tajuk">Ujian buluh Zoo Negara — 7 jenis dari seluruh Malaysia</div>
-      <div class="ujian-baris" aria-hidden="true">
-        <div class="batang tolak b1"><span class="tanda">✕</span></div>
-        <div class="batang tolak b2"><span class="tanda">✕</span></div>
-        <div class="batang tolak b3"><span class="tanda">✕</span></div>
-        <div class="batang pilih b4"><span class="tanda">Kundur ✓</span></div>
-        <div class="batang tolak b5"><span class="tanda">✕</span></div>
-        <div class="batang tolak b6"><span class="tanda">✕</span></div>
-        <div class="batang tolak b7"><span class="tanda">✕</span></div>
+      <div class="ujian-foto">
+        <img src="https://i.postimg.cc/nrZMMp3J/f0ed6c8d-fddc-4d4c-938d-d490fb43429e.jpg" alt="Panda memilih buluh betong Kundur — 6 batang lain tidak disentuh" loading="lazy">
+        <div class="ujian-label">Kundur ✓</div>
       </div>
       <p class="ujian-kapsi">
         Enam jenis buluh hanya disentuh, dicium, kemudian dibuang. Hanya buluh betong dari <strong>Kampung Kundur Ulu</strong> dimakan habis — batang, daun, dan rebungnya.
