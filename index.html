@@ -3,2049 +3,1136 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Anak Buluh Betong Kg. Kundur Ulu — Dari Ladang Pilihan Panda</title>
+<title>Buluh Kundur — Anak Buluh Betong Dari Ladang Pilihan Panda Zoo Negara</title>
+<meta name="description" content="Anak buluh betong dari Kampung Kundur Ulu, Rembau — ladang yang membekal panda Zoo Negara sejak 2015. Bayaran FPX selamat.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Albert+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior:smooth; }
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
 
-:root {
-  --hijau: #1e3a1e;
-  --hijau2: #2d5a2d;
-  --hijau3: #4a8a4a;
-  --krim: #f7f3ec;
-  --krim2: #ede8de;
-  --emas: #b07d3a;
-  --teks: #1a2e1a;
-  --teks2: #445544;
-  --teks3: #7a9070;
-  --putih: #fdfaf6;
-}
-
-body {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  background: var(--krim);
-  color: var(--teks);
-  font-size: 17px;
-  line-height: 1.7;
-  overflow-x: hidden;
+:root{
+  --tinta:#0b1a10;        /* hijau gelap rimbun — latar utama */
+  --lumut:#13261a;        /* panel */
+  --lumut2:#1b3424;       /* panel lebih cerah / border */
+  --gading:#f0ead9;       /* teks utama */
+  --gading2:rgba(240,234,217,.62);
+  --gading3:rgba(240,234,217,.38);
+  --tembaga:#c9a35c;      /* aksen / CTA */
+  --tembaga2:#a8854a;
+  --pucuk:#9fc97e;        /* hijau pucuk — kejayaan / dipilih */
 }
 
-/* ─── NAV ─── */
-.nav {
-  position: fixed; top:0; left:0; right:0; z-index:900;
-  background: rgba(26,46,26,.92);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255,255,255,.08);
-  padding: 0 24px;
-  display: flex; align-items:center; justify-content:space-between;
-  gap: 16px;
-  height: 54px;
-  transition: background .35s, box-shadow .35s;
+body{
+  font-family:'Albert Sans',sans-serif;
+  background:var(--tinta);
+  color:var(--gading);
+  font-size:16.5px;
+  line-height:1.75;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
 }
-.nav.skrol {
-  background: rgba(247,243,236,.97);
-  border-bottom: 1px solid var(--krim2);
-  box-shadow: 0 2px 16px rgba(0,0,0,.06);
-}
-.nav-logo {
-  font-family: 'Lora', serif;
-  font-size: 16px; font-weight:700;
-  color: rgba(255,255,255,.9);
-  letter-spacing: -.2px; white-space:nowrap;
-  text-decoration:none;
-  transition: color .35s;
-  flex-shrink:0;
-}
-.nav.skrol .nav-logo { color: var(--hijau); }
+::selection{background:var(--tembaga);color:var(--tinta)}
+img{display:block;max-width:100%}
+a{color:inherit}
+button{font-family:inherit;cursor:pointer}
 
-/* Nav links — section guide */
-.nav-links {
-  display: flex; align-items:center; gap:0;
-  flex:1; justify-content:center;
-  overflow-x:auto; scrollbar-width:none;
-}
-.nav-links::-webkit-scrollbar { display:none; }
-.nav-link {
-  font-size: 12.5px; font-weight:600;
-  color: rgba(255,255,255,.55);
-  text-decoration:none; white-space:nowrap;
-  padding: 0 14px; height:54px;
-  display:flex; align-items:center;
-  border-bottom: 2px solid transparent;
-  transition: color .2s, border-color .2s;
-  letter-spacing:.2px;
-}
-.nav-link:hover { color: rgba(255,255,255,.9); }
-.nav-link.aktif { color: white; border-bottom-color: rgba(255,255,255,.5); }
-.nav.skrol .nav-link { color: var(--teks3); }
-.nav.skrol .nav-link:hover { color: var(--hijau); }
-.nav.skrol .nav-link.aktif { color: var(--hijau); border-bottom-color: var(--hijau3); }
+.serif{font-family:'Fraunces',serif}
 
-.nav-beli {
-  background: var(--emas); color: white;
-  padding: 8px 18px; border-radius: 6px;
-  font-size: 13px; font-weight:700;
-  border:none; cursor:pointer;
-  text-decoration:none; white-space:nowrap;
-  flex-shrink:0;
-  transition: background .2s, transform .15s;
+/* ───── NAV ───── */
+.nav{
+  position:fixed;inset:0 0 auto 0;z-index:900;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:14px;height:60px;padding:0 22px;
+  background:linear-gradient(to bottom,rgba(11,26,16,.92),rgba(11,26,16,.75));
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(240,234,217,.08);
 }
-.nav-beli:hover { background: #8f6228; transform:translateY(-1px); }
+.nav-logo{
+  font-family:'Fraunces',serif;font-size:17px;font-weight:600;
+  letter-spacing:.2px;text-decoration:none;white-space:nowrap;
+}
+.nav-logo em{font-style:italic;color:var(--tembaga)}
+.nav-links{display:flex;gap:2px;flex:1;justify-content:center;overflow-x:auto;scrollbar-width:none}
+.nav-links::-webkit-scrollbar{display:none}
+.nav-link{
+  font-size:13px;font-weight:500;color:var(--gading2);
+  text-decoration:none;padding:8px 13px;border-radius:99px;
+  white-space:nowrap;transition:color .2s,background .2s;
+}
+.nav-link:hover{color:var(--gading)}
+.nav-link.aktif{color:var(--tinta);background:var(--gading)}
+.nav-beli{
+  background:var(--tembaga);color:var(--tinta);
+  font-size:13.5px;font-weight:700;
+  padding:9px 18px;border-radius:99px;border:none;
+  text-decoration:none;white-space:nowrap;
+  transition:background .2s,transform .15s;
+}
+.nav-beli:hover{background:#dab46b;transform:translateY(-1px)}
+@media(max-width:680px){.nav-links{display:none}}
 
-@media(max-width:640px){
-  .nav-links { display:none; }
-  .nav { justify-content:space-between; }
+/* ───── HERO ───── */
+.hero{
+  min-height:100svh;position:relative;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:120px 24px 0;
+  isolation:isolate;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;z-index:-2;
+  background-image:url('https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?w=1600&q=85');
+  background-size:cover;background-position:center 28%;
+}
+.hero::after{
+  content:'';position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(to bottom,rgba(11,26,16,.55) 0%,rgba(11,26,16,.25) 35%,rgba(11,26,16,.88) 75%,var(--tinta) 100%);
+}
+.hero-dalam{max-width:860px;margin:0 auto;width:100%}
+.hero-tempat{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:11.5px;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--gading2);margin-bottom:22px;
+}
+.hero-tempat::before{content:'';width:26px;height:1px;background:var(--tembaga)}
+.hero h1{
+  font-family:'Fraunces',serif;font-weight:500;
+  font-size:clamp(44px,8.5vw,92px);
+  line-height:1.02;letter-spacing:-1px;
+  margin-bottom:26px;
+}
+.hero h1 em{font-style:italic;color:var(--tembaga)}
+.hero-teks{
+  font-size:17px;color:var(--gading2);max-width:540px;
+  margin-bottom:30px;
+}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:40px}
+.btn-utama{
+  background:var(--tembaga);color:var(--tinta);
+  font-size:15.5px;font-weight:700;
+  padding:15px 30px;border-radius:99px;border:none;
+  text-decoration:none;display:inline-block;
+  transition:background .2s,transform .15s;
+}
+.btn-utama:hover{background:#dab46b;transform:translateY(-1px)}
+.btn-senyap{
+  font-size:14.5px;font-weight:500;color:var(--gading2);
+  text-decoration:none;padding:15px 8px;
+  border-bottom:1px solid transparent;transition:color .2s;
+}
+.btn-senyap:hover{color:var(--gading)}
+.hero-fpx{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:12.5px;color:var(--gading3);
+}
+.hero-fpx svg{flex-shrink:0}
+.hero-bar{
+  border-top:1px solid rgba(240,234,217,.12);
+  margin-top:8px;padding:22px 0 30px;
+  display:flex;gap:36px;flex-wrap:wrap;
+}
+.hb-item{min-width:0}
+.hb-num{font-family:'Fraunces',serif;font-size:30px;font-weight:500;color:var(--gading);line-height:1.1}
+.hb-num span{color:var(--tembaga)}
+.hb-label{font-size:12px;color:var(--gading3);margin-top:3px;line-height:1.45}
+
+/* ───── MEDIA STRIP ───── */
+.media-strip{
+  background:var(--lumut);
+  border-top:1px solid rgba(240,234,217,.06);
+  border-bottom:1px solid rgba(240,234,217,.06);
+  padding:15px 24px;
+  display:flex;align-items:center;justify-content:center;
+  gap:10px 26px;flex-wrap:wrap;
+}
+.media-label{font-size:10.5px;letter-spacing:2px;text-transform:uppercase;color:var(--gading3)}
+.media-nama{font-family:'Fraunces',serif;font-style:italic;font-size:15px;color:var(--gading2)}
+
+/* ───── KERANGKA SEKSYEN ───── */
+.seksyen{padding:88px 24px}
+.seksyen-dalam{max-width:680px;margin:0 auto}
+.seksyen-luas{max-width:1060px;margin:0 auto}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:11.5px;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--tembaga);margin-bottom:14px;
+}
+.eyebrow::before{content:'';width:22px;height:1px;background:var(--tembaga)}
+h2{
+  font-family:'Fraunces',serif;font-weight:500;
+  font-size:clamp(30px,4.6vw,46px);
+  line-height:1.08;letter-spacing:-.5px;
+  margin-bottom:22px;
+}
+h2 em{font-style:italic;color:var(--tembaga)}
+.p{font-size:16.5px;color:var(--gading2);margin-bottom:18px}
+.p strong{color:var(--gading);font-weight:600}
+
+/* ───── SIGNATURE: UJIAN 7 BULUH ───── */
+.ujian{
+  background:var(--lumut);
+  border:1px solid rgba(240,234,217,.08);
+  border-radius:18px;
+  padding:42px 30px 34px;
+  margin:40px 0;
+}
+.ujian-tajuk{
+  font-family:'Fraunces',serif;font-size:15px;font-style:italic;
+  color:var(--gading2);text-align:center;margin-bottom:30px;
+}
+.ujian-baris{
+  display:flex;justify-content:center;align-items:flex-end;
+  gap:clamp(8px,2.4vw,20px);height:190px;margin-bottom:26px;
+}
+.batang{
+  position:relative;width:clamp(20px,4vw,30px);
+  border-radius:10px 10px 4px 4px;
+  background:linear-gradient(to bottom,rgba(240,234,217,.14),rgba(240,234,217,.05));
+  border:1px solid rgba(240,234,217,.1);
+}
+.batang::before,.batang::after{
+  content:'';position:absolute;left:0;right:0;height:1px;
+  background:rgba(11,26,16,.55);
+}
+.batang::before{top:33%}
+.batang::after{top:66%}
+.batang.tolak{opacity:.55}
+.batang.pilih{
+  background:linear-gradient(to bottom,var(--pucuk),#5e8a44);
+  border-color:var(--pucuk);
+  box-shadow:0 0 34px rgba(159,201,126,.35);
+  opacity:1;
+}
+.batang.pilih::before,.batang.pilih::after{background:rgba(11,26,16,.3)}
+.b1{height:58%}.b2{height:74%}.b3{height:64%}
+.b4{height:100%}
+.b5{height:70%}.b6{height:80%}.b7{height:60%}
+.batang .tanda{
+  position:absolute;top:-26px;left:50%;transform:translateX(-50%);
+  font-size:13px;color:var(--gading3);
+}
+.batang.pilih .tanda{
+  font-family:'Fraunces',serif;font-style:italic;
+  font-size:14px;color:var(--pucuk);white-space:nowrap;top:-30px;
+}
+.ujian-kapsi{
+  text-align:center;font-size:13.5px;color:var(--gading2);
+  max-width:420px;margin:0 auto;line-height:1.65;
+}
+.ujian-kapsi strong{color:var(--pucuk);font-weight:600}
+
+/* ───── PETIKAN ───── */
+.petikan{
+  margin:36px 0;padding:26px 28px;
+  border-left:2px solid var(--tembaga);
+  background:rgba(201,163,92,.05);
+  border-radius:0 14px 14px 0;
+}
+.petikan p{
+  font-family:'Fraunces',serif;font-style:italic;
+  font-size:18.5px;line-height:1.6;color:var(--gading);
+  margin-bottom:12px;
+}
+.petikan cite{font-size:12.5px;color:var(--gading3);font-style:normal;font-weight:600}
+.petikan cite::before{content:'— '}
+
+/* ───── KERATAN AKHBAR ───── */
+.keratan{
+  background:var(--lumut);
+  border:1px solid rgba(240,234,217,.08);
+  border-radius:14px;overflow:hidden;margin:18px 0;
+}
+.keratan-atas{
+  display:flex;justify-content:space-between;align-items:center;gap:10px;
+  padding:11px 18px;border-bottom:1px solid rgba(240,234,217,.07);
+}
+.keratan-sumber{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--tembaga)}
+.keratan-tarikh{font-size:11.5px;color:var(--gading3)}
+.keratan-badan{padding:18px 20px}
+.keratan-headline{font-family:'Fraunces',serif;font-size:18px;font-weight:500;line-height:1.35;margin-bottom:8px}
+.keratan-petikan{font-size:14px;color:var(--gading2);font-style:italic}
+
+/* ───── GAMBAR ───── */
+.gambar{border-radius:16px;overflow:hidden;margin:34px 0 8px}
+.gambar img{width:100%;height:340px;object-fit:cover}
+.kapsi{font-size:12px;color:var(--gading3);text-align:center;margin-bottom:26px;font-style:italic;padding:8px 10px 0}
+
+/* ───── TIMELINE PENGIKTIRAFAN ───── */
+.timeline{margin-top:46px;position:relative}
+.t-item{
+  display:grid;grid-template-columns:86px 1fr;gap:22px;
+  padding:0 0 42px;position:relative;
+}
+.t-item::before{
+  content:'';position:absolute;left:42px;top:34px;bottom:0;
+  width:1px;background:rgba(240,234,217,.12);
+}
+.t-item:last-child::before{display:none}
+.t-tahun{
+  font-family:'Fraunces',serif;font-size:24px;font-weight:500;
+  color:var(--tembaga);line-height:1.1;text-align:right;
+  padding-right:0;position:relative;
+}
+.t-isi{min-width:0}
+.t-tajuk{font-family:'Fraunces',serif;font-size:19px;font-weight:500;margin-bottom:7px;line-height:1.3}
+.t-hurai{font-size:14.5px;color:var(--gading2);line-height:1.7}
+.t-foto{
+  margin-top:14px;height:170px;border-radius:12px;
+  border:1.5px dashed rgba(240,234,217,.18);
+  background:rgba(240,234,217,.03);
+  display:flex;align-items:center;justify-content:center;
+  font-size:12px;color:var(--gading3);font-style:italic;
+  text-align:center;padding:0 18px;line-height:1.6;
+}
+@media(max-width:560px){
+  .t-item{grid-template-columns:1fr;gap:8px}
+  .t-item::before{display:none}
+  .t-tahun{text-align:left}
 }
 
-/* ─── TOAST ─── */
-.toast {
-  position:fixed; top:16px; left:50%;
-  transform: translateX(-50%) translateY(-60px);
-  background: var(--hijau); color:white;
-  padding: 9px 20px; border-radius:6px;
-  font-size:13.5px; font-weight:600;
-  z-index:9999;
-  transition: transform .4s cubic-bezier(.34,1.56,.64,1);
-  white-space:nowrap;
+/* ───── MANFAAT ───── */
+.manfaat-grid{display:grid;gap:14px;margin-top:42px}
+.m-kad{
+  background:var(--lumut);
+  border:1px solid rgba(240,234,217,.08);
+  border-radius:16px;overflow:hidden;
+  display:grid;grid-template-columns:200px 1fr;
+  transition:border-color .25s;
 }
-.toast.show { transform: translateX(-50%) translateY(0); }
-
-/* ─── NOTIF ─── */
-.notif {
-  position:fixed; bottom:90px; left:16px;
-  background:white; border-radius:10px;
-  padding:12px 16px;
-  box-shadow: 0 4px 24px rgba(0,0,0,.12);
-  display:flex; align-items:center; gap:10px;
-  z-index:800; max-width:270px;
-  transform: translateX(-110%);
-  transition: transform .5s cubic-bezier(.34,1.56,.64,1);
-  border-left: 3px solid var(--hijau3);
-}
-.notif.show { transform: translateX(0); }
-.notif-teks { font-size:12px; line-height:1.4; }
-.notif-nama { font-weight:700; color:var(--hijau); }
-.notif-masa { font-size:10.5px; color:var(--teks3); margin-top:1px; }
-
-/* ─── FAB ─── */
-.fab {
-  position:fixed; bottom:24px; right:20px;
-  background: var(--hijau); color:white;
-  border:none; border-radius:8px;
-  padding: 12px 18px;
-  font-size:14px; font-weight:600;
-  cursor:pointer; z-index:800;
-  display:flex; align-items:center; gap:8px;
-  box-shadow: 0 4px 20px rgba(30,58,30,.3);
-  transition: background .2s, transform .2s;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-}
-.fab:hover { background: var(--hijau2); transform: translateY(-1px); }
-.fab-badge {
-  background: var(--emas); color:white;
-  border-radius:50%; width:18px; height:18px;
-  font-size:10px; font-weight:700;
-  display:none; align-items:center; justify-content:center;
-  margin-left:2px;
+.m-kad:hover{border-color:rgba(201,163,92,.4)}
+.m-foto{background-size:cover;background-position:center;min-height:160px}
+.mf1{background-image:url('https://images.unsplash.com/photo-1591871937573-74dbba515c4c?w=500&q=80')}
+.mf2{background-image:url('https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?w=500&q=80')}
+.mf3{background-image:url('https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=500&q=80')}
+.mf4{background-image:url('https://images.unsplash.com/photo-1542621334-a254cf47733d?w=500&q=80')}
+.mf5{background-image:url('https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=500&q=80')}
+.m-isi{padding:22px 24px}
+.m-label{font-size:10.5px;letter-spacing:2px;text-transform:uppercase;color:var(--tembaga);margin-bottom:6px}
+.m-tajuk{font-family:'Fraunces',serif;font-size:19px;font-weight:500;line-height:1.3;margin-bottom:8px}
+.m-hurai{font-size:14px;color:var(--gading2);line-height:1.7}
+.m-hurai strong{color:var(--gading);font-weight:600}
+@media(max-width:620px){
+  .m-kad{grid-template-columns:1fr}
+  .m-foto{height:150px}
 }
 
-/* ─── TROLI DRAWER ─── */
-.latar {
-  position:fixed; inset:0;
-  background: rgba(30,58,30,.5);
-  z-index:1000; opacity:0; pointer-events:none;
-  transition: opacity .3s;
+/* ───── HARGA ───── */
+#harga{background:var(--lumut);border-top:1px solid rgba(240,234,217,.06);border-bottom:1px solid rgba(240,234,217,.06)}
+.harga-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:13px;margin-top:42px;
 }
-.latar.buka { opacity:1; pointer-events:all; }
-
-.troli {
-  position:fixed; top:0; right:0; bottom:0;
-  width: min(380px, 100vw);
-  background: var(--putih);
-  z-index:1100;
-  transform: translateX(100%);
-  transition: transform .4s cubic-bezier(.4,0,.2,1);
-  display:flex; flex-direction:column;
-  box-shadow: -8px 0 40px rgba(0,0,0,.15);
+@media(max-width:920px){.harga-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.harga-grid{grid-template-columns:1fr}}
+.h-kad{
+  background:var(--tinta);
+  border:1px solid rgba(240,234,217,.1);
+  border-radius:18px;padding:26px 24px;
+  display:flex;flex-direction:column;
+  position:relative;transition:border-color .25s,transform .25s;
 }
-.troli.buka { transform: translateX(0); }
-.troli-atas {
-  padding:20px 22px;
-  border-bottom:1px solid var(--krim2);
-  display:flex; align-items:center; justify-content:space-between;
+.h-kad:hover{transform:translateY(-3px);border-color:rgba(201,163,92,.45)}
+.h-kad.popular{border-color:var(--tembaga)}
+.h-lencana{
+  position:absolute;top:-11px;left:22px;
+  background:var(--tembaga);color:var(--tinta);
+  font-size:10.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;
+  padding:4px 12px;border-radius:99px;
 }
-.troli-atas h3 {
-  font-family:'Lora',serif; font-size:18px; color:var(--hijau);
+.h-bil{font-family:'Fraunces',serif;font-size:40px;font-weight:500;line-height:1}
+.h-bil span{font-size:15px;color:var(--gading3);font-family:'Albert Sans';font-weight:500}
+.h-nama{font-size:13px;color:var(--gading2);margin:6px 0 18px}
+.h-harga{font-family:'Fraunces',serif;font-size:30px;font-weight:500;color:var(--tembaga)}
+.h-seunit{font-size:12px;color:var(--gading3);margin:2px 0 8px}
+.h-jimat{
+  display:inline-block;align-self:flex-start;
+  font-size:11.5px;font-weight:600;color:var(--pucuk);
+  background:rgba(159,201,126,.1);
+  border:1px solid rgba(159,201,126,.25);
+  padding:3px 10px;border-radius:99px;margin-bottom:18px;
 }
-.tutup {
-  width:30px; height:30px; border-radius:50%;
-  background:var(--krim2); border:none; cursor:pointer;
-  font-size:14px;
-}
-.troli-isi { flex:1; overflow-y:auto; padding:16px 22px; }
-.troli-kosong { text-align:center; padding:48px 0; color:var(--teks3); font-size:14px; }
-.troli-item {
-  display:flex; gap:12px; padding:12px 0;
-  border-bottom:1px solid var(--krim2); align-items:center;
-}
-.ti-info { flex:1; }
-.ti-nama { font-weight:600; font-size:13px; color:var(--hijau); }
-.ti-harga { font-size:11.5px; color:var(--teks3); margin-top:1px; }
-.ti-kawalan { display:flex; align-items:center; gap:7px; margin-top:5px; }
-.ti-btn {
-  width:22px; height:22px; border-radius:4px;
-  border:1px solid var(--krim2); background:white;
-  cursor:pointer; font-size:13px;
-}
-.ti-qty { font-size:13px; font-weight:700; min-width:18px; text-align:center; }
-.ti-jumlah { font-weight:700; color:var(--hijau2); font-size:13.5px; }
-.troli-bawah {
-  padding:18px 22px;
-  border-top:1px solid var(--krim2);
-  background: var(--krim);
-}
-.troli-total {
-  display:flex; justify-content:space-between; align-items:baseline;
-  margin-bottom:14px;
-}
-.troli-total span { font-size:13.5px; color:var(--teks2); }
-.troli-total strong { font-family:'Lora',serif; font-size:22px; color:var(--hijau); }
-.btn-checkout {
-  width:100%; background:var(--hijau); color:white;
-  border:none; padding:14px; border-radius:8px;
-  font-weight:600; font-size:14.5px; cursor:pointer;
-  font-family:'Plus Jakarta Sans',sans-serif;
-  transition: background .2s;
-}
-.btn-checkout:hover { background:var(--hijau2); }
-
-/* ─── CHECKOUT MODAL ─── */
-.modal-latar {
-  position:fixed; inset:0;
-  background:rgba(30,58,30,.6);
-  z-index:1200; display:none;
-  align-items:center; justify-content:center;
-  padding:20px;
-  backdrop-filter:blur(4px);
-}
-.modal-latar.buka { display:flex; }
-.modal {
-  background:var(--putih); border-radius:14px;
-  width:100%; max-width:480px;
-  max-height:90vh; overflow-y:auto;
-  box-shadow:0 20px 60px rgba(0,0,0,.2);
-  animation: masuk .35s cubic-bezier(.34,1.56,.64,1);
-}
-@keyframes masuk { from{opacity:0;transform:scale(.94) translateY(12px);} to{opacity:1;transform:scale(1) translateY(0);} }
-.modal-atas { padding:22px 24px 16px; border-bottom:1px solid var(--krim2); }
-.langkah-bar { display:flex; gap:4px; margin-bottom:12px; }
-.l-titik { height:3px; flex:1; border-radius:2px; background:var(--krim2); transition:background .3s; }
-.l-titik.aktif { background:var(--hijau3); }
-.l-titik.siap { background:var(--hijau3); opacity:.5; }
-.modal-tajuk { font-family:'Lora',serif; font-size:20px; color:var(--hijau); }
-.modal-sub { font-size:12.5px; color:var(--teks3); margin-top:2px; }
-.modal-badan { padding:20px 24px; }
-.kump { margin-bottom:16px; }
-.label { display:block; font-size:11.5px; font-weight:700; color:var(--teks2); margin-bottom:6px; text-transform:uppercase; letter-spacing:.5px; }
-.input {
-  width:100%; padding:11px 13px;
-  border:1.5px solid var(--krim2); border-radius:8px;
-  font-size:14px; font-family:'Plus Jakarta Sans',sans-serif;
-  color:var(--teks); background:white;
-  outline:none; transition:border-color .2s;
-}
-.input:focus { border-color:var(--hijau3); }
-.ringkasan { background:var(--krim); border-radius:10px; padding:14px 16px; margin-bottom:16px; }
-.ringkasan h4 { font-size:11.5px; font-weight:700; color:var(--teks2); margin-bottom:10px; text-transform:uppercase; letter-spacing:.4px; }
-.r-baris { display:flex; justify-content:space-between; font-size:12.5px; color:var(--teks2); margin-bottom:5px; }
-.r-jumlah { border-top:1px solid var(--krim2); padding-top:8px; margin-top:8px; display:flex; justify-content:space-between; font-weight:700; color:var(--hijau); }
-.r-jumlah span:last-child { font-family:'Lora',serif; font-size:18px; }
-.pilihan-bayar { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:16px; }
-.pilihan {
-  border:1.5px solid var(--krim2); border-radius:10px;
-  padding:14px 10px; cursor:pointer; text-align:center; transition:all .2s;
-}
-.pilihan:hover { border-color:var(--hijau3); }
-.pilihan.dipilih { border-color:var(--hijau); background:rgba(30,58,30,.04); }
-.pilihan-ikon { font-size:24px; margin-bottom:5px; }
-.pilihan-nama { font-weight:700; font-size:12.5px; color:var(--hijau); }
-.pilihan-sub { font-size:10.5px; color:var(--teks3); margin-top:1px; }
-.kotak-bayar { background:var(--krim); border-radius:10px; padding:14px 16px; margin-bottom:14px; display:none; }
-.kotak-bayar.tunjuk { display:block; }
-.kotak-bayar h4 { font-weight:700; color:var(--hijau); margin-bottom:10px; font-size:13px; }
-.baris-akaun {
-  display:flex; justify-content:space-between; align-items:center;
-  background:white; border-radius:7px; padding:10px 12px;
-  margin-bottom:5px; border:1px solid var(--krim2);
-}
-.akaun-label { font-size:10.5px; color:var(--teks3); }
-.akaun-nilai { font-weight:700; color:var(--hijau); font-size:14px; margin-top:1px; }
-.btn-salin {
-  background:var(--hijau); color:white; border:none;
-  padding:4px 11px; border-radius:5px; font-size:11px;
-  cursor:pointer; font-family:'Plus Jakarta Sans',sans-serif;
-}
-.qr-kotak { text-align:center; padding:12px; background:white; border-radius:8px; border:1px solid var(--krim2); }
-.zon-upload {
-  border:2px dashed var(--hijau3); border-radius:10px;
-  padding:24px; text-align:center; cursor:pointer;
-  position:relative; overflow:hidden; transition:all .2s;
-  background:rgba(74,138,74,.03);
-}
-.zon-upload:hover { background:rgba(74,138,74,.08); }
-.zon-upload.ada-fail { border-color:var(--hijau); background:rgba(30,58,30,.05); }
-.zon-upload input { position:absolute; inset:0; opacity:0; cursor:pointer; }
-.upload-teks { font-size:14px; color:var(--teks2); font-weight:600; margin-bottom:3px; }
-.upload-sub { font-size:11.5px; color:var(--teks3); }
-.pratonton { display:none; align-items:center; gap:8px; margin-top:12px; background:white; border-radius:7px; padding:10px 12px; border:1px solid var(--krim2); }
-.pratonton.tunjuk { display:flex; }
-.nama-fail { font-size:12px; font-weight:600; color:var(--hijau); flex:1; }
-.modal-kaki { padding:0 24px 24px; display:flex; gap:8px; }
-.btn-balik {
-  flex:1; padding:12px; border-radius:8px;
-  border:1.5px solid var(--krim2); background:white;
-  font-weight:600; cursor:pointer; color:var(--teks2);
-  font-family:'Plus Jakarta Sans',sans-serif; font-size:14px;
-}
-.btn-balik:hover { border-color:var(--hijau3); }
-.btn-terus {
-  flex:2; padding:12px; border-radius:8px;
-  border:none; background:var(--hijau); color:white;
-  font-weight:700; font-size:14.5px; cursor:pointer;
-  font-family:'Plus Jakarta Sans',sans-serif;
-}
-.btn-terus:hover { background:var(--hijau2); }
-.btn-terus:disabled { opacity:.4; cursor:not-allowed; }
-.ty { text-align:center; padding:32px 24px 24px; }
-.ty-bulat {
-  width:64px; height:64px; border-radius:50%;
-  background:var(--hijau); margin:0 auto 16px;
-  display:flex; align-items:center; justify-content:center;
-  font-size:28px; animation:pop .5s cubic-bezier(.34,1.56,.64,1);
-}
-@keyframes pop { from{transform:scale(0);opacity:0;} to{transform:scale(1);opacity:1;} }
-.ty h2 { font-family:'Lora',serif; font-size:22px; color:var(--hijau); margin-bottom:8px; }
-.ty p { font-size:13.5px; color:var(--teks3); line-height:1.6; max-width:320px; margin:0 auto 20px; }
-.ref-kotak { background:var(--krim); border-radius:10px; padding:14px 16px; margin-bottom:16px; text-align:left; }
-.ref-label { font-size:10.5px; color:var(--teks3); text-transform:uppercase; letter-spacing:1px; }
-.ref-nilai { font-family:'Lora',serif; font-size:20px; color:var(--hijau); font-weight:700; margin-top:3px; }
-.btn-wa {
-  width:100%; background:#25D366; color:white;
-  border:none; padding:14px; border-radius:8px;
-  font-weight:700; font-size:14.5px; cursor:pointer;
-  display:flex; align-items:center; justify-content:center; gap:7px;
-  text-decoration:none; font-family:'Plus Jakarta Sans',sans-serif;
+.h-btn{
+  margin-top:auto;width:100%;
+  background:var(--tembaga);color:var(--tinta);
+  font-size:14px;font-weight:700;
+  padding:13px;border:none;border-radius:99px;
   transition:background .2s;
 }
-.btn-wa:hover { background:#1da851; }
-.btn-sambung {
-  width:100%; margin-top:10px; background:transparent;
-  color:var(--teks3); border:1.5px solid var(--krim2); padding:11px;
-  border-radius:8px; font-size:13.5px; cursor:pointer;
-  font-family:'Plus Jakarta Sans',sans-serif;
+.h-btn:hover{background:#dab46b}
+.h-btn.garis{background:transparent;color:var(--gading);border:1px solid rgba(240,234,217,.25)}
+.h-btn.garis:hover{border-color:var(--tembaga);color:var(--tembaga);background:transparent}
+.harga-nota{
+  margin-top:26px;font-size:13px;color:var(--gading3);
+  display:flex;gap:8px 24px;flex-wrap:wrap;justify-content:center;
 }
+.harga-nota span{display:inline-flex;align-items:center;gap:7px}
+.harga-nota svg{flex-shrink:0;color:var(--tembaga)}
 
-/* ═══════════════════════════════
-   HALAMAN UTAMA
-═══════════════════════════════ */
+/* ───── FAQ ───── */
+.faq-list{margin-top:36px}
+.faq-item{border-bottom:1px solid rgba(240,234,217,.1)}
+.faq-soal{
+  width:100%;text-align:left;background:none;border:none;
+  padding:19px 0;display:flex;justify-content:space-between;
+  align-items:center;gap:14px;
+  font-size:16px;font-weight:600;color:var(--gading);
+}
+.faq-soal:hover{color:var(--tembaga)}
+.faq-icon{
+  font-family:'Fraunces',serif;font-size:22px;font-weight:400;
+  color:var(--gading3);transition:transform .25s;flex-shrink:0;line-height:1;
+}
+.faq-item.buka .faq-icon{transform:rotate(45deg);color:var(--tembaga)}
+.faq-jawab{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-item.buka .faq-jawab{max-height:320px}
+.faq-jawab p{font-size:14.5px;color:var(--gading2);line-height:1.75;padding-bottom:19px}
 
-/* ─── HERO — fullscreen gambar panda ─── */
-.hero {
-  min-height: 100vh;
-  padding-top: 54px;
-  background-image: url('https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?w=1600&q=85');
-  background-size: cover;
-  background-position: center 25%;
-  position: relative;
-  display: flex;
-  align-items: flex-end;
+/* ───── AMANAH ───── */
+.amanah{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:40px}
+@media(max-width:560px){.amanah{grid-template-columns:1fr}}
+.a-item{
+  border:1px solid rgba(240,234,217,.1);
+  border-radius:14px;padding:20px 22px;
 }
-.hero::after {
-  content:'';
-  position:absolute; inset:0;
-  background: linear-gradient(
-    to top,
-    rgba(15,28,15,.95) 0%,
-    rgba(15,28,15,.6) 40%,
-    rgba(15,28,15,.15) 80%,
-    transparent 100%
-  );
-}
-.hero-dalam {
-  position:relative; z-index:1;
-  max-width: 800px;
-  width: 100%;
-  padding: 0 48px 64px;
-}
-.hero-sumber {
-  display:inline-block;
-  font-size:11px; color:rgba(255,255,255,.5);
-  letter-spacing:1.5px; text-transform:uppercase;
-  margin-bottom:20px;
-  border-left:2px solid var(--emas);
-  padding-left:10px;
-}
-.hero h1 {
-  font-family:'Lora',serif;
-  font-size: clamp(36px, 6vw, 68px);
-  font-weight:700; color:white;
-  line-height:1.1; margin-bottom:20px;
-}
-.hero h1 em { font-style:italic; color:#a8d8a8; }
-.hero-teks {
-  font-size:17px; color:rgba(255,255,255,.7);
-  line-height:1.75; max-width:560px; margin-bottom:32px;
-}
-.hero-btn-wrap { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:48px; }
-.btn-hijau {
-  background:white; color:var(--hijau);
-  padding:14px 28px; border-radius:7px;
-  font-weight:700; font-size:15px; border:none;
-  cursor:pointer; transition:all .2s; text-decoration:none;
-}
-.btn-hijau:hover { background:var(--krim); transform:translateY(-1px); }
-.btn-lutsinar {
-  background:transparent; color:rgba(255,255,255,.8);
-  padding:14px 28px; border-radius:7px; font-weight:500; font-size:15px;
-  border:1px solid rgba(255,255,255,.3); cursor:pointer; text-decoration:none;
-}
-.btn-lutsinar:hover { border-color:rgba(255,255,255,.6); color:white; }
+.a-item strong{display:block;font-size:14.5px;color:var(--gading);margin-bottom:5px}
+.a-item p{font-size:13px;color:var(--gading2);line-height:1.65}
 
-.hero-angka {
-  display:flex; gap:0;
-  border-top:1px solid rgba(255,255,255,.12);
-  padding-top:24px;
+/* ───── CTA AKHIR ───── */
+.cta-akhir{
+  text-align:center;padding:96px 24px;
+  background:
+    radial-gradient(ellipse 60% 70% at 50% 100%,rgba(201,163,92,.13),transparent),
+    var(--lumut);
+  border-top:1px solid rgba(240,234,217,.06);
 }
-.hstat {
-  padding:0 28px 0 0; margin-right:28px;
-  border-right:1px solid rgba(255,255,255,.1);
-}
-.hstat:last-child { border:none; }
-.hstat-num {
-  font-family:'Lora',serif; font-size:34px; font-weight:700;
-  color:#a8d8a8; line-height:1;
-}
-.hstat-label { font-size:11px; color:rgba(255,255,255,.4); margin-top:3px; line-height:1.4; }
+.cta-akhir h2{margin-bottom:14px}
+.cta-akhir .p{max-width:440px;margin:0 auto 30px}
 
-/* ─── BERITA STRIP ─── */
-.berita-strip {
-  background:var(--hijau);
-  padding:16px 32px;
-  display:flex; align-items:center; gap:16px; flex-wrap:wrap;
+/* ───── FOOTER ───── */
+footer{background:#07120b;font-size:13.5px;color:var(--gading3)}
+.footer-grid{
+  max-width:920px;margin:0 auto;
+  display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:38px;
+  padding:54px 24px 42px;
+  border-bottom:1px solid rgba(240,234,217,.06);
 }
-.berita-strip-label {
-  font-size:10px; font-weight:700; letter-spacing:2px;
-  text-transform:uppercase; color:rgba(255,255,255,.5);
-  white-space:nowrap;
+@media(max-width:680px){.footer-grid{grid-template-columns:1fr;gap:30px}}
+.footer-logo{font-family:'Fraunces',serif;font-size:19px;font-weight:600;color:var(--gading);display:block;margin-bottom:10px}
+.footer-logo em{font-style:italic;color:var(--tembaga)}
+.footer-tag{line-height:1.7;margin-bottom:18px}
+.footer-wa{
+  display:inline-flex;align-items:center;gap:8px;
+  background:#25D366;color:#06130a;font-weight:700;font-size:13px;
+  padding:10px 18px;border-radius:99px;text-decoration:none;
+  transition:filter .2s;
 }
-.berita-logos {
-  display:flex; gap:16px; align-items:center; flex-wrap:wrap;
-}
-.berita-logo {
-  background:rgba(255,255,255,.1);
-  color:rgba(255,255,255,.7);
-  padding:5px 14px; border-radius:4px;
-  font-size:12px; font-weight:700; letter-spacing:.5px;
-  white-space:nowrap;
-}
+.footer-wa:hover{filter:brightness(1.1)}
+.footer-col h4{font-size:10.5px;letter-spacing:2px;text-transform:uppercase;color:var(--gading3);margin-bottom:14px;font-weight:700}
+.footer-col li{list-style:none;margin-bottom:10px;line-height:1.6}
+.footer-col li strong{display:block;color:var(--gading2);font-size:13px}
+.footer-col a{text-decoration:none}
+.footer-col a:hover{color:var(--gading)}
+.footer-bawah{text-align:center;padding:18px 24px;font-size:11.5px;color:rgba(240,234,217,.22)}
 
-/* ─── WRAPPER KONTEN ─── */
-.konten {
-  max-width: 700px;
-  margin: 0 auto;
-  padding: 0 24px;
+/* ───── TOAST ───── */
+.toast{
+  position:fixed;top:18px;left:50%;z-index:9999;
+  transform:translateX(-50%) translateY(-70px);
+  background:var(--gading);color:var(--tinta);
+  font-size:13.5px;font-weight:600;
+  padding:11px 22px;border-radius:99px;white-space:nowrap;
+  transition:transform .4s cubic-bezier(.34,1.56,.64,1);
 }
+.toast.show{transform:translateX(-50%) translateY(0)}
 
-/* ─── BAHAGIAN — padding dikurangkan ─── */
-.bahagian { padding: 48px 0; border-bottom:1px solid var(--krim2); }
-.bahagian:last-child { border-bottom:none; }
-
-/* Override untuk section yang full-width */
-#cerita { background: var(--putih); margin: 0 -24px; padding: 48px 24px !important; }
-#testimoni { background: var(--putih); margin: 0 -24px; padding: 48px 24px !important; }
-#produk { background: var(--hijau); margin: 0 -24px; padding: 48px 24px !important; border-bottom: none !important; }
-#kenapa { background: var(--krim); }
-#faq { background: var(--krim2); margin: 0 -24px; padding: 48px 24px !important; }
-.heritage-seksyen { background: var(--putih); margin: 0 -24px; padding: 48px 24px !important; }
-
-/* ─── LABEL SEKSYEN ─── */
-.seksyen-label {
-  font-size:11px; font-weight:700; letter-spacing:2.5px;
-  text-transform:uppercase; color:var(--emas);
-  margin-bottom:8px; display:block;
+/* ───── MODAL CHECKOUT ───── */
+.modal-latar{
+  position:fixed;inset:0;z-index:1200;
+  background:rgba(4,10,6,.78);backdrop-filter:blur(6px);
+  display:none;align-items:flex-end;justify-content:center;
+  padding:0;
 }
-
-/* ─── TAJUK H2 ─── */
-.tajuk-besar {
-  font-family:'Lora',serif;
-  font-size: clamp(24px, 3.5vw, 34px);
-  color:var(--hijau); line-height:1.15;
-  margin-bottom:16px; font-weight:700;
+@media(min-width:560px){.modal-latar{align-items:center;padding:24px}}
+.modal-latar.buka{display:flex}
+.modal{
+  background:var(--lumut);
+  border:1px solid rgba(240,234,217,.12);
+  border-radius:22px 22px 0 0;
+  width:100%;max-width:460px;max-height:92svh;overflow-y:auto;
+  animation:naik .35s cubic-bezier(.34,1.4,.64,1);
 }
-.tajuk-besar em { font-style:italic; }
-
-/* ─── PERENGGAN ─── */
-.perenggan {
-  font-size:16px; color:var(--teks2);
-  line-height:1.8; margin-bottom:16px;
+@media(min-width:560px){.modal{border-radius:22px}}
+@keyframes naik{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.modal-atas{
+  padding:24px 26px 16px;
+  border-bottom:1px solid rgba(240,234,217,.08);
+  display:flex;justify-content:space-between;align-items:flex-start;gap:12px;
 }
-.perenggan strong { color:var(--hijau); }
-
-/* ─── GAMBAR PENUH ─── */
-.gambar-penuh {
-  width:100%; border-radius:10px;
-  overflow:hidden; margin:28px 0;
-  box-shadow:0 4px 24px rgba(0,0,0,.1);
+.modal-tajuk{font-family:'Fraunces',serif;font-size:21px;font-weight:500}
+.modal-sub{font-size:12.5px;color:var(--gading3);margin-top:3px}
+.btn-tutup{
+  width:32px;height:32px;border-radius:50%;flex-shrink:0;
+  background:rgba(240,234,217,.08);border:none;color:var(--gading2);
+  font-size:15px;line-height:1;
 }
-.gambar-penuh img {
-  width:100%; height:380px;
-  object-fit:cover; display:block;
+.btn-tutup:hover{background:rgba(240,234,217,.15)}
+.modal-badan{padding:22px 26px}
+.pesanan-kotak{
+  display:flex;justify-content:space-between;align-items:center;gap:14px;
+  background:var(--tinta);border:1px solid rgba(240,234,217,.1);
+  border-radius:14px;padding:16px 18px;margin-bottom:20px;
 }
-.gambar-kapsi {
-  font-size:12px; color:var(--teks3);
-  text-align:center; margin-top:8px;
-  font-style:italic; padding:0 8px;
+.pk-nama{font-weight:600;font-size:14.5px}
+.pk-sub{font-size:12px;color:var(--gading3);margin-top:1px}
+.qty{display:flex;align-items:center;gap:11px}
+.qty button{
+  width:30px;height:30px;border-radius:50%;
+  background:rgba(240,234,217,.1);border:none;color:var(--gading);
+  font-size:16px;line-height:1;
 }
-
-/* ─── DUA GAMBAR ─── */
-.dua-gambar { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:28px 0; }
-.dua-gambar .gambar-penuh { margin:0; }
-.dua-gambar .gambar-penuh img { height:220px; }
-
-/* ─── PETIKAN ─── */
-.petikan {
-  margin:28px 0;
-  border-left:3px solid var(--hijau3);
-  padding:18px 22px;
-  background:rgba(30,58,30,.04);
-  border-radius:0 8px 8px 0;
+.qty button:hover{background:var(--tembaga);color:var(--tinta)}
+.qty span{font-weight:700;font-size:15px;min-width:18px;text-align:center}
+.kump{margin-bottom:15px}
+.label{display:block;font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--gading3);margin-bottom:7px}
+.input{
+  width:100%;padding:13px 15px;
+  background:var(--tinta);
+  border:1.5px solid rgba(240,234,217,.14);border-radius:11px;
+  font-size:14.5px;font-family:'Albert Sans',sans-serif;color:var(--gading);
+  outline:none;transition:border-color .2s;
 }
-.petikan p {
-  font-family:'Lora',serif;
-  font-size:17px; line-height:1.7;
-  color:var(--hijau); font-style:italic;
-  margin-bottom:8px;
+.input::placeholder{color:rgba(240,234,217,.28)}
+.input:focus{border-color:var(--tembaga)}
+.jumlah-baris{
+  display:flex;justify-content:space-between;align-items:baseline;
+  padding:16px 2px 18px;
+  border-top:1px solid rgba(240,234,217,.08);margin-top:6px;
 }
-.petikan cite {
-  font-size:12px; color:var(--teks3);
-  font-style:normal; font-weight:600;
-  display:flex; align-items:center; gap:6px;
-}
-.petikan cite::before { content:'—'; }
-
-/* ─── KERATAN AKHBAR ─── */
-.keratan {
-  background:white;
-  border:1px solid var(--krim2);
-  border-radius:10px;
-  overflow:hidden;
-  margin:28px 0;
-  box-shadow:0 2px 12px rgba(0,0,0,.06);
-}
-.keratan-header {
-  background:var(--krim);
-  padding:10px 16px;
-  border-bottom:1px solid var(--krim2);
-  display:flex; align-items:center; gap:8px;
-}
-.keratan-sumber {
-  font-size:11px; font-weight:700;
-  color:var(--teks2); letter-spacing:.5px;
-  text-transform:uppercase;
-}
-.keratan-tarikh { font-size:11px; color:var(--teks3); margin-left:auto; }
-.keratan-badan { padding:16px 18px; }
-.keratan-headline {
-  font-family:'Lora',serif; font-size:17px;
-  font-weight:700; color:var(--hijau);
-  margin-bottom:8px; line-height:1.4;
-}
-.keratan-petikan {
-  font-size:14.5px; color:var(--teks2);
-  line-height:1.7; font-style:italic;
-  margin-bottom:10px;
-}
-/* keratan-link dihapus — tiada link keluar */
-
-/* ─── PENGUSAHA ─── */
-.pengusaha-kad {
-  background:var(--hijau);
-  border-radius:10px; overflow:hidden;
-  margin:32px 0;
-}
-.pengusaha-gambar {
-  width:100%; height:280px;
-  background-image:url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=700&q=80');
-  background-size:cover; background-position:center;
-  position:relative;
-}
-.pengusaha-gambar::after {
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(to top,rgba(30,58,30,.8),transparent 50%);
-}
-.pengusaha-nama-overlay {
-  position:absolute; bottom:0; left:0; right:0;
-  padding:16px 20px; z-index:1;
-}
-.pengusaha-nama {
-  font-family:'Lora',serif; font-size:20px;
-  font-weight:700; color:white;
-}
-.pengusaha-jawatan { font-size:13px; color:rgba(255,255,255,.65); margin-top:2px; }
-.pengusaha-petikan {
-  padding:20px 22px;
-  font-family:'Lora',serif; font-style:italic;
-  font-size:16px; color:rgba(255,255,255,.85); line-height:1.7;
-}
-.pengusaha-note {
-  padding:0 22px 18px;
-  font-size:12px; color:rgba(255,255,255,.45);
-}
-
-/* ─── GARISAN FAKTA ─── */
-.fakta-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:28px 0; }
-.fakta-kotak {
-  background:white; border:1px solid var(--krim2);
-  border-radius:10px; padding:20px 18px;
-}
-.fakta-num {
-  font-family:'Lora',serif; font-size:36px;
-  font-weight:700; color:var(--hijau); line-height:1;
-  margin-bottom:4px;
-}
-.fakta-label { font-size:13px; color:var(--teks2); line-height:1.4; }
-
-/* ─── GAMBAR KAMPUNG STRIP ─── */
-.strip-gambar {
-  display:grid; grid-template-columns:repeat(3,1fr);
-  gap:8px; margin:32px -24px;
-}
-.strip-gambar-item {
-  height:200px; background-size:cover; background-position:center;
-  overflow:hidden;
-}
-.sg1 { background-image:url('https://images.unsplash.com/photo-1542601906897-edc9d702a8e2?w=500&q=80'); }
-.sg2 { background-image:url('https://images.unsplash.com/photo-1591871937573-74dbba515c4c?w=500&q=80'); }
-.sg3 { background-image:url('https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?w=500&q=80'); }
-
-/* ─── MANFAAT BLOK — feature spread ─── */
-.manfaat-blok {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0;
-  margin: 48px -24px;
-  background: var(--putih);
-  border: 1px solid var(--krim2);
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 2px 16px rgba(0,0,0,.06);
-}
-.manfaat-blok.terbalik {
-  direction: rtl;
-}
-.manfaat-blok.terbalik > * {
-  direction: ltr;
-}
-
-.manfaat-blok-gambar {
-  position: relative;
-  min-height: 320px;
-  overflow: hidden;
-}
-.manfaat-blok-gambar img {
-  width: 100%; height: 100%;
-  object-fit: cover; display: block;
-  transition: transform .6s ease;
-}
-.manfaat-blok:hover .manfaat-blok-gambar img {
-  transform: scale(1.04);
-}
-.manfaat-blok-nombor {
-  position: absolute; top: 16px; left: 16px;
-  font-family: 'Lora', serif;
-  font-size: 13px; font-weight: 700;
-  color: white; letter-spacing: 1px;
-  background: rgba(0,0,0,.35);
-  padding: 4px 10px; border-radius: 4px;
-  backdrop-filter: blur(4px);
-}
-
-.manfaat-blok-teks {
-  padding: 36px 32px;
-  display: flex; flex-direction: column;
-  justify-content: center;
-}
-.manfaat-blok-label {
-  font-size: 10.5px; font-weight: 700;
-  letter-spacing: 2px; text-transform: uppercase;
-  color: var(--emas); margin-bottom: 10px;
-}
-.manfaat-blok-tajuk {
-  font-family: 'Lora', serif;
-  font-size: clamp(18px, 2.5vw, 22px);
-  font-weight: 700; color: var(--hijau);
-  line-height: 1.25; margin-bottom: 16px;
-}
-.manfaat-blok-hurai {
-  font-size: 15px; color: var(--teks2);
-  line-height: 1.8; margin-bottom: 12px;
-}
-.manfaat-blok-hurai:last-of-type { margin-bottom: 16px; }
-.manfaat-blok-hurai strong { color: var(--hijau); }
-.manfaat-blok-hurai em { font-style: italic; color: var(--teks2); }
-.manfaat-blok-fakta {
-  font-size: 12px; color: var(--teks3);
-  padding: 10px 14px;
-  background: var(--krim);
-  border-radius: 6px;
-  border-left: 3px solid var(--emas);
-  line-height: 1.6;
-}
-
-@media(max-width: 640px) {
-  .manfaat-blok {
-    grid-template-columns: 1fr;
-    margin: 32px 0;
-    direction: ltr !important;
-  }
-  .manfaat-blok.terbalik > * { direction: ltr; }
-  .manfaat-blok-gambar { min-height: 220px; }
-  .manfaat-blok-teks { padding: 24px 20px; }
-}
-
-/* ─── TESTIMONI ─── */
-.testi-grid { display:grid; gap:12px; margin:24px 0; }
-.testi {
-  background:white; border:1px solid var(--krim2);
-  border-radius:10px; padding:18px 20px;
-}
-.testi-teks {
-  font-family:'Lora',serif; font-style:italic;
-  font-size:15.5px; color:var(--hijau); line-height:1.65;
-  margin-bottom:10px;
-}
-.testi-meta {
-  display:flex; align-items:center; gap:8px;
-  font-size:12px; color:var(--teks3); font-weight:600;
-}
-.testi-gambar {
-  width:36px; height:36px; border-radius:50%;
-  background-size:cover; background-position:center;
-  flex-shrink:0;
-}
-.tg1 { background-image:url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80'); }
-.tg2 { background-image:url('https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80'); }
-.tg3 { background-image:url('https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80'); }
-.testi-nama { font-weight:700; color:var(--hijau); }
-
-/* ─── PRODUK SECTION — full width, wider container ─── */
-.produk-seksyen-luar {
-  background: var(--hijau);
-  padding: 56px 0;
-}
-.produk-dalam {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 48px;
-}
-.produk-seksyen-luar .produk-list {
-  grid-template-columns: repeat(3, 1fr);
-}
-
-@media(max-width: 960px) {
-  .produk-dalam { padding: 0 28px; }
-  .produk-seksyen-luar .produk-list { grid-template-columns: repeat(2, 1fr); }
-}
-@media(max-width: 580px) {
-  .produk-dalam { padding: 0 18px; }
-  .produk-seksyen-luar .produk-list { grid-template-columns: 1fr; }
-}
-.produk-list {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin: 24px 0;
-}
-.produk-kad {
-  background:white; border:1.5px solid rgba(255,255,255,.15);
-  border-radius:10px; overflow:hidden;
-  transition:all .25s;
-  display: flex; flex-direction: column;
-}
-.produk-kad:hover { border-color:rgba(255,255,255,.4); box-shadow:0 8px 28px rgba(0,0,0,.2); transform: translateY(-2px); }
-.produk-gambar {
-  width:100%; height:160px;
-  background-size:cover; background-position:center;
-  position:relative;
-  flex-shrink: 0;
-}
-.pk1 { background-image:url('https://images.unsplash.com/photo-1542601906897-edc9d702a8e2?w=700&q=80'); }
-.pk2 { background-image:url('https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?w=700&q=80'); }
-.pk3 { background-image:url('https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=700&q=80'); }
-.produk-lencana {
-  position:absolute; top:12px; left:12px;
-  background:var(--emas); color:white;
-  font-size:10.5px; font-weight:700;
-  padding:4px 10px; border-radius:4px;
-  text-transform:uppercase; letter-spacing:.3px;
-}
-.produk-badan { padding:20px 22px; }
-.produk-nama { font-family:'Lora',serif; font-size:20px; color:var(--hijau); margin-bottom:6px; }
-.produk-hurai { font-size:14px; color:var(--teks2); line-height:1.65; margin-bottom:16px; }
-.produk-tags { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:18px; }
-.produk-tag {
-  background:var(--krim); color:var(--teks2);
-  font-size:11.5px; padding:4px 10px; border-radius:4px;
-  border:1px solid var(--krim2);
-}
-.produk-kaki {
-  display:flex; align-items:center; justify-content:space-between;
-  border-top:1px solid var(--krim2); padding-top:16px;
-}
-.harga { font-family:'Lora',serif; font-size:26px; font-weight:700; color:var(--hijau); }
-.harga-unit { font-size:12px; color:var(--teks3); font-family:'Plus Jakarta Sans'; font-weight:400; }
-.kawalan {
-  display:flex; align-items:center; gap:10px;
-  background:var(--krim); border-radius:7px; padding:5px 10px;
-}
-.btn-q {
-  width:26px; height:26px; border-radius:5px;
-  border:none; background:var(--hijau); color:white;
-  font-size:16px; cursor:pointer; line-height:1;
-  display:flex; align-items:center; justify-content:center;
-  transition:background .15s;
-}
-.btn-q:hover { background:var(--hijau2); }
-.q-num { font-weight:700; font-size:14.5px; min-width:18px; text-align:center; }
-.btn-add {
-  width:100%; background:var(--hijau); color:white;
-  border:none; padding:12px; border-radius:7px;
-  font-weight:700; font-size:14.5px; cursor:pointer;
-  margin-top:14px; font-family:'Plus Jakarta Sans',sans-serif;
+.jumlah-baris span{font-size:13.5px;color:var(--gading2)}
+.jumlah-baris strong{font-family:'Fraunces',serif;font-size:27px;font-weight:500;color:var(--tembaga)}
+.btn-bayar{
+  width:100%;background:var(--tembaga);color:var(--tinta);
+  font-size:15.5px;font-weight:700;
+  padding:16px;border:none;border-radius:99px;
+  display:flex;align-items:center;justify-content:center;gap:9px;
   transition:background .2s;
-  display:flex; align-items:center; justify-content:center; gap:8px;
 }
-.btn-add:hover { background:var(--hijau2); }
-.btn-add.ditambah { background:var(--hijau3); }
-
-/* ─── FAQ ─── */
-.faq-list { margin:24px 0; }
-.faq-item { border-bottom:1px solid var(--krim2); }
-.faq-soal {
-  width:100%; text-align:left; background:none; border:none;
-  padding:16px 0; cursor:pointer; display:flex;
-  justify-content:space-between; align-items:center;
-  font-family:'Plus Jakarta Sans',sans-serif;
-  font-size:15.5px; font-weight:600; color:var(--hijau);
-}
-.faq-soal:hover { color:var(--hijau2); }
-.faq-icon { font-size:20px; color:var(--teks3); transition:transform .2s; flex-shrink:0; }
-.faq-item.buka .faq-icon { transform:rotate(45deg); }
-.faq-jawab {
-  max-height:0; overflow:hidden;
-  transition:max-height .35s ease, padding .35s ease;
-}
-.faq-item.buka .faq-jawab { max-height:300px; padding-bottom:16px; }
-.faq-jawab p { font-size:15px; color:var(--teks2); line-height:1.7; }
-
-/* ─── AMANAH BAR ─── */
-.amanah-bar {
-  background:var(--hijau); color:white;
-  padding:32px;
-  border-radius:10px; margin:32px 0;
-}
-.amanah-bar h3 {
-  font-family:'Lora',serif; font-size:18px;
-  margin-bottom:16px; color:rgba(255,255,255,.9);
-}
-.amanah-baris {
-  display:grid; grid-template-columns:1fr 1fr;
-  gap:12px;
-}
-.amanah-item { font-size:13.5px; color:rgba(255,255,255,.7); line-height:1.5; padding-left:14px; border-left:2px solid rgba(255,255,255,.2); }
-.amanah-item strong { display:block; color:rgba(255,255,255,.95); margin-bottom:2px; font-size:14px; }
-
-/* ─── CTA AKHIR ─── */
-.cta-akhir {
-  background:var(--hijau);
-  margin:0 -24px;
-  padding:48px 24px;
-  text-align:center;
-}
-.cta-akhir h2 {
-  font-family:'Lora',serif; font-size:28px;
-  color:white; margin-bottom:12px;
-}
-.cta-akhir p { font-size:15px; color:rgba(255,255,255,.65); margin-bottom:24px; }
-.cta-akhir .btn-hijau { background:white; color:var(--hijau); font-size:16px; padding:15px 36px; }
-
-/* ─── FOOTER ─── */
-footer {
-  background:var(--hijau2); color:rgba(255,255,255,.45);
-  padding:32px 24px; text-align:center; font-size:12.5px;
-}
-footer strong { color:rgba(255,255,255,.7); }
-
-/* NAV kanan — beli + troli */
-.nav-kanan {
-  display: flex; align-items: center; gap: 10px; flex-shrink: 0;
-}
-.nav-troli {
-  position: relative;
-  width: 38px; height: 38px; border-radius: 8px;
-  background: transparent;
-  border: 1.5px solid rgba(255,255,255,.25);
-  color: rgba(255,255,255,.8);
-  cursor: pointer; display: flex; align-items: center; justify-content: center;
-  transition: all .2s;
-}
-.nav.skrol .nav-troli {
-  border-color: var(--krim2);
-  color: var(--teks2);
-}
-.nav-troli:hover { background: rgba(255,255,255,.1); color: white; }
-.nav.skrol .nav-troli:hover { background: var(--krim); color: var(--hijau); }
-.nav-troli-badge {
-  position: absolute; top: -5px; right: -5px;
-  background: var(--cta); color: white;
-  border-radius: 50%; width: 17px; height: 17px;
-  font-size: 10px; font-weight: 700;
-  display: flex; align-items: center; justify-content: center;
+.btn-bayar:hover{background:#dab46b}
+.btn-bayar:disabled{opacity:.45;cursor:wait}
+.bayar-nota{
+  text-align:center;font-size:11.5px;color:var(--gading3);
+  margin-top:12px;line-height:1.6;
 }
 
-/* STRIP GAMBAR — 3 kolum dengan kapsi */
-.strip-gambar {
-  display: grid; grid-template-columns: repeat(3,1fr);
-  gap: 8px; margin: 32px -24px 0;
+/* ───── MODAL STATUS (selepas bayaran) ───── */
+.status-badan{text-align:center;padding:38px 28px 30px}
+.status-bulat{
+  width:66px;height:66px;border-radius:50%;margin:0 auto 18px;
+  display:flex;align-items:center;justify-content:center;font-size:28px;
+  animation:pop .5s cubic-bezier(.34,1.56,.64,1);
 }
-.strip-gambar-item {
-  height: 200px; background-size: cover; background-position: center;
-  position: relative; overflow: hidden;
+@keyframes pop{from{transform:scale(0)}to{transform:scale(1)}}
+.status-bulat.jaya{background:rgba(159,201,126,.15);border:1.5px solid var(--pucuk);color:var(--pucuk)}
+.status-bulat.gagal{background:rgba(220,120,90,.12);border:1.5px solid #d98a6a;color:#d98a6a}
+.status-badan h3{font-family:'Fraunces',serif;font-size:23px;font-weight:500;margin-bottom:10px}
+.status-badan p{font-size:14px;color:var(--gading2);line-height:1.7;max-width:320px;margin:0 auto 22px}
+.ref-kotak{
+  background:var(--tinta);border:1px solid rgba(240,234,217,.1);
+  border-radius:12px;padding:13px 16px;margin-bottom:20px;
 }
-.strip-kapsi {
-  position: absolute; bottom: 0; left: 0; right: 0;
-  background: linear-gradient(to top, rgba(0,0,0,.6), transparent);
-  color: rgba(255,255,255,.85);
-  font-size: 11.5px; font-weight: 600;
-  padding: 20px 12px 10px;
-  letter-spacing: .3px;
+.ref-label{font-size:10.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gading3)}
+.ref-nilai{font-family:'Fraunces',serif;font-size:21px;color:var(--tembaga);margin-top:2px}
+.btn-wa-besar{
+  width:100%;background:#25D366;color:#06130a;
+  font-size:14.5px;font-weight:700;
+  padding:14px;border:none;border-radius:99px;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  text-decoration:none;transition:filter .2s;
 }
+.btn-wa-besar:hover{filter:brightness(1.08)}
+.btn-cuba{
+  width:100%;margin-top:10px;
+  background:transparent;color:var(--gading2);
+  border:1px solid rgba(240,234,217,.2);
+  padding:12px;border-radius:99px;font-size:13.5px;
+}
+.btn-cuba:hover{border-color:var(--tembaga);color:var(--tembaga)}
 
-/* HERITAGE SECTION */
-.heritage-seksyen { background: var(--putih); margin: 0 -24px; padding: 72px 24px !important; }
-.heritage-kad {
-  background: var(--hijau);
-  border-radius: 10px; overflow: hidden;
-  margin: 28px 0;
-}
-.heritage-baris {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 1px; background: rgba(255,255,255,.08);
-}
-.heritage-item {
-  background: var(--hijau);
-  padding: 22px 20px;
-  transition: background .2s;
-}
-.heritage-item:hover { background: var(--hijau2); }
-.heritage-tajuk {
-  font-family: 'Lora', serif; font-size: 15px;
-  font-weight: 700; color: rgba(255,255,255,.9);
-  margin-bottom: 6px;
-}
-.heritage-hurai {
-  font-size: 13px; color: rgba(255,255,255,.55);
-  line-height: 1.6;
-}
-
-@media(max-width:640px){
-  .heritage-baris { grid-template-columns: 1fr; }
-  .nav-beli { display: none; }
-  .strip-gambar { margin: 32px -18px 0; }
-}
-
-/* EMAS = satu-satunya warna CTA utama */
-:root {
-  --cta: #b07d3a;
-  --cta-hover: #8f6228;
-  --cta-light: #f5e6d0;
-}
-
-/* Standardkan SEMUA button utama ke emas */
-.btn-checkout,
-.btn-terus,
-.btn-add,
-.btn-q,
-.btn-salin {
-  background: var(--cta) !important;
-}
-.btn-checkout:hover { background: var(--cta-hover) !important; }
-.btn-terus:hover { background: var(--cta-hover) !important; }
-.btn-terus:disabled { background: var(--cta) !important; opacity: .35 !important; }
-.btn-add:hover { background: var(--cta-hover) !important; }
-.btn-add.ditambah { background: var(--hijau3) !important; } /* hijau = confirmed state, bukan CTA */
-.btn-q:hover { background: var(--cta-hover) !important; }
-
-/* Hero CTA — putih atas dark bg, tetap ok */
-.btn-hijau {
-  background: white !important;
-  color: var(--hijau) !important;
-}
-.btn-hijau:hover { background: var(--krim) !important; }
-
-/* Produk kad — height lebih rendah, layout lebih compact */
-.produk-gambar { height: 160px !important; }
-
-/* Fakta grid — nombor dalam emas */
-.fakta-num { color: var(--emas) !important; }
-.fakta-kotak { border-left: 3px solid var(--emas) !important; border-radius: 0 10px 10px 0 !important; }
-
-/* H1 em — selaras palette */
-.hero h1 em { color: var(--krim2) !important; font-style: italic; }
-
-/* Produk section text colours — handled inline in HTML now */
-
-/* Amanah bar */
-.amanah-bar { margin: 0 -24px !important; border-radius: 0 !important; padding: 36px 24px !important; }
-
-/* CTA akhir */
-.cta-akhir { background: var(--hijau2) !important; padding: 48px 24px !important; }
-.cta-akhir h2 { font-size: 28px !important; }
-
-/* Gambar penuh — kurangkan tinggi */
-.gambar-penuh img { height: 300px; }
-
-/* Petikan — kurangkan margin */
-.petikan { margin: 20px 0; padding: 14px 18px; }
-
-/* Keratan akhbar — kurangkan margin */
-.keratan { margin: 20px 0; }
-
-/* Manfaat blok — kurangkan margin atas bawah */
-.manfaat-blok { margin: 32px -24px; }
-
-/* Produk responsive */
-@media(max-width: 900px) {
-  .produk-list { grid-template-columns: repeat(2, 1fr); }
-}
-@media(max-width: 580px) {
-  .produk-list { grid-template-columns: 1fr; }
-}
-
-/* ═══════════════════════════
-   FOOTER PENUH
-═══════════════════════════ */
-footer {
-  background: #111f11 !important;
-  color: rgba(255,255,255,.55) !important;
-  padding: 0 !important;
-  font-size: 14px !important;
-}
-.footer-grid {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr;
-  gap: 40px;
-  padding: 48px 32px 40px;
-  max-width: 860px;
-  margin: 0 auto;
-  border-bottom: 1px solid rgba(255,255,255,.08);
-}
-.footer-brand {}
-.footer-logo-teks {
-  font-family: 'Lora', serif;
-  font-size: 18px; font-weight: 700;
-  color: white; margin-bottom: 10px;
-  display: block;
-}
-.footer-tagline {
-  font-size: 13px; color: rgba(255,255,255,.45);
-  line-height: 1.65; margin-bottom: 20px;
-}
-.footer-wa {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: #25D366; color: white;
-  padding: 9px 16px; border-radius: 6px;
-  font-size: 13px; font-weight: 700;
-  text-decoration: none; transition: background .2s;
-}
-.footer-wa:hover { background: #1da851; }
-
-.footer-col h4 {
-  font-size: 11px; font-weight: 700;
-  text-transform: uppercase; letter-spacing: 1.5px;
-  color: rgba(255,255,255,.35); margin-bottom: 14px;
-}
-.footer-col ul { list-style: none; }
-.footer-col ul li {
-  margin-bottom: 9px;
-  font-size: 13.5px; color: rgba(255,255,255,.55);
-  line-height: 1.5;
-}
-.footer-col ul li strong { color: rgba(255,255,255,.8); display: block; font-size: 13px; }
-.footer-col a {
-  color: rgba(255,255,255,.55); text-decoration: none;
-  transition: color .2s;
-}
-.footer-col a:hover { color: white; }
-
-.footer-bawah {
-  padding: 18px 32px;
-  text-align: center;
-  font-size: 12px; color: rgba(255,255,255,.25);
-  max-width: 860px; margin: 0 auto;
-}
-
-@media(max-width: 640px) {
-  .hero-dalam { padding: 0 20px 48px; }
-  .footer-grid { grid-template-columns: 1fr; gap: 28px; padding: 36px 20px 28px; }
-  #cerita, #testimoni, #produk, #faq, .amanah-bar, .cta-akhir, .heritage-seksyen { margin: 0 -18px !important; padding-left: 18px !important; padding-right: 18px !important; }
-  .produk-list { grid-template-columns: 1fr; }
-  .bahagian { padding: 36px 0; }
-  .tajuk-besar { font-size: 24px; }
-}
-.hero-harga-hint {
-  display: inline-block;
-  background: rgba(255,255,255,.12);
-  border: 1px solid rgba(255,255,255,.2);
-  color: rgba(255,255,255,.85);
-  font-size: 13.5px; padding: 7px 14px;
-  border-radius: 100px; margin-bottom: 20px;
-  letter-spacing: .2px;
-}
-.hero-harga-hint strong { color: white; font-weight: 700; }
-.hero-urgency {
-  display: flex; align-items: center; gap: 8px;
-  font-size: 13px; color: rgba(255,255,255,.6);
-  margin-top: 16px; margin-bottom: 32px;
-}
-.urgency-dot {
-  width: 8px; height: 8px; border-radius: 50%;
-  background: #4ade80; flex-shrink: 0;
-  animation: denyut 2s ease infinite;
-}
-@keyframes denyut {
-  0% { box-shadow: 0 0 0 0 rgba(74,222,128,.5); }
-  70% { box-shadow: 0 0 0 8px rgba(74,222,128,0); }
-  100% { box-shadow: 0 0 0 0 rgba(74,222,128,0); }
-}
-
-/* ─── STICKY CTA ─── */
-.sticky-cta {
-  position: fixed; bottom: 0; left: 0; right: 0;
-  z-index: 700;
-  transform: translateY(100%);
-  transition: transform .4s cubic-bezier(.4,0,.2,1);
-  pointer-events: none;
-}
-.sticky-cta.nampak { transform: translateY(0); pointer-events: all; }
-.sticky-cta-dalam {
-  background: var(--hijau);
-  border-top: 1px solid rgba(255,255,255,.1);
-  padding: 12px 20px;
-  display: flex; align-items: center;
-  justify-content: space-between; gap: 12px;
-  box-shadow: 0 -4px 24px rgba(0,0,0,.2);
-}
-.sticky-cta-teks { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
-.sticky-cta-teks strong { font-size: 13.5px; font-weight: 700; color: white; white-space:nowrap; }
-.sticky-cta-teks span { font-size: 11.5px; color: rgba(255,255,255,.55); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-.sticky-cta-btn {
-  background: var(--emas); color: white;
-  padding: 10px 20px; border-radius: 7px;
-  font-size: 13.5px; font-weight: 700;
-  text-decoration: none; white-space: nowrap; flex-shrink: 0;
-  transition: background .2s;
-}
-.sticky-cta-btn:hover { background: #8f6228; }
-
-/* ─── PENGUSAHA PLACEHOLDER ─── */
-.pengusaha-placeholder {
-  background: rgba(255,255,255,.06);
-  border-bottom: 1px solid rgba(255,255,255,.08);
-  min-height: 180px;
-  display: flex; align-items: center; justify-content: center;
-}
-.pengusaha-placeholder-dalam { text-align: center; padding: 32px 20px; }
-.pengusaha-siluet { margin-bottom: 12px; opacity: .4; }
-.pengusaha-placeholder-teks { font-size: 13px; color: rgba(255,255,255,.4); line-height: 1.6; }
-.pengusaha-placeholder-teks span { display:block; font-size: 11.5px; color: rgba(255,255,255,.25); margin-top: 4px; font-style:italic; }
-.pengusaha-info { padding: 16px 22px 4px; }
-.pengusaha-nama { font-family:'Lora',serif; font-size: 18px; font-weight: 700; color: white; }
-.pengusaha-jawatan { font-size: 12.5px; color: rgba(255,255,255,.5); margin-top: 3px; line-height: 1.5; }
-
-/* ─── CONFIRM CHECKBOX ─── */
-.confirm-check {
-  display: flex; align-items: flex-start; gap: 10px;
-  background: rgba(30,58,30,.05);
-  border: 1.5px solid var(--krim2);
-  border-radius: 8px; padding: 12px 14px;
-  cursor: pointer; margin-top: 14px;
-  transition: border-color .2s;
-}
-.confirm-check:hover { border-color: var(--hijau3); }
-.confirm-check input { margin-top: 2px; flex-shrink: 0; width: 16px; height: 16px; accent-color: var(--hijau); cursor:pointer; }
-.confirm-check span { font-size: 13.5px; color: var(--teks2); line-height: 1.5; }
-.confirm-check strong { color: var(--hijau); }
-
-@media(max-width:640px){
-  .hstat { border:none; padding:0; margin:0; }
-  .dua-gambar { grid-template-columns:1fr; }
-  .fakta-grid { grid-template-columns:1fr; }
-  .strip-gambar { grid-template-columns:1fr 1fr; margin:32px 0; }
-  .strip-gambar-item:last-child { display:none; }
-  .amanah-baris { grid-template-columns:1fr; }
-  .hero-dalam { padding:0 20px 48px; }
-  .konten { padding:0 18px; }
-  .berita-strip { padding:14px 18px; }
-}
+/* ───── REVEAL ───── */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.reveal.nampak{opacity:1;transform:none}
 </style>
 </head>
 <body>
 
-<!-- NOTIF -->
-<div class="notif" id="notif">
-  <div style="width:34px;height:34px;border-radius:50%;background:var(--hijau);flex-shrink:0;display:flex;align-items:center;justify-content:center;color:white;font-size:14px">✓</div>
-  <div class="notif-teks">
-    <div class="notif-nama" id="notifNama">Ahmad dari Seremban</div>
-    <div id="notifMsg">baru beli 50 anak buluh</div>
-    <div class="notif-masa" id="notifMasa">3 minit lalu</div>
-  </div>
-</div>
-
 <div class="toast" id="toast"></div>
-<div class="latar" id="latarTroli" onclick="tutupTroli()"></div>
-
-<!-- TROLI -->
-<div class="troli" id="troliDrawer">
-  <div class="troli-atas">
-    <h3>Troli Anda</h3>
-    <button class="tutup" onclick="tutupTroli()">✕</button>
-  </div>
-  <div class="troli-isi" id="troliIsi">
-    <div class="troli-kosong">Troli masih kosong</div>
-  </div>
-  <div class="troli-bawah" id="troliBawah" style="display:none">
-    <div class="troli-total"><span>Jumlah</span><strong id="troliJumlah">RM0</strong></div>
-    <button class="btn-checkout" onclick="bukaCheckout()">Teruskan ke Bayaran →</button>
-  </div>
-</div>
-
-<!-- CHECKOUT -->
-<div class="modal-latar" id="modalLatar">
-  <div class="modal">
-    <div id="l1">
-      <div class="modal-atas">
-        <div class="langkah-bar"><div class="l-titik aktif"></div><div class="l-titik"></div><div class="l-titik"></div></div>
-        <div class="modal-tajuk">Maklumat Pembeli</div>
-        <div class="modal-sub">Isi dengan betul supaya kami boleh proses pesanan</div>
-      </div>
-      <div class="modal-badan">
-        <div class="kump"><label class="label">Nama Penuh</label><input type="text" class="input" id="nama" placeholder="Nama penuh anda"></div>
-        <div class="kump"><label class="label">No. WhatsApp</label><input type="tel" class="input" id="telefon" placeholder="601X-XXXXXXX"></div>
-        <div class="kump"><label class="label">Alamat Penghantaran</label><textarea class="input" id="alamat" rows="3" placeholder="No. rumah, jalan, kawasan, poskod, negeri"></textarea></div>
-        <div class="ringkasan"><h4>Pesanan</h4><div id="rIngisi"></div><div class="r-jumlah"><span>Jumlah</span><span id="rJumlah">RM0</span></div></div>
-      </div>
-      <div class="modal-kaki"><button class="btn-balik" onclick="tutupModal()">Batal</button><button class="btn-terus" onclick="keLangkah2()">Pilih Bayaran →</button></div>
-    </div>
-    <div id="l2" style="display:none">
-      <div class="modal-atas">
-        <div class="langkah-bar"><div class="l-titik siap"></div><div class="l-titik aktif"></div><div class="l-titik"></div></div>
-        <div class="modal-tajuk">Kaedah Bayaran</div>
-        <div class="modal-sub">Pilih cara yang paling senang</div>
-      </div>
-      <div class="modal-badan">
-        <div class="pilihan-bayar">
-          <div class="pilihan" onclick="pilihBayar('qr')" id="pil-qr"><div class="pilihan-ikon">📱</div><div class="pilihan-nama">DuitNow QR</div><div class="pilihan-sub">Imbas & bayar</div></div>
-          <div class="pilihan" onclick="pilihBayar('transfer')" id="pil-transfer"><div class="pilihan-ikon">🏦</div><div class="pilihan-nama">Pindahan Bank</div><div class="pilihan-sub">Transfer terus</div></div>
-        </div>
-        <div class="kotak-bayar" id="kb-qr">
-          <h4>Imbas QR di bawah</h4>
-          <div class="qr-kotak">
-            <svg width="140" height="140" viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg" style="margin:0 auto 8px;display:block;">
-              <rect width="140" height="140" fill="white"/>
-              <rect x="8" y="8" width="40" height="40" rx="5" fill="#1e3a1e"/><rect x="14" y="14" width="28" height="28" rx="3" fill="white"/><rect x="19" y="19" width="18" height="18" rx="2" fill="#1e3a1e"/>
-              <rect x="92" y="8" width="40" height="40" rx="5" fill="#1e3a1e"/><rect x="98" y="14" width="28" height="28" rx="3" fill="white"/><rect x="103" y="19" width="18" height="18" rx="2" fill="#1e3a1e"/>
-              <rect x="8" y="92" width="40" height="40" rx="5" fill="#1e3a1e"/><rect x="14" y="98" width="28" height="28" rx="3" fill="white"/><rect x="19" y="103" width="18" height="18" rx="2" fill="#1e3a1e"/>
-              <rect x="56" y="8" width="6" height="6" fill="#1e3a1e"/><rect x="64" y="8" width="6" height="6" fill="#1e3a1e"/><rect x="72" y="8" width="6" height="6" fill="#1e3a1e"/>
-              <rect x="56" y="16" width="6" height="6" fill="#1e3a1e"/><rect x="72" y="16" width="6" height="6" fill="#1e3a1e"/>
-              <rect x="64" y="24" width="6" height="6" fill="#1e3a1e"/><rect x="72" y="32" width="6" height="6" fill="#1e3a1e"/>
-              <rect x="8" y="56" width="6" height="6" fill="#1e3a1e"/><rect x="8" y="64" width="6" height="6" fill="#1e3a1e"/><rect x="16" y="72" width="6" height="6" fill="#1e3a1e"/>
-              <rect x="24" y="64" width="6" height="6" fill="#1e3a1e"/><rect x="32" y="56" width="6" height="6" fill="#1e3a1e"/>
-              <rect x="56" y="56" width="28" height="28" rx="4" fill="white" stroke="#1e3a1e" stroke-width="2"/>
-              <text x="70" y="76" text-anchor="middle" font-size="14">🎋</text>
-              <rect x="92" y="56" width="6" height="6" fill="#1e3a1e"/><rect x="100" y="64" width="6" height="6" fill="#1e3a1e"/>
-              <rect x="108" y="56" width="6" height="6" fill="#1e3a1e"/><rect x="116" y="64" width="6" height="6" fill="#1e3a1e"/>
-              <rect x="124" y="56" width="6" height="6" fill="#1e3a1e"/><rect x="92" y="72" width="6" height="6" fill="#1e3a1e"/>
-              <rect x="108" y="72" width="6" height="6" fill="#1e3a1e"/>
-              <rect x="56" y="92" width="6" height="6" fill="#1e3a1e"/><rect x="64" y="100" width="6" height="6" fill="#1e3a1e"/>
-              <rect x="72" y="92" width="6" height="6" fill="#1e3a1e"/><rect x="56" y="108" width="6" height="6" fill="#1e3a1e"/>
-              <rect x="64" y="116" width="6" height="6" fill="#1e3a1e"/><rect x="72" y="116" width="6" height="6" fill="#1e3a1e"/>
-              <rect x="56" y="124" width="6" height="6" fill="#1e3a1e"/><rect x="72" y="124" width="6" height="6" fill="#1e3a1e"/>
-              <rect x="92" y="92" width="6" height="6" fill="#1e3a1e"/><rect x="100" y="92" width="6" height="6" fill="#1e3a1e"/>
-              <rect x="108" y="100" width="6" height="6" fill="#1e3a1e"/><rect x="116" y="92" width="6" height="6" fill="#1e3a1e"/>
-              <rect x="124" y="100" width="6" height="6" fill="#1e3a1e"/><rect x="116" y="108" width="6" height="6" fill="#1e3a1e"/>
-              <rect x="124" y="116" width="6" height="6" fill="#1e3a1e"/><rect x="100" y="124" width="6" height="6" fill="#1e3a1e"/>
-              <rect x="116" y="124" width="6" height="6" fill="#1e3a1e"/>
-            </svg>
-            <p style="font-size:11.5px;color:var(--teks3)">Guna app bank untuk imbas</p>
-          </div>
-        </div>
-        <div class="kotak-bayar" id="kb-transfer">
-          <h4>Nombor Akaun</h4>
-          <div class="baris-akaun"><div><div class="akaun-label">Bank</div><div class="akaun-nilai">Maybank</div></div></div>
-          <div class="baris-akaun"><div><div class="akaun-label">No. Akaun</div><div class="akaun-nilai" id="noAkaun">XXXX XXXX XXXX</div></div><button class="btn-salin" onclick="salinAkaun()">Salin</button></div>
-          <div class="baris-akaun"><div><div class="akaun-label">Nama</div><div class="akaun-nilai" style="font-size:12.5px">NAMA PEMILIK AKAUN</div></div></div>
-          <p style="font-size:11px;color:var(--teks3);margin-top:10px;text-align:center">Masukkan <strong>No. Rujukan Pesanan</strong> masa transfer</p>
-        </div>
-        <div class="ringkasan"><div class="r-jumlah" style="border:none;padding:0;margin:0"><span>Jumlah Bayar</span><span id="jumlahBayar">RM0</span></div></div>
-      </div>
-      <div class="modal-kaki"><button class="btn-balik" onclick="keLangkah1()">← Balik</button><button class="btn-terus" id="btnKe3" onclick="keLangkah3()" disabled>Dah Bayar →</button></div>
-    </div>
-    <div id="l3" style="display:none">
-      <div class="modal-atas">
-        <div class="langkah-bar"><div class="l-titik siap"></div><div class="l-titik siap"></div><div class="l-titik aktif"></div></div>
-        <div class="modal-tajuk">Bukti Bayaran</div>
-        <div class="modal-sub">Hantar screenshot resit supaya kami boleh sahkan</div>
-      </div>
-      <div class="modal-badan">
-        <div class="zon-upload" id="zonUpload" onclick="document.getElementById('inputFail').click()">
-          <input type="file" id="inputFail" accept="image/*,.pdf" onchange="failDipilih(this)">
-          <div class="upload-teks">Tekan sini untuk muat naik resit</div>
-          <div class="upload-sub">PNG, JPG atau PDF — maks 5MB</div>
-        </div>
-        <div class="pratonton" id="pratonton">
-          <span style="color:var(--hijau);font-weight:700">✓</span>
-          <div><div class="nama-fail" id="namaFail">—</div><div style="font-size:11px;color:var(--teks3)" id="saizFail">—</div></div>
-        </div>
-        <div class="kump" style="margin-top:16px">
-          <label class="label">Catatan (kalau ada)</label>
-          <textarea class="input" id="catatan" rows="2" placeholder="Ada permintaan khas? Sila nyatakan di sini."></textarea>
-        </div>
-        <label class="confirm-check" id="confirmCheck">
-          <input type="checkbox" id="cbConfirm" onchange="semakConfirm()">
-          <span>Saya <strong>dah buat bayaran</strong> dan resit di atas adalah buktinya</span>
-        </label>
-      </div>
-      <div class="modal-kaki"><button class="btn-balik" onclick="keLangkah2()">← Balik</button><button class="btn-terus" id="btnHantar" onclick="hantarPesanan()">Hantar Pesanan</button></div>
-    </div>
-    <div id="lTY" style="display:none">
-      <div class="ty">
-        <div class="ty-bulat">✓</div>
-        <h2>Alhamdulillah!</h2>
-        <p>Pesanan dah kami terima. Admin akan semak dalam masa 1–2 jam. WhatsApp terus kalau ada soalan.</p>
-        <div class="ref-kotak"><div class="ref-label">No. Rujukan</div><div class="ref-nilai" id="noRujukan">BK-000000</div></div>
-        <a href="#" class="btn-wa" id="btnWA" target="_blank">WhatsApp Admin</a>
-        <button class="btn-sambung" onclick="resetSemua()">Beli lagi →</button>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- ═══ NAV ═══ -->
-<nav class="nav" id="nav">
-  <a href="#" class="nav-logo">Buluh Kundur</a>
-  <div class="nav-links" id="navLinks">
-    <a class="nav-link" href="#cerita">Cerita Kami</a>
-    <a class="nav-link" href="#kenapa">Kenapa Buluh?</a>
-    <a class="nav-link" href="#testimoni">Testimoni</a>
-    <a class="nav-link" href="#produk">Produk</a>
+<nav class="nav">
+  <a href="#" class="nav-logo">Buluh <em>Kundur</em></a>
+  <div class="nav-links">
+    <a class="nav-link" href="#cerita">Cerita</a>
+    <a class="nav-link" href="#iktiraf">Pengiktirafan</a>
+    <a class="nav-link" href="#kenapa">Kenapa Buluh</a>
+    <a class="nav-link" href="#harga">Harga</a>
     <a class="nav-link" href="#faq">FAQ</a>
   </div>
-  <div class="nav-kanan">
-    <a href="#produk" class="nav-beli">Beli Sekarang</a>
-    <button class="nav-troli" onclick="bukaTroli()" id="navTroli" aria-label="Troli">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
-        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
-      </svg>
-      <span class="nav-troli-badge" id="fabBadge" style="display:none">0</span>
-    </button>
-  </div>
+  <a href="#harga" class="nav-beli">Beli Sekarang</a>
 </nav>
 
 <!-- ═══ HERO ═══ -->
-<section class="hero">
+<header class="hero">
   <div class="hero-dalam">
-    <div class="hero-sumber">Kampung Kundur Ulu, Rembau, Negeri Sembilan</div>
-    <h1>Ini ladang yang<br><em>panda pilih.</em></h1>
+    <div class="hero-tempat">Anak Buluh Betong Kg. Kundur · Rembau, Negeri Sembilan</div>
+    <h1>7 buluh diuji. Panda<br>hanya pilih <em>yang ini!</em></h1>
     <p class="hero-teks">
-      Dari 7 jenis buluh Malaysia yang ditawarkan, Zoo Negara hanya terima satu — dari Kundur. Ladang yang sama bekalan panda sejak 2014. Anak pokok dari ladang itu kini boleh anda tanam sendiri.
+      Dari daun, batang, hingga rebung — habis semuanya dimakan. Dan sepanjang dekad makan buluh dari ladang ini, panda Zoo Negara melahirkan 3 anak. Anak pokok dari ladang yang sama, kini anda juga boleh tanam sendiri.
     </p>
-    <div class="hero-harga-hint">Mulai <strong>RM15</strong> sepokok &nbsp;·&nbsp; Hantar seluruh Semenanjung</div>
-    <div class="hero-btn-wrap">
-      <a href="#produk" class="btn-hijau">Beli Anak Buluh Sekarang</a>
-      <a href="#cerita" class="btn-lutsinar">Baca cerita Kundur</a>
+    <div class="hero-cta">
+      <a href="#harga" class="btn-utama">Beli Anak Buluh — dari RM50</a>
+      <a href="#cerita" class="btn-senyap">Baca cerita Kundur ↓</a>
     </div>
-    <div class="hero-urgency">
-      <span class="urgency-dot"></span>
-      Stok terhad — musim rebung sedang berjalan. Ramai yang dah order minggu ni.
+    <div class="hero-fpx">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      Bayaran online selamat melalui FPX (semua bank Malaysia)
     </div>
-    <div class="hero-angka">
-      <div class="hstat"><div class="hstat-num">10</div><div class="hstat-label">Tahun kontrak<br>bekalan panda</div></div>
-      <div class="hstat"><div class="hstat-num">2014</div><div class="hstat-label">Mula bekalan<br>Zoo Negara</div></div>
-      <div class="hstat"><div class="hstat-num">17</div><div class="hstat-label">Tan CO₂ diserap<br>per hektar / tahun</div></div>
+    <div class="hero-bar">
+      <div class="hb-item"><div class="hb-num">11</div><div class="hb-label">Tahun membekal Zoo<br>Negara tanpa henti</div></div>
+      <div class="hb-item"><div class="hb-num">3</div><div class="hb-label">Anak panda dilahirkan<br>sepanjang tempoh ini</div></div>
+      <div class="hb-item"><div class="hb-num">1<span>/7</span></div><div class="hb-label">Satu-satunya buluh<br>yang panda terima</div></div>
     </div>
   </div>
-</section>
+</header>
 
-<!-- SEBAGAIMANA DILAPORKAN -->
-<div class="berita-strip">
-  <div class="berita-strip-label">Sebagaimana dilaporkan oleh</div>
-  <div class="berita-logos">
-    <span class="berita-logo">Utusan Malaysia</span>
-    <span class="berita-logo">Kosmo!</span>
-    <span class="berita-logo">Malaysia Aktif</span>
-    <span class="berita-logo">Bernama</span>
-  </div>
+<!-- ═══ MEDIA ═══ -->
+<div class="media-strip">
+  <span class="media-label">Dilaporkan oleh</span>
+  <span class="media-nama">Utusan Malaysia</span>
+  <span class="media-nama">Kosmo!</span>
+  <span class="media-nama">Bernama</span>
+  <span class="media-nama">Malaysia Aktif</span>
 </div>
 
-
-<div class="konten">
-
-  <!-- CERITA -->
-  <div class="bahagian" id="cerita">
-    <span class="seksyen-label">Cerita Kampung Kundur</span>
-    <h2 class="tajuk-besar">Dulu sawah padi.<br>Sekarang <em>diakui dunia.</em></h2>
-
-    <p class="perenggan">
-      Tanah di Kampung Kundur Ulu tidak selalu begini. Dulu orang tanam padi. Tetapi bila hutan berhampiran mula ditebang, punca air kering, padi tidak dapat hidup lagi.
-    </p>
-
-    <div class="gambar-penuh">
-      <img src="https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?w=900&q=85" alt="Ladang buluh hijau">
-      <div class="gambar-kapsi">[ Tukar dengan gambar ladang buluh Kg. Kundur Ulu yang sebenar ]</div>
+<!-- ═══ CERITA ═══ -->
+<section class="seksyen" id="cerita">
+  <div class="seksyen-dalam">
+    <div class="reveal">
+      <span class="eyebrow">Cerita Kundur</span>
+      <h2>Sawah ini mati. Yang tumbuh selepasnya, panda pun <em>tak mampu tolak.</em></h2>
+      <p class="p">
+        Tanah di Kampung Kundur Ulu tidak selalu begini. Dahulu, penduduk menanam padi — sehingga hutan berhampiran ditebang, punca air kering, dan padi tidak dapat hidup lagi. Mereka mencuba labu. Mencuba pisang. Akhirnya, buluh betong ditanam di atas tanah bekas sawah itu.
+      </p>
+      <p class="p">
+        Tiada siapa menyangka ketika itu — tanah yang kelihatan biasa itu menyimpan sesuatu yang hanya alam yang tahu.
+      </p>
     </div>
 
-    <p class="perenggan">
-      Penduduk mencuba labu. Mencuba pisang. Akhirnya, syarikat tempatan mula menanam buluh betong di tanah bekas sawah tersebut. Tiada yang menyangka ketika itu — tanah yang kelihatan biasa itu menyimpan sesuatu yang hanya alam yang tahu.
-    </p>
+    <!-- SIGNATURE -->
+    <div class="ujian reveal">
+      <div class="ujian-tajuk">Ujian buluh Zoo Negara — 7 jenis dari seluruh Malaysia</div>
+      <div class="ujian-baris" aria-hidden="true">
+        <div class="batang tolak b1"><span class="tanda">✕</span></div>
+        <div class="batang tolak b2"><span class="tanda">✕</span></div>
+        <div class="batang tolak b3"><span class="tanda">✕</span></div>
+        <div class="batang pilih b4"><span class="tanda">Kundur ✓</span></div>
+        <div class="batang tolak b5"><span class="tanda">✕</span></div>
+        <div class="batang tolak b6"><span class="tanda">✕</span></div>
+        <div class="batang tolak b7"><span class="tanda">✕</span></div>
+      </div>
+      <p class="ujian-kapsi">
+        Enam jenis buluh hanya disentuh, dicium, kemudian dibuang. Hanya buluh betong dari <strong>Kampung Kundur Ulu</strong> dimakan habis — batang, daun, dan rebungnya.
+      </p>
+    </div>
 
-    <p class="perenggan">
-      Rahsia itu terbuka apabila Zoo Negara menghantar 7 jenis buluh Malaysia ke China untuk diuji sebelum panda tiba. Satu demi satu dicuba. Satu demi satu ditolak. Sampai buluh dari Kundur — panda makan. Batang. Daun. Rebung. Habis semuanya.
-    </p>
-
-    <div class="petikan">
-      <p>"Bila panda datang ke Malaysia kita tawarkan semua buluh. Panda hanya ambil buluh betung dan buluh betung itu adalah yang datangnya dari Kampung Kundur Hulu ini. Buluh dari tempat lain, panda tak makan. Panda hanya sentuh, cium dan kemudiannya buang."</p>
+    <div class="petikan reveal">
+      <p>"Bila panda datang ke Malaysia kita tawarkan semua buluh. Panda hanya ambil buluh betung dan buluh betung itu adalah yang datangnya dari Kampung Kundur Hulu ini. Buluh dari tempat lain, panda tak makan."</p>
       <cite>Dr. Mat Naim Ramli, Pengarah Zoologi Zoo Negara</cite>
     </div>
 
-    <!-- KERATAN UTUSAN -->
-    <div class="keratan">
-      <div class="keratan-header">
-        <div class="keratan-sumber">Utusan Malaysia</div>
-        <div class="keratan-tarikh">21 November 2025</div>
-      </div>
-      <div class="keratan-badan">
-        <div class="keratan-headline">Buluh Kg. Kundur Ulu kekal jadi pilihan panda Zoo Negara</div>
-        <div class="keratan-petikan">"Kehadiran pasangan panda gergasi baharu, Chen Xing dan Xiao Yue ke negara ini bukan sahaja mencuri tumpuan di Zoo Negara, malah turut menjadikan Kampung Kundur Ulu sebagai lokasi tumpuan penting sejak sedekad lalu..."</div>
-      </div>
-    </div>
-
-    <!-- KERATAN KOSMO -->
-    <div class="keratan">
-      <div class="keratan-header">
-        <div class="keratan-sumber">Kosmo!</div>
-        <div class="keratan-tarikh">23 Julai 2021</div>
-      </div>
-      <div class="keratan-badan">
-        <div class="keratan-headline">Buluh betung Kampung Kundur Hulu penuhi selera panda</div>
-        <div class="keratan-petikan">"Hanya buluh di Rembau ini sahaja panda makan. Buluh Kundur Hulu ini semua panda makan baik batang, daun dan rebungnya."</div>
-      </div>
-    </div>
-
-    <div class="gambar-penuh">
-      <img src="https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?w=900&q=85" alt="Panda makan buluh">
-      <div class="gambar-kapsi">Panda di Zoo Negara — buluh betong dari Kg. Kundur Ulu adalah makanan utama mereka sejak 2014</div>
-    </div>
-
-    <!-- PENGUSAHA -->
-    <div class="pengusaha-kad">
-      <div class="pengusaha-placeholder">
-        <div class="pengusaha-placeholder-dalam">
-          <div class="pengusaha-siluet">
-            <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="36" cy="26" r="16" fill="rgba(255,255,255,.2)"/>
-              <path d="M4 68c0-17.7 14.3-32 32-32s32 14.3 32 32" fill="rgba(255,255,255,.15)"/>
-            </svg>
-          </div>
-          <div class="pengusaha-placeholder-teks">
-            Gambar Mohammad Sharif Rasid<br>
-            <span>[ Gantikan dengan gambar real pengusaha ]</span>
-          </div>
+    <div class="reveal">
+      <div class="keratan">
+        <div class="keratan-atas">
+          <span class="keratan-sumber">Utusan Malaysia</span>
+          <span class="keratan-tarikh">21 November 2025</span>
+        </div>
+        <div class="keratan-badan">
+          <div class="keratan-headline">Buluh Kg. Kundur Ulu kekal jadi pilihan panda Zoo Negara</div>
+          <div class="keratan-petikan">"Kehadiran pasangan panda gergasi baharu, Chen Xing dan Xiao Yue ke negara ini bukan sahaja mencuri tumpuan di Zoo Negara, malah turut menjadikan Kampung Kundur Ulu sebagai lokasi tumpuan penting sejak sedekad lalu..."</div>
         </div>
       </div>
-      <div class="pengusaha-info">
-        <div class="pengusaha-nama">Mohammad Sharif Rasid</div>
-        <div class="pengusaha-jawatan">Pengusaha Ladang Buluh Betong, Kg. Kundur Ulu<br>Bekalan Panda Zoo Negara sejak 2015</div>
-      </div>
-      <div class="pengusaha-petikan">
-        "Buluh betong di ladang saya sangat istimewa berbanding kawasan lain. Ia ditanam di atas tanah bekas tapak sawah padi — ini sekali gus membolehkannya hidup subur, menghasilkan rebung yang berkualiti, mengandungi air yang banyak."
-      </div>
-      <div class="pengusaha-note">— Malaysia Aktif, Jun 2017</div>
-    </div>
-
-    <div class="fakta-grid">
-      <div class="fakta-kotak">
-        <div class="fakta-num">2015</div>
-        <div class="fakta-label">JKKK Kg. Kundur Hulu mengikat perjanjian dengan Zoo Negara untuk bekalan buluh</div>
-      </div>
-      <div class="fakta-kotak">
-        <div class="fakta-num">5 + 30kg</div>
-        <div class="fakta-label">Batang buluh dan rebung yang dihantar ke Zoo Negara setiap Isnin dan Jumaat</div>
-      </div>
-      <div class="fakta-kotak">
-        <div class="fakta-num">2025–2035</div>
-        <div class="fakta-label">Tempoh perjanjian baru — panda Chen Xing & Xiao Yue, 10 tahun lagi</div>
-      </div>
-      <div class="fakta-kotak">
-        <div class="fakta-num">Pedas</div>
-        <div class="fakta-label">Kg. Kundur Ulu terletak di Pedas, Rembau, Negeri Sembilan — boleh dilawati</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- GAMBAR KAMPUNG STRIP — 3 kolum simetri -->
-  <div class="strip-gambar">
-    <div class="strip-gambar-item sg1">
-      <div class="strip-kapsi">Ladang buluh betong</div>
-    </div>
-    <div class="strip-gambar-item sg2">
-      <div class="strip-kapsi">Rebung segar dari Kundur</div>
-    </div>
-    <div class="strip-gambar-item sg3">
-      <div class="strip-kapsi">Hutan buluh — sejuk & hijau</div>
-    </div>
-  </div>
-  <p style="font-size:12px;color:var(--teks3);text-align:center;margin-top:8px;margin-bottom:48px;font-style:italic">[ Gantikan dengan gambar real Kampung Kundur Ulu ]</p>
-
-  <!-- HERITAGE MALAYSIA -->
-  <div class="bahagian heritage-seksyen">
-    <span class="seksyen-label">Warisan Hijau Malaysia</span>
-    <h2 class="tajuk-besar">Buluh Kundur —<br><em>Khazanah Negara.</em></h2>
-
-    <p class="perenggan">
-      Apabila Zoo Negara memilih buluh dari Kampung Kundur Ulu sebagai bekalan rasmi panda gergasi negara, ia bukan sekadar kontrak perniagaan biasa. Ia adalah pengiktirafan bahawa tanah ini menyimpan sesuatu yang unik — sesuatu yang tidak boleh ditiru sembarangan.
-    </p>
-
-    <div class="heritage-kad">
-      <div class="heritage-baris">
-        <div class="heritage-item">
-          <div class="heritage-tajuk">Dipilih dari 7 jenis</div>
-          <div class="heritage-hurai">Zoo Negara menguji buluh dari seluruh Malaysia. Hanya satu yang diterima panda — dari Kundur.</div>
+      <div class="keratan">
+        <div class="keratan-atas">
+          <span class="keratan-sumber">Kosmo!</span>
+          <span class="keratan-tarikh">23 Julai 2021</span>
         </div>
-        <div class="heritage-item">
-          <div class="heritage-tajuk">Lebih satu dekad</div>
-          <div class="heritage-hurai">Sejak 2014 hingga kini, Kampung Kundur Ulu adalah bekalan utama panda Zoo Negara tanpa henti.</div>
-        </div>
-        <div class="heritage-item">
-          <div class="heritage-tajuk">Diakui media nasional</div>
-          <div class="heritage-hurai">Dilaporkan oleh Utusan Malaysia, Kosmo!, Bernama dan Malaysia Aktif sebagai khazanah unik negara.</div>
-        </div>
-        <div class="heritage-item">
-          <div class="heritage-tajuk">Tempat lawatan</div>
-          <div class="heritage-hurai">Kampung Kundur Ulu kini menjadi destinasi lawatan dan pusat eko-pelancongan di Rembau, Negeri Sembilan.</div>
+        <div class="keratan-badan">
+          <div class="keratan-headline">Buluh betung Kampung Kundur Hulu penuhi selera panda</div>
+          <div class="keratan-petikan">"Hanya buluh di Rembau ini sahaja panda makan. Buluh Kundur Hulu ini semua panda makan baik batang, daun dan rebungnya."</div>
         </div>
       </div>
     </div>
 
-    <p class="perenggan" style="margin-top:24px">
-      Apabila anda menanam anak buluh dari ladang Kundur, anda bukan sekadar menanam pokok. Anda menyambung warisan tanah yang telah diakui alam sendiri — dan kini diakui oleh dunia.
-    </p>
-  </div>
-
-  <!-- KENAPA BULUH -->
-  <div class="bahagian" id="kenapa">
-    <span class="seksyen-label">Kenapa Buluh Betong</span>
-    <h2 class="tajuk-besar">Satu pokok, <em>banyak guna.</em></h2>
-    <p class="perenggan">
-      Ramai yang tanam buluh kerana cantik. Tetapi buluh betong dari Kundur ini lain ceritanya — setiap bahagian pokok ini ada nilai ekonomi yang nyata.
-    </p>
-
-    <!-- MANFAAT 01 — Rebung -->
-    <div class="manfaat-blok">
-      <div class="manfaat-blok-gambar">
-        <img src="https://images.unsplash.com/photo-1591871937573-74dbba515c4c?w=700&q=85" alt="Rebung segar">
-        <div class="manfaat-blok-nombor">01</div>
-      </div>
-      <div class="manfaat-blok-teks">
-        <div class="manfaat-blok-label">Makanan</div>
-        <h3 class="manfaat-blok-tajuk">Rebung — manis, segar, terus boleh makan</h3>
-        <p class="manfaat-blok-hurai">
-          Rebung buluh betong dari Kundur terkenal kerana sesuatu yang luar biasa — boleh dimakan terus tanpa direbus. Manis semula jadi, rangup, dan tidak pahit seperti rebung biasa.
-        </p>
-        <p class="manfaat-blok-hurai">
-          Ini kerana tanah bekas sawah padi di Kundur mengandungi mineral yang kaya dan kelembapan yang sesuai — menjadikan rebungnya berbeza dari ladang lain. Pengusaha Mohammad Sharif sendiri menyebutnya sebagai keistimewaan yang beliau tidak jumpa di tempat lain.
-        </p>
-        <div class="manfaat-blok-fakta">
-          Kaya serat, protein, kalium, dan vitamin B6 · Permintaan restoran dan pasar tani terus meningkat
-        </div>
-      </div>
+    <div class="gambar reveal">
+      <img src="https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?w=900&q=85" alt="Panda makan buluh betong">
     </div>
-
-    <!-- MANFAAT 02 — Carbon Credit -->
-    <div class="manfaat-blok terbalik">
-      <div class="manfaat-blok-gambar">
-        <img src="https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?w=700&q=85" alt="Hutan buluh hijau">
-        <div class="manfaat-blok-nombor">02</div>
-      </div>
-      <div class="manfaat-blok-teks">
-        <div class="manfaat-blok-label">Iklim & Pendapatan</div>
-        <h3 class="manfaat-blok-tajuk">Carbon credit — ladang anda jana wang semasa tidur</h3>
-        <p class="manfaat-blok-hurai">
-          Syarikat-syarikat besar di seluruh dunia wajib bayar untuk karbon yang mereka hasilkan. Mereka membeli <em>carbon credit</em> daripada pemilik ladang yang pokok-pokoknya menyerap karbon — dan membayar terus kepada pemilik ladang tersebut.
-        </p>
-        <p class="manfaat-blok-hurai">
-          Buluh betong adalah antara tumbuhan paling cekap menyerap CO₂ di dunia. Satu hektar ladang buluh boleh menyerap <strong>17 tan CO₂ setahun</strong> — 2.6 kali lebih banyak berbanding hutan pokok biasa, dan hampir 5 kali ganda berbanding pokok pain.
-        </p>
-        <div class="manfaat-blok-fakta">
-          17 tan CO₂ / hektar / tahun · Potensi pendapatan pasif dalam 5–7 tahun
-        </div>
-      </div>
-    </div>
-
-    <!-- MANFAAT 03 — Arang Aktif -->
-    <div class="manfaat-blok">
-      <div class="manfaat-blok-gambar" style="background:#111;">
-        <img src="https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=700&q=85" alt="Arang aktif charcoal produk">
-        <div class="manfaat-blok-nombor">03</div>
-      </div>
-      <div class="manfaat-blok-teks">
-        <div class="manfaat-blok-label">Industri Kecantikan & Kesihatan</div>
-        <h3 class="manfaat-blok-tajuk">Arang aktif — bukan sekadar arang kelapa</h3>
-        <p class="manfaat-blok-hurai">
-          Ramai yang kenal arang aktif dari tempurung kelapa. Tetapi di Asia, buluh adalah sumber utamanya. Proses pengaktifan mengubah arang biasa menjadi "span gergasi" — luas permukaannya boleh mencapai 1,000 meter persegi dalam satu gram sahaja. Lebih kurang saiz dua padang tenis.
-        </p>
-        <p class="manfaat-blok-hurai">
-          Ia menyerap toksin, bau, dan kekotoran seperti magnet — digunakan dalam ubat gigi, topeng muka, penyahbau rumah, penapis air, dan pemprosesan makanan. Dan berbanding kelapa yang perlu ditebang, buluh hanya perlu dipotong — dan tumbuh semula dalam 3–5 tahun.
-        </p>
-        <div class="manfaat-blok-fakta">
-          Oral care · Skincare · Penapis udara & air · Industri makanan
-        </div>
-      </div>
-    </div>
-
-    <!-- MANFAAT 04 — Bahan Bangunan -->
-    <div class="manfaat-blok terbalik">
-      <div class="manfaat-blok-gambar">
-        <img src="https://images.unsplash.com/photo-1542621334-a254cf47733d?w=700&q=85" alt="Bahan bangunan buluh">
-        <div class="manfaat-blok-nombor">04</div>
-      </div>
-      <div class="manfaat-blok-teks">
-        <div class="manfaat-blok-label">Pembinaan</div>
-        <h3 class="manfaat-blok-tajuk">Bahan bangunan — ringan, kuat, setanding keluli</h3>
-        <p class="manfaat-blok-hurai">
-          Kekuatan tegangan buluh betong setanding keluli — namun jauh lebih ringan dan lentur. Apabila gempa berlaku, bangunan buluh lentur mengikut getaran berbanding konkrit yang pecah. Inilah sebabnya ia makin popular dalam seni bina hijau dan projek bangunan mampan di seluruh dunia.
-        </p>
-        <p class="manfaat-blok-hurai">
-          Yang lebih menarik — buluh betong matang sepenuhnya dalam <strong>3 hingga 5 tahun</strong> sahaja. Berbanding kayu keras seperti cengal atau merbau yang memerlukan 30 hingga 50 tahun. Bekalan tidak akan putus.
-        </p>
-        <div class="manfaat-blok-fakta">
-          Lantai · Dinding · Perabot · Scaffolding · Jambatan · Bumbung
-        </div>
-      </div>
-    </div>
-
-    <!-- MANFAAT 05 — Pulih Tanah -->
-    <div class="manfaat-blok">
-      <div class="manfaat-blok-gambar">
-        <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=700&q=85" alt="Tanah subur hijau">
-        <div class="manfaat-blok-nombor">05</div>
-      </div>
-      <div class="manfaat-blok-teks">
-        <div class="manfaat-blok-label">Alam Sekitar</div>
-        <h3 class="manfaat-blok-tajuk">Pemulih tanah — tumbuh di mana pokok lain tak mampu</h3>
-        <p class="manfaat-blok-hurai">
-          Kisah Kampung Kundur sendiri adalah bukti terbaik. Tanah bekas sawah yang kering dan tidak subur — menjadi ladang buluh yang begitu istimewa hingga dipilih panda Zoo Negara. Akar buluh yang padat dan dalam bukan sahaja mencegah hakisan tanah, malah secara perlahan-lahan memulihkan kesuburan lapisan tanah yang rosak.
-        </p>
-        <p class="manfaat-blok-hurai">
-          Ini bermakna buluh betong sesuai ditanam di tanah tandus, kawasan bekas lombong, lereng bukit yang terdedah kepada hakisan — dan buluh akan memulihkan tanah tersebut secara semula jadi tanpa baja kimia.
-        </p>
-        <div class="manfaat-blok-fakta">
-          Elak hakisan · Pulih kesuburan tanah · Tumbuh tanpa baja kimia
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-
-  <!-- TESTIMONI -->
-  <div class="bahagian" id="testimoni">
-    <span class="seksyen-label">Kata Pembeli</span>
-    <h2 class="tajuk-besar">Mereka dah tanam.<br><em>Ini kata mereka.</em></h2>
-
-    <div class="testi-grid">
-      <div class="testi">
-        <div class="testi-teks">"Rebung dia memang lain. Manis, tak perlu masak pun boleh makan. Sudah order 3 kali dari Pak Sharif."</div>
-        <div class="testi-meta">
-          <div class="testi-gambar tg1"></div>
-          <div>
-            <div class="testi-nama">Syukur Ahmad, 41</div>
-            <div>Seremban — seperti dilaporkan Malaysia Aktif</div>
-          </div>
-        </div>
-      </div>
-      <div class="testi">
-        <div class="testi-teks">"Kawasan ladang buluh betong ni akan jadi daya tarikan baru untuk Kg Kundur Ulu. Boleh naikkan nama Rembau."</div>
-        <div class="testi-meta">
-          <div class="testi-gambar tg3"></div>
-          <div>
-            <div class="testi-nama">Zainal Ali, 56</div>
-            <div>Rembau — seperti dilaporkan Malaysia Aktif</div>
-          </div>
-        </div>
-      </div>
-      <div class="testi">
-        <div class="testi-teks">"Ditanam untuk ladang. Berbaloi sangat — matang cepat, dan ada potensi carbon credit nanti."</div>
-        <div class="testi-meta">
-          <div class="testi-gambar tg2"></div>
-          <div>
-            <div class="testi-nama">Zulkifli dari Johor</div>
-            <div>Pembeli anak buluh, 2024</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <p style="font-size:12.5px;color:var(--teks3);text-align:center;margin-top:16px;font-style:italic">[ Tambah testimoni pembeli sebenar anda di sini — nama, lokasi dan ulasan mereka ]</p>
-  </div>
-
-  <!-- TESTIMONI ends, close konten temporarily for produk -->
-</div><!-- /konten sebelum produk -->
-
-<!-- PRODUK — full width, wrapper sendiri -->
-<section class="produk-seksyen-luar" id="produk">
-  <div class="produk-dalam">
-    <span class="seksyen-label" style="color:#d4a96a">Anak Pokok Untuk Dijual</span>
-    <h2 class="tajuk-besar" style="color:white">Pilih pakej <em>yang sesuai</em> untuk anda.</h2>
-    <p class="perenggan" style="color:rgba(255,255,255,.65)">Semua anak pokok adalah dari ladang yang sama — ladang yang telah membekal panda Zoo Negara sejak 2015.</p>
-    <div class="produk-list" id="gridProduk"></div>
+    <p class="kapsi">Panda Zoo Negara — buluh betong dari Kg. Kundur Ulu adalah makanan utama mereka sejak 2015</p>
   </div>
 </section>
 
-<div class="konten"><!-- buka balik konten -->
+<!-- ═══ PENGIKTIRAFAN / TIMELINE ═══ -->
+<section class="seksyen" id="iktiraf" style="padding-top:30px">
+  <div class="seksyen-dalam">
+    <div class="reveal">
+      <span class="eyebrow">Pengiktirafan</span>
+      <h2>11 tahun. Zoo Negara<br><em>tak pernah tukar ladang.</em></h2>
+      <p class="p">
+        Daripada perjanjian rasmi dengan Zoo Negara hingga lawatan wakil kerajaan China dan usahasama antarabangsa — inilah perjalanan ladang Kundur.
+      </p>
+    </div>
 
-  <!-- FAQ -->
-  <div class="bahagian" id="faq">
-    <span class="seksyen-label">Soal Jawab</span>
-    <h2 class="tajuk-besar">Soalan yang <em>selalu ditanya.</em></h2>
-
-    <div class="faq-list">
-      <div class="faq-item">
-        <button class="faq-soal" onclick="toggelFAQ(this)">
-          Boleh tanam di mana-mana tanah?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-jawab">
-          <p>Buluh betong sesuai untuk kebanyakan jenis tanah, terutama tanah lembap dan bekas sawah padi. Tumbuh subur dalam iklim Malaysia. Jika ada pertanyaan lanjut mengenai tanah anda, hubungi kami melalui WhatsApp — kami sedia membantu.</p>
+    <div class="timeline reveal">
+      <div class="t-item">
+        <div class="t-tahun">2015</div>
+        <div class="t-isi">
+          <div class="t-tajuk">Perjanjian rasmi dengan Zoo Negara</div>
+          <div class="t-hurai">Kampung Kundur Ulu menandatangani perjanjian bekalan buluh betong untuk panda gergasi di Zoo Negara — permulaan hubungan yang berterusan sehingga hari ini.</div>
+          <div class="t-foto">[ Letak gambar majlis sign agreement di Zoo Negara 2015 — dari WhatsApp Pak Soffiuddin ]</div>
         </div>
       </div>
-      <div class="faq-item">
-        <button class="faq-soal" onclick="toggelFAQ(this)">
-          Berapa lama masa yang diperlukan untuk buluh matang?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-jawab">
-          <p>Buluh betong matang penuh dalam 3–5 tahun. Tapi rebung boleh mula dituai dalam tahun pertama atau kedua. Kalau untuk carbon credit, kau perlu tunggu sampai ladang cukup matang — biasanya 5–7 tahun.</p>
+      <div class="t-item">
+        <div class="t-tahun"><span style="font-size:15px;display:block;color:var(--gading3)">2015–2021</span></div>
+        <div class="t-isi">
+          <div class="t-tajuk">Tiga anak panda dilahirkan</div>
+          <div class="t-hurai">Nuan Nuan (2015), Yi Yi (2018) dan Sheng Yi (2021) lahir di Zoo Negara — untuk haiwan yang terkenal paling sukar membiak di dunia, ia satu pencapaian luar biasa. Sepanjang tempoh ini, diet utama mereka ialah buluh dari ladang Kundur.</div>
         </div>
       </div>
-      <div class="faq-item">
-        <button class="faq-soal" onclick="toggelFAQ(this)">
-          Macam mana nak pastikan ini buluh dari Kundur yang sebenar?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-jawab">
-          <p>Semua anak pokok kami dari ladang Mohammad Sharif Rasid di Kampung Kundur Ulu, Pedas, Rembau — ladang yang sama yang dilaporkan Utusan Malaysia, Kosmo dan Malaysia Aktif. Kau boleh semak sendiri berita-berita tu. Kalau nak, kami boleh atur lawatan ke ladang sebelum anda beli.</p>
+      <div class="t-item">
+        <div class="t-tahun"><span style="font-size:15px;display:block;color:var(--gading3)">Berkala</span></div>
+        <div class="t-isi">
+          <div class="t-tajuk">Wakil kerajaan China datang sendiri memeriksa</div>
+          <div class="t-hurai">Delegasi dari China hadir ke ladang untuk memeriksa kualiti bekalan makanan panda — standard antarabangsa yang dipantau secara langsung.</div>
+          <div class="t-foto">[ Letak gambar wakil kerajaan China (baju putih) cek bekalan makanan panda ]</div>
         </div>
       </div>
-      <div class="faq-item">
-        <button class="faq-soal" onclick="toggelFAQ(this)">
-          Macam mana proses penghantaran anak pokok?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-jawab">
-          <p>Anak pokok dibungkus teliti dengan akar terlindung dan dihantar ke seluruh Semenanjung Malaysia. Untuk kuantiti besar (50 pokok ke atas), penghantaran percuma. Tempoh penghantaran biasanya 3–5 hari bekerja.</p>
+      <div class="t-item">
+        <div class="t-tahun"><span style="font-size:15px;display:block;color:var(--gading3)">Antarabangsa</span></div>
+        <div class="t-isi">
+          <div class="t-tajuk">MOU usahasama dengan Colombia</div>
+          <div class="t-hurai">Wakil Kundur ke Colombia bagi memeterai usahasama perkongsian ilmu industri buluh — pengetahuan ladang ini kini dikongsi di peringkat dunia.</div>
+          <div class="t-foto">[ Letak gambar rombongan ke Colombia — MOU usahasama industri buluh ]</div>
         </div>
       </div>
-      <div class="faq-item">
-        <button class="faq-soal" onclick="toggelFAQ(this)">
-          Boleh lawat ladang sebelum membeli?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-jawab">
-          <p>Boleh. Kg. Kundur Ulu sudah menjadi tempat lawatan sejak panda mula datang. WhatsApp kami untuk mengatur tarikh lawatan. Anda boleh melihat sendiri ladang, pokok matang, dan rebung yang ditanam di tanah yang sama.</p>
+      <div class="t-item">
+        <div class="t-tahun">2025</div>
+        <div class="t-isi">
+          <div class="t-tajuk">Perjanjian baharu — 10 tahun lagi</div>
+          <div class="t-hurai">Dengan ketibaan panda Chen Xing dan Xiao Yue, perjanjian bekalan diperbaharui sehingga 2035. Setiap Isnin dan Jumaat, batang buluh dan rebung dihantar ke Zoo Negara.</div>
+          <div class="t-foto">[ Letak gambar Haji Zubir memegang rebung buluh betung kegemaran panda ]</div>
         </div>
       </div>
     </div>
   </div>
+</section>
 
-  <!-- AMANAH -->
-  <div class="amanah-bar">
-    <h3>Kenapa beli dari kami?</h3>
-    <div class="amanah-baris">
-      <div class="amanah-item"><strong>Sumber tulen</strong>Dari ladang Kg. Kundur Ulu yang sama dilaporkan Utusan & Kosmo. Bukan ladang lain.</div>
-      <div class="amanah-item"><strong>Nama sebenar</strong>Pengusaha: Mohammad Sharif Rasid. Bukan anonymous. Boleh cari nama dia dalam berita.</div>
-      <div class="amanah-item"><strong>Boleh lawat</strong>Anda boleh datang sendiri ke Kg. Kundur Ulu sebelum beli. Kami tidak menyembunyikan apa-apa.</div>
-      <div class="amanah-item"><strong>Penghantaran seluruh Semenanjung</strong>Dengan panduan ringkas cara tanam supaya pokok tumbuh sihat.</div>
+<!-- ═══ KENAPA BULUH ═══ -->
+<section class="seksyen" id="kenapa" style="padding-top:20px">
+  <div class="seksyen-dalam">
+    <div class="reveal">
+      <span class="eyebrow">Kenapa Buluh Betong</span>
+      <h2>Rebung tahun pertama.<br><em>Carbon credit</em> tahun kelima.</h2>
+      <p class="p">
+        Buluh betong bukan sekadar pokok hiasan. Setiap bahagiannya ada nilai ekonomi yang nyata — dari tahun pertama hinggalah berdekad kemudian.
+      </p>
+    </div>
+
+    <div class="manfaat-grid">
+      <div class="m-kad reveal">
+        <div class="m-foto mf1"></div>
+        <div class="m-isi">
+          <div class="m-label">Makanan</div>
+          <div class="m-tajuk">Rebung manis — boleh dimakan terus</div>
+          <p class="m-hurai">Rebung Kundur terkenal kerana manis semula jadi dan tidak pahit — boleh dimakan tanpa direbus. Tanah bekas sawah padi yang kaya mineral menjadikannya berbeza dari ladang lain. Rebung mula boleh dituai seawal <strong>tahun pertama atau kedua</strong>.</p>
+        </div>
+      </div>
+      <div class="m-kad reveal">
+        <div class="m-foto mf2"></div>
+        <div class="m-isi">
+          <div class="m-label">Iklim &amp; Pendapatan</div>
+          <div class="m-tajuk">Carbon credit — pendapatan pasif jangka panjang</div>
+          <p class="m-hurai">Satu hektar buluh betong menyerap kira-kira <strong>17 tan CO₂ setahun</strong> — antara tumbuhan paling cekap di dunia. Syarikat besar membayar pemilik ladang melalui skim carbon credit, dengan potensi pendapatan dalam 5–7 tahun.</p>
+        </div>
+      </div>
+      <div class="m-kad reveal">
+        <div class="m-foto mf3"></div>
+        <div class="m-isi">
+          <div class="m-label">Industri</div>
+          <div class="m-tajuk">Arang aktif — permintaan industri kecantikan &amp; kesihatan</div>
+          <p class="m-hurai">Di Asia, buluh adalah sumber utama arang aktif untuk ubat gigi, skincare, penapis air dan udara. Berbanding kelapa yang perlu ditebang, buluh hanya dipotong — dan <strong>tumbuh semula</strong> dalam 3–5 tahun.</p>
+        </div>
+      </div>
+      <div class="m-kad reveal">
+        <div class="m-foto mf4"></div>
+        <div class="m-isi">
+          <div class="m-label">Pembinaan</div>
+          <div class="m-tajuk">Bahan binaan — kekuatan setanding keluli</div>
+          <p class="m-hurai">Kekuatan tegangan buluh betong setanding keluli, tetapi jauh lebih ringan. Matang sepenuhnya dalam <strong>3–5 tahun</strong> berbanding kayu keras yang mengambil 30–50 tahun. Bekalan tidak pernah putus.</p>
+        </div>
+      </div>
+      <div class="m-kad reveal">
+        <div class="m-foto mf5"></div>
+        <div class="m-isi">
+          <div class="m-label">Alam Sekitar</div>
+          <div class="m-tajuk">Pemulih tanah — tumbuh di mana pokok lain gagal</div>
+          <p class="m-hurai">Kisah Kundur sendiri buktinya: tanah sawah yang kering menjadi ladang pilihan panda. Akar buluh yang padat mencegah hakisan dan <strong>memulihkan kesuburan tanah</strong> — sesuai untuk tanah tandus, bekas lombong dan lereng bukit.</p>
+        </div>
+      </div>
     </div>
   </div>
+</section>
 
-  <!-- CTA AKHIR -->
-  <div class="cta-akhir">
-    <h2>Masih menunggu apa?</h2>
-    <p>Ladang yang sama yang bekalan panda Zoo Negara sejak 2015. Anak buluh masih ada.</p>
-    <a href="#produk" class="btn-hijau" onclick="window.scrollTo({top:document.getElementById('produk').offsetTop-80,behavior:'smooth'});return false;">Pilih Pakej Sekarang</a>
+<!-- ═══ HARGA ═══ -->
+<section class="seksyen" id="harga">
+  <div class="seksyen-luas">
+    <div style="max-width:680px;margin:0 auto;text-align:center" class="reveal">
+      <span class="eyebrow" style="justify-content:center">Anak Pokok Premium</span>
+      <h2>Bukan harga pokok.<br>Harga <em>baka yang terbukti.</em></h2>
+      <p class="p" style="margin:0 auto;max-width:520px">
+        Anak buluh betong biasa di nursery: RM15–RM20 — tetapi anda tidak tahu dari rumpun mana ia datang. Anak pokok kami diambil dari rumpun yang sama yang panda Zoo Negara makan setiap minggu sejak 2015. Ketinggian 1–2 kaki, akar stabil, siap tanam.
+      </p>
+    </div>
+
+    <div class="harga-grid reveal" id="gridHarga"></div>
+
+    <div class="harga-nota reveal">
+      <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Bayaran FPX semua bank</span>
+      <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Penghantaran seluruh Semenanjung</span>
+      <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Panduan tanam disertakan</span>
+    </div>
+    <p class="reveal" style="text-align:center;margin-top:20px;font-size:14px;color:var(--gading2)">
+      Ada soalan sebelum membeli? <a href="https://wa.me/601167388358?text=Assalamualaikum%2C%20saya%20nak%20tanya%20tentang%20anak%20buluh%20Kundur" target="_blank" rel="noopener" style="color:var(--tembaga);font-weight:600;text-decoration:none;border-bottom:1px solid var(--tembaga)">WhatsApp kami dulu →</a>
+    </p>
   </div>
+</section>
 
-</div><!-- /konten -->
+<!-- ═══ FAQ ═══ -->
+<section class="seksyen" id="faq">
+  <div class="seksyen-dalam">
+    <div class="reveal">
+      <span class="eyebrow">Soal Jawab</span>
+      <h2>Soalan yang <em>selalu ditanya.</em></h2>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <button class="faq-soal" onclick="toggelFAQ(this)">Macam mana cara bayaran?<span class="faq-icon">+</span></button>
+        <div class="faq-jawab"><p>Bayaran dibuat secara online melalui FPX — anda akan dibawa ke laman bayaran selamat dan boleh pilih mana-mana bank Malaysia. Sebaik bayaran berjaya, pesanan terus masuk ke sistem kami dan anda akan menerima nombor rujukan.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-soal" onclick="toggelFAQ(this)">Boleh tanam di mana-mana tanah?<span class="faq-icon">+</span></button>
+        <div class="faq-jawab"><p>Buluh betong sesuai untuk kebanyakan jenis tanah, terutama tanah lembap dan bekas sawah padi. Ia tumbuh subur dalam iklim Malaysia. Jika ragu-ragu tentang tanah anda, hubungi kami melalui WhatsApp — kami sedia membantu.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-soal" onclick="toggelFAQ(this)">Buluh betong ada duri?<span class="faq-icon">+</span></button>
+        <div class="faq-jawab"><p>Tidak. Buluh betong (Dendrocalamus asper) bukan jenis buluh berduri — selamat untuk ditanam di kawasan kediaman, kebun dan ladang.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-soal" onclick="toggelFAQ(this)">Berapa lama buluh matang?<span class="faq-icon">+</span></button>
+        <div class="faq-jawab"><p>Buluh betong matang penuh dalam 3–5 tahun, tetapi rebung sudah boleh dituai dalam tahun pertama atau kedua. Untuk tujuan carbon credit, ladang perlu cukup matang — biasanya 5–7 tahun.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-soal" onclick="toggelFAQ(this)">Macam mana saya tahu ini buluh Kundur yang sebenar?<span class="faq-icon">+</span></button>
+        <div class="faq-jawab"><p>Semua anak pokok kami dari ladang di Kampung Kundur Ulu, Pedas, Rembau — ladang yang sama dilaporkan Utusan Malaysia, Kosmo! dan Malaysia Aktif. Anda boleh semak sendiri laporan berita tersebut, malah boleh datang melawat ladang sebelum membeli.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-soal" onclick="toggelFAQ(this)">Macam mana penghantaran anak pokok?<span class="faq-icon">+</span></button>
+        <div class="faq-jawab"><p>Anak pokok dibungkus teliti dengan akar terlindung dan dihantar ke seluruh Semenanjung Malaysia. Tempoh penghantaran biasanya 3–5 hari bekerja selepas bayaran disahkan.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-soal" onclick="toggelFAQ(this)">Boleh lawat ladang dulu?<span class="faq-icon">+</span></button>
+        <div class="faq-jawab"><p>Boleh. Kg. Kundur Ulu sudah menjadi destinasi lawatan sejak panda mula tiba. WhatsApp kami untuk mengatur tarikh — anda boleh lihat sendiri ladang, pokok matang dan rebung di tanah yang sama.</p></div>
+      </div>
+    </div>
 
+    <div class="amanah reveal">
+      <div class="a-item"><strong>Sumber tulen</strong><p>Dari ladang Kg. Kundur Ulu yang sama dilaporkan media nasional. Bukan ladang lain.</p></div>
+      <div class="a-item"><strong>Bayaran selamat</strong><p>FPX melalui gerbang pembayaran berdaftar — wang anda terus disahkan, tiada upload resit.</p></div>
+      <div class="a-item"><strong>Boleh lawat</strong><p>Datang sendiri ke Kundur Ulu sebelum membeli. Kami tidak menyembunyikan apa-apa.</p></div>
+      <div class="a-item"><strong>Panduan disertakan</strong><p>Setiap pesanan disertakan panduan ringkas cara tanam supaya pokok tumbuh sihat.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA AKHIR ═══ -->
+<section class="cta-akhir">
+  <div class="reveal">
+    <span class="eyebrow" style="justify-content:center">Stok mengikut musim</span>
+    <h2>Tanam buluh yang<br>panda <em>sendiri pilih.</em></h2>
+    <p class="p">Ladang yang sama membekal Zoo Negara sejak 2015. Anak pokok masih ada — selagi musim mengizinkan.</p>
+    <a href="#harga" class="btn-utama">Pilih Pakej Sekarang</a>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
 <footer>
   <div class="footer-grid">
-    <div class="footer-brand">
-      <span class="footer-logo-teks">Buluh Kundur</span>
-      <p class="footer-tagline">Anak buluh betong dari ladang pilihan panda Zoo Negara. Kampung Kundur Ulu, Rembau, Negeri Sembilan — sejak 2015.</p>
-      <a href="https://wa.me/601167388358" class="footer-wa" target="_blank">Hubungi via WhatsApp</a>
+    <div>
+      <span class="footer-logo">Buluh <em>Kundur</em></span>
+      <p class="footer-tag">Anak buluh betong dari ladang pilihan panda Zoo Negara. Kampung Kundur Ulu, Rembau, Negeri Sembilan — sejak 2015.</p>
+      <a href="https://wa.me/601167388358" class="footer-wa" target="_blank" rel="noopener">Hubungi via WhatsApp</a>
     </div>
     <div class="footer-col">
       <h4>Hubungi</h4>
       <ul>
-        <li><strong>WhatsApp</strong><a href="https://wa.me/601167388358">+60 16-738 8358</a></li>
-        <li><strong>Jam Operasi</strong>Isnin – Sabtu<br>8 pagi – 6 petang</li>
-        <li><strong>Respon WhatsApp</strong>Biasanya dalam 2 jam</li>
+        <li><strong>WhatsApp</strong><a href="https://wa.me/601167388358">+60 11-6738 8358</a></li>
+        <li><strong>Jam operasi</strong>Isnin – Sabtu, 8 pagi – 6 petang</li>
+        <li><strong>Respon</strong>Biasanya dalam 2 jam</li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Alamat Ladang</h4>
       <ul>
         <li>Kampung Kundur Ulu<br>Pedas, Rembau<br>71300 Negeri Sembilan</li>
-        <li><strong>Lawatan</strong>Boleh atur terus via WhatsApp</li>
+        <li><strong>Lawatan</strong>Atur terus via WhatsApp</li>
       </ul>
     </div>
   </div>
-  <div class="footer-bawah">
-    Dilaporkan oleh Utusan Malaysia · Kosmo! · Malaysia Aktif · Bernama &nbsp;·&nbsp; © 2025 Buluh Kundur
-  </div>
+  <div class="footer-bawah">Dilaporkan oleh Utusan Malaysia · Kosmo! · Bernama · Malaysia Aktif &nbsp;·&nbsp; © 2026 Buluh Kundur</div>
 </footer>
 
-<script>
-const CFG={wa:'601167388358',tgToken:'YOUR_BOT_TOKEN',tgChat:'1523007964',gasUrl:'YOUR_GAS_URL',akaun:'XXXX XXXX XXXX'};
+<!-- ═══ MODAL CHECKOUT ═══ -->
+<div class="modal-latar" id="modalLatar">
+  <div class="modal">
 
-const PRODUK=[
-  {id:1,kelas:'pk1',lencana:'Paling Laris',nama:'Anak Buluh Betong',hurai:'Satu anak pokok dari ladang Kundur. Ketinggian 1–2 kaki, siap tanam. Akar sudah stabil, boleh terus ditanam semasa diterima.',tag:['Siap tanam','1–2 kaki','Dendrocalamus asper'],harga:15,unit:'pokok'},
-  {id:2,kelas:'pk2',lencana:'Nilai Terbaik',nama:'Pakej 10 Pokok',hurai:'Untuk memulakan kebun atau landskap kediaman. 10 anak pokok siap tanam. Termasuk panduan ringkas cara menanam dan menjaga buluh betong.',tag:['10 pokok','Jimat RM30','Panduan tanam'],harga:120,unit:'pakej'},
-  {id:3,kelas:'pk3',lencana:'Untuk Peladang',nama:'Pakej 50 Pokok',hurai:'Untuk yang serius ingin membina ladang. 50 anak pokok — mencukupi untuk memulakan ladang komersial. Penghantaran percuma, potensi carbon credit dalam 5–7 tahun.',tag:['50 pokok','Jimat RM262','Penghantaran percuma'],harga:488,unit:'pakej'}
-];
-
-let troli=[],bayarDipilih=null,failUpload=null,noRef='';
-const qtyMap={};PRODUK.forEach(p=>qtyMap[p.id]=1);
-
-function renderProduk(){
-  document.getElementById('gridProduk').innerHTML=PRODUK.map(p=>`
-    <div class="produk-kad">
-      <div class="produk-gambar ${p.kelas}">
-        <div class="produk-lencana">${p.lencana}</div>
+    <!-- Langkah borang -->
+    <div id="panelBorang">
+      <div class="modal-atas">
+        <div>
+          <div class="modal-tajuk">Maklumat Pesanan</div>
+          <div class="modal-sub">Anda akan dibawa ke laman bayaran FPX selepas ini</div>
+        </div>
+        <button class="btn-tutup" onclick="tutupModal()" aria-label="Tutup">✕</button>
       </div>
-      <div class="produk-badan">
-        <div class="produk-nama">${p.nama}</div>
-        <div class="produk-hurai">${p.hurai}</div>
-        <div class="produk-tags">${p.tag.map(t=>`<span class="produk-tag">${t}</span>`).join('')}</div>
-        <div class="produk-kaki">
-          <div class="harga">RM${p.harga} <span class="harga-unit">/ ${p.unit}</span></div>
-          <div class="kawalan">
-            <button class="btn-q" onclick="ubahQty(${p.id},-1)">−</button>
-            <span class="q-num" id="qty-${p.id}">1</span>
-            <button class="btn-q" onclick="ubahQty(${p.id},1)">+</button>
+      <div class="modal-badan">
+        <div class="pesanan-kotak">
+          <div>
+            <div class="pk-nama" id="pkNama">—</div>
+            <div class="pk-sub" id="pkSub">—</div>
+          </div>
+          <div class="qty">
+            <button onclick="ubahQty(-1)" aria-label="Kurang">−</button>
+            <span id="pkQty">1</span>
+            <button onclick="ubahQty(1)" aria-label="Tambah">+</button>
           </div>
         </div>
-        <button class="btn-add" id="btnT-${p.id}" onclick="tambahTroli(${p.id})">Tambah ke Troli</button>
+        <div class="kump"><label class="label" for="inNama">Nama penuh</label><input class="input" id="inNama" type="text" placeholder="Nama penuh anda" autocomplete="name"></div>
+        <div class="kump"><label class="label" for="inTel">No. WhatsApp</label><input class="input" id="inTel" type="tel" placeholder="01X-XXXXXXX" autocomplete="tel"></div>
+        <div class="kump"><label class="label" for="inEmel">Emel <span style="text-transform:none;font-weight:500;letter-spacing:0">(untuk resit bayaran)</span></label><input class="input" id="inEmel" type="email" placeholder="nama@email.com" autocomplete="email"></div>
+        <div class="kump"><label class="label" for="inAlamat">Alamat penghantaran</label><textarea class="input" id="inAlamat" rows="3" placeholder="No. rumah, jalan, kawasan, poskod, negeri"></textarea></div>
+        <div class="jumlah-baris"><span>Jumlah bayaran</span><strong id="jumlahPapar">RM0</strong></div>
+        <button class="btn-bayar" id="btnBayar" onclick="bayarSekarang()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          Bayar Sekarang — FPX
+        </button>
+        <p class="bayar-nota">Pembayaran diproses melalui gerbang ToyyibPay yang berdaftar.<br>Anda akan kembali ke laman ini selepas bayaran selesai.</p>
       </div>
-    </div>`).join('');
-}
+    </div>
 
-function ubahQty(id,d){qtyMap[id]=Math.max(1,(qtyMap[id]||1)+d);document.getElementById(`qty-${id}`).textContent=qtyMap[id];}
-
-function tambahTroli(id){
-  const p=PRODUK.find(x=>x.id===id),qty=qtyMap[id]||1;
-  const ada=troli.find(i=>i.id===id);
-  if(ada)ada.qty+=qty;else troli.push({...p,qty});
-  renderTroli();
-  tunjukToast(`${p.nama} (${qty}) ditambah ke troli`);
-  const btn=document.getElementById(`btnT-${id}`);
-  btn.classList.add('ditambah');btn.textContent='Ditambah ✓';
-  setTimeout(()=>{btn.classList.remove('ditambah');btn.textContent='Tambah ke Troli';},2000);
-}
-
-function renderTroli(){
-  const isi=document.getElementById('troliIsi'),bawah=document.getElementById('troliBawah');
-  const badge=document.getElementById('fabBadge');
-  const jml=troli.reduce((s,i)=>s+i.qty,0),total=troli.reduce((s,i)=>s+i.harga*i.qty,0);
-  badge.textContent=jml;
-  badge.style.display=jml>0?'flex':'none';
-  document.getElementById('troliJumlah').textContent=`RM${total}`;
-  bawah.style.display=troli.length?'block':'none';
-  if(!troli.length){isi.innerHTML='<div class="troli-kosong">Troli masih kosong</div>';return;}
-  isi.innerHTML=troli.map(i=>`
-    <div class="troli-item">
-      <div class="ti-info">
-        <div class="ti-nama">${i.nama}</div>
-        <div class="ti-harga">RM${i.harga} / ${i.unit}</div>
-        <div class="ti-kawalan">
-          <button class="ti-btn" onclick="ubahTroliQty(${i.id},-1)">−</button>
-          <span class="ti-qty">${i.qty}</span>
-          <button class="ti-btn" onclick="ubahTroliQty(${i.id},1)">+</button>
-        </div>
+    <!-- Status berjaya -->
+    <div id="panelJaya" style="display:none">
+      <div class="status-badan">
+        <div class="status-bulat jaya">✓</div>
+        <h3>Alhamdulillah, bayaran berjaya!</h3>
+        <p>Pesanan anda telah disahkan. Kami akan memproses penghantaran dan menghubungi anda melalui WhatsApp.</p>
+        <div class="ref-kotak"><div class="ref-label">No. Rujukan</div><div class="ref-nilai" id="refJaya">—</div></div>
+        <a href="#" class="btn-wa-besar" id="waJaya" target="_blank" rel="noopener">WhatsApp Admin</a>
+        <button class="btn-cuba" onclick="tutupModal()">Tutup</button>
       </div>
-      <div class="ti-jumlah">RM${i.harga*i.qty}</div>
-    </div>`).join('');
-}
+    </div>
 
-function ubahTroliQty(id,d){const i=troli.find(x=>x.id===id);if(!i)return;i.qty+=d;if(i.qty<=0)troli=troli.filter(x=>x.id!==id);renderTroli();}
-function bukaTroli(){document.getElementById('troliDrawer').classList.add('buka');document.getElementById('latarTroli').classList.add('buka');}
-function tutupTroli(){document.getElementById('troliDrawer').classList.remove('buka');document.getElementById('latarTroli').classList.remove('buka');}
-function bukaCheckout(){if(!troli.length)return tunjukToast('Troli masih kosong');tutupTroli();renderRingkasan();document.getElementById('modalLatar').classList.add('buka');}
-function tutupModal(){document.getElementById('modalLatar').classList.remove('buka');}
-function renderRingkasan(){
-  const total=troli.reduce((s,i)=>s+i.harga*i.qty,0);
-  document.getElementById('rIngisi').innerHTML=troli.map(i=>`<div class="r-baris"><span>${i.nama} ×${i.qty}</span><span>RM${i.harga*i.qty}</span></div>`).join('');
-  document.getElementById('rJumlah').textContent=`RM${total}`;
-  document.getElementById('jumlahBayar').textContent=`RM${total}`;
-}
-function keLangkah1(){document.getElementById('l1').style.display='block';document.getElementById('l2').style.display='none';}
-function keLangkah2(){
-  if(!document.getElementById('nama').value.trim()||!document.getElementById('telefon').value.trim()||!document.getElementById('alamat').value.trim())return tunjukToast('Sila lengkapkan semua maklumat');
-  document.getElementById('l1').style.display='none';document.getElementById('l2').style.display='block';
-}
-function keLangkah3(){if(!bayarDipilih)return tunjukToast('Pilih kaedah bayaran dulu');document.getElementById('l2').style.display='none';document.getElementById('l3').style.display='block';}
-function pilihBayar(j){
-  bayarDipilih=j;
-  document.getElementById('pil-qr').classList.toggle('dipilih',j==='qr');
-  document.getElementById('pil-transfer').classList.toggle('dipilih',j==='transfer');
-  document.getElementById('kb-qr').classList.toggle('tunjuk',j==='qr');
-  document.getElementById('kb-transfer').classList.toggle('tunjuk',j==='transfer');
-  document.getElementById('noAkaun').textContent=CFG.akaun;
-  document.getElementById('btnKe3').disabled=false;
-}
-function salinAkaun(){navigator.clipboard.writeText(CFG.akaun.replace(/\s/g,''));tunjukToast('No. akaun disalin');}
-function failDipilih(input){
-  const f=input.files[0];if(!f)return;
-  failUpload=f;
-  document.getElementById('zonUpload').classList.add('ada-fail');
-  document.getElementById('pratonton').classList.add('tunjuk');
-  document.getElementById('namaFail').textContent=f.name;
-  document.getElementById('saizFail').textContent=`${(f.size/1024).toFixed(1)} KB`;
-}
-async function hantarPesanan(){
-  if(!failUpload)return tunjukToast('Muat naik resit dulu');
-  const btn=document.getElementById('btnHantar');
-  btn.innerHTML='Menghantar...';btn.disabled=true;
-  const nama=document.getElementById('nama').value,telefon=document.getElementById('telefon').value;
-  const alamat=document.getElementById('alamat').value,catatan=document.getElementById('catatan').value;
-  const total=troli.reduce((s,i)=>s+i.harga*i.qty,0);
-  noRef='BK-'+Date.now().toString().slice(-6);
-  const data={ref:noRef,nama,telefon,alamat,catatan,bayaran:bayarDipilih,total,item:troli.map(i=>`${i.nama} x${i.qty} (RM${i.harga*i.qty})`).join(', '),masa:new Date().toLocaleString('ms-MY')};
-  await hantarTelegram(data);
-  document.getElementById('l3').style.display='none';document.getElementById('lTY').style.display='block';
-  document.getElementById('noRujukan').textContent=noRef;
-  const msg=encodeURIComponent(`Assalamualaikum Admin Buluh Kundur\n\nPesanan baru:\nRujukan: ${noRef}\nNama: ${nama}\nItem: ${data.item}\nJumlah: RM${total}\nBayaran: ${bayarDipilih==='qr'?'DuitNow QR':'Pindahan Bank'}\n\nResit dah upload. Terima kasih.`);
-  document.getElementById('btnWA').href=`https://wa.me/${CFG.wa}?text=${msg}`;
-  setTimeout(()=>pamerNotif(nama),8000);
-  setTimeout(()=>{troli=[];renderTroli();},1000);
-}
-async function hantarTelegram(d){
-  const msg=`🌿 PESANAN BAHARU — Buluh Kundur\n\nRef: ${d.ref}\nNama: ${d.nama}\nWA: ${d.telefon}\nAlamat: ${d.alamat}\n\nItem:\n${d.item}\n\nJumlah: RM${d.total}\nBayaran: ${d.bayaran==='qr'?'DuitNow QR':'Pindahan Bank'}\nCatatan: ${d.catatan||'Tiada'}\nMasa: ${d.masa}`;
-  try{
-    if(CFG.gasUrl!=='YOUR_GAS_URL')await fetch(CFG.gasUrl,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({type:'order',...d,msg})});
-    else await fetch(`https://api.telegram.org/bot${CFG.tgToken}/sendMessage`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:CFG.tgChat,text:msg})});
-  }catch(e){console.log(e);}
-}
-function resetSemua(){
-  tutupModal();
-  document.getElementById('l1').style.display='block';
-  ['l2','l3','lTY'].forEach(id=>document.getElementById(id).style.display='none');
-  document.getElementById('btnHantar').innerHTML='Hantar Pesanan';
-  document.getElementById('btnHantar').disabled=true;
-  const cb = document.getElementById('cbConfirm');
-  if(cb) cb.checked = false;
-  ['nama','telefon','alamat','catatan'].forEach(id=>document.getElementById(id).value='');
-  document.getElementById('pratonton').classList.remove('tunjuk');document.getElementById('zonUpload').classList.remove('ada-fail');
-  ['pil-qr','pil-transfer'].forEach(id=>document.getElementById(id).classList.remove('dipilih'));
-  ['kb-qr','kb-transfer'].forEach(id=>document.getElementById(id).classList.remove('tunjuk'));
-  document.getElementById('btnKe3').disabled=true;bayarDipilih=null;failUpload=null;
-}
+    <!-- Status gagal -->
+    <div id="panelGagal" style="display:none">
+      <div class="status-badan">
+        <div class="status-bulat gagal">✕</div>
+        <h3>Bayaran tidak selesai</h3>
+        <p>Transaksi dibatalkan atau tidak berjaya. Tiada caj dikenakan — anda boleh cuba semula bila-bila masa.</p>
+        <button class="btn-bayar" onclick="tutupModal();document.getElementById('harga').scrollIntoView({behavior:'smooth'})">Cuba Semula</button>
+        <button class="btn-cuba" onclick="tutupModal()">Tutup</button>
+      </div>
+    </div>
 
-function tunjukToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000);}
+  </div>
+</div>
 
-const notifData=[
-  {nama:'Ahmad dari Seremban',msg:'baru beli 50 anak buluh',masa:'2 minit lalu'},
-  {nama:'Puan Hasnah, Melaka',msg:'beli Pakej 10 Pokok',masa:'9 minit lalu'},
-  {nama:'Zulkifli dari Johor',msg:'beli 100 anak buluh',masa:'16 minit lalu'},
-  {nama:'Ustaz Fadzillah',msg:'beli anak buluh untuk kebun masjid',masa:'24 minit lalu'},
-  {nama:'Cik Norma, Pahang',msg:'beli Pakej 10 Pokok',masa:'31 minit lalu'},
+<script>
+/* ════════════════════════════════════
+   KONFIGURASI — tukar sebelum deploy
+════════════════════════════════════ */
+const CFG = {
+  gasUrl: 'YOUR_GAS_URL',          // URL Web App GAS (deploy GAS dulu)
+  wa: '601167388358',
+};
+
+/* ── PAKEJ — harga premium ── */
+const PAKEJ = [
+  {id:1, bil:1,  nama:'Satu Pokok',     harga:50,  seunit:50, jimat:0,   nota:'Untuk mencuba'},
+  {id:2, bil:3,  nama:'Pakej Bertiga',  harga:135, seunit:45, jimat:15,  nota:'Untuk halaman rumah'},
+  {id:3, bil:5,  nama:'Pakej Kebun',    harga:200, seunit:40, jimat:50,  nota:'Paling popular', popular:true},
+  {id:4, bil:10, nama:'Pakej Ladang',   harga:350, seunit:35, jimat:150, nota:'Untuk mula ladang'},
 ];
-let nIdx=0;
-function pamerNotif(namaBaru){
-  const d=namaBaru?{nama:namaBaru.split(' ')[0],msg:'baru sahaja buat pesanan',masa:'Baru je'}:notifData[nIdx++%notifData.length];
-  document.getElementById('notifNama').textContent=d.nama;
-  document.getElementById('notifMsg').textContent=d.msg;
-  document.getElementById('notifMasa').textContent=d.masa;
-  const el=document.getElementById('notif');el.classList.add('show');
-  setTimeout(()=>el.classList.remove('show'),5000);
-  if(!namaBaru)setTimeout(pamerNotif,28000+Math.random()*20000);
+
+let pakejDipilih = null, qty = 1;
+
+function renderHarga(){
+  document.getElementById('gridHarga').innerHTML = PAKEJ.map(p=>`
+    <div class="h-kad ${p.popular?'popular':''}">
+      ${p.popular?'<div class="h-lencana">Paling Popular</div>':''}
+      <div class="h-bil">${p.bil} <span>pokok</span></div>
+      <div class="h-nama">${p.nama} — ${p.nota}</div>
+      <div class="h-harga">RM${p.harga}</div>
+      <div class="h-seunit">RM${p.seunit} sepokok</div>
+      ${p.jimat?`<div class="h-jimat">Jimat RM${p.jimat}</div>`:'<div style="height:24px;margin-bottom:18px"></div>'}
+      <button class="h-btn ${p.popular?'':'garis'}" onclick="bukaCheckout(${p.id})">Beli Pakej Ini</button>
+    </div>`).join('');
 }
 
-function toggelFAQ(btn){
-  const item=btn.closest('.faq-item');
-  const adaBuka=item.classList.contains('buka');
-  document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('buka'));
-  if(!adaBuka)item.classList.add('buka');
+/* ── CHECKOUT ── */
+function bukaCheckout(id){
+  pakejDipilih = PAKEJ.find(p=>p.id===id);
+  qty = 1;
+  kemaskiniModal();
+  document.getElementById('panelBorang').style.display='block';
+  document.getElementById('panelJaya').style.display='none';
+  document.getElementById('panelGagal').style.display='none';
+  document.getElementById('modalLatar').classList.add('buka');
+  document.body.style.overflow='hidden';
+}
+function tutupModal(){
+  document.getElementById('modalLatar').classList.remove('buka');
+  document.body.style.overflow='';
+}
+function ubahQty(d){
+  qty = Math.max(1, Math.min(20, qty+d));
+  kemaskiniModal();
+}
+function kemaskiniModal(){
+  if(!pakejDipilih) return;
+  const total = pakejDipilih.harga * qty;
+  document.getElementById('pkNama').textContent = pakejDipilih.nama;
+  document.getElementById('pkSub').textContent = `${pakejDipilih.bil*qty} pokok · RM${pakejDipilih.harga} × ${qty}`;
+  document.getElementById('pkQty').textContent = qty;
+  document.getElementById('jumlahPapar').textContent = `RM${total}`;
 }
 
-// Nav scroll + active link
-const seksyen = ['cerita','kenapa','testimoni','produk','faq'];
-function kemaskiniNav(){
-  const skrol = window.scrollY > 20;
-  document.getElementById('nav').classList.toggle('skrol', skrol);
+async function bayarSekarang(){
+  const nama = document.getElementById('inNama').value.trim();
+  const tel = document.getElementById('inTel').value.trim();
+  const emel = document.getElementById('inEmel').value.trim();
+  const alamat = document.getElementById('inAlamat').value.trim();
+  if(!nama || !tel || !alamat) return toast('Sila lengkapkan nama, no. WhatsApp dan alamat');
+  if(emel && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emel)) return toast('Format emel tidak sah');
+  if(CFG.gasUrl === 'YOUR_GAS_URL') return toast('Sistem bayaran belum dikonfigurasi');
 
-  // Active link tracking
-  let semasaAktif = '';
-  seksyen.forEach(id => {
-    const el = document.getElementById(id);
-    if(el && window.scrollY >= el.offsetTop - 100) semasaAktif = id;
-  });
-  document.querySelectorAll('.nav-link').forEach(a => {
-    const href = a.getAttribute('href').replace('#','');
-    a.classList.toggle('aktif', href === semasaAktif);
-  });
-}
-window.addEventListener('scroll', kemaskiniNav);
-kemaskiniNav();
+  const btn = document.getElementById('btnBayar');
+  btn.disabled = true;
+  btn.innerHTML = 'Menyediakan bayaran...';
 
-// Confirm checkbox — kena tick sebelum hantar
-function semakConfirm(){
-  const ticked = document.getElementById('cbConfirm').checked;
-  document.getElementById('btnHantar').disabled = !ticked;
-}
-// Disable hantar button by default sampai checkbox ditick
-document.addEventListener('DOMContentLoaded', ()=>{
-  const btn = document.getElementById('btnHantar');
-  if(btn) btn.disabled = true;
-});
-document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{
-  const href = a.getAttribute('href');
-  if(href==='#')return;
-  const t=document.querySelector(href);
-  if(t){
-    e.preventDefault();
-    const offset = t.getBoundingClientRect().top + window.scrollY - 60;
-    window.scrollTo({top:offset, behavior:'smooth'});
+  const ref = 'BK-' + Date.now().toString().slice(-8);
+  const total = pakejDipilih.harga * qty;
+  const data = {
+    action:'createBill',
+    ref, nama,
+    telefon: tel.replace(/\D/g,''),
+    emel, alamat,
+    pakej: pakejDipilih.nama,
+    bilPokok: pakejDipilih.bil * qty,
+    qty, total,
+    item: `${pakejDipilih.nama} (${pakejDipilih.bil} pokok) × ${qty}`,
+  };
+
+  try{
+    const res = await fetch(CFG.gasUrl, {
+      method:'POST',
+      headers:{'Content-Type':'text/plain;charset=utf-8'},
+      body: JSON.stringify(data)
+    });
+    const j = await res.json();
+    if(j.ok && j.billCode){
+      window.location.href = 'https://toyyibpay.com/' + j.billCode;
+    } else {
+      throw new Error(j.error || 'Gagal cipta bil');
+    }
+  }catch(e){
+    console.error(e);
+    toast('Maaf, sistem bayaran bermasalah. Cuba sebentar lagi atau WhatsApp kami.');
+    btn.disabled = false;
+    btn.innerHTML = 'Bayar Sekarang — FPX';
   }
-}));
+}
 
-renderProduk();
-// Notif mula awal — 5 saat, bukan 20
-setTimeout(()=>pamerNotif(), 5000);
+/* ── SEMAK STATUS BAYARAN (selepas redirect balik) ── */
+function semakStatusBayaran(){
+  const p = new URLSearchParams(window.location.search);
+  const status = p.get('status_id');
+  const orderId = p.get('order_id') || '';
+  if(!status) return;
+
+  document.getElementById('panelBorang').style.display='none';
+  document.getElementById('modalLatar').classList.add('buka');
+  document.body.style.overflow='hidden';
+
+  if(status === '1'){
+    document.getElementById('panelJaya').style.display='block';
+    document.getElementById('refJaya').textContent = orderId || '—';
+    const msg = encodeURIComponent(`Assalamualaikum Admin Buluh Kundur,\n\nSaya baru selesai membuat bayaran.\nNo. Rujukan: ${orderId}\n\nTerima kasih.`);
+    document.getElementById('waJaya').href = `https://wa.me/${CFG.wa}?text=${msg}`;
+  } else {
+    document.getElementById('panelGagal').style.display='block';
+  }
+  // Bersihkan URL supaya refresh tak ulang modal
+  history.replaceState({}, '', window.location.pathname);
+}
+
+/* ── UI UMUM ── */
+function toast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'), 3200);
+}
+function toggelFAQ(btn){
+  const item = btn.closest('.faq-item');
+  const buka = item.classList.contains('buka');
+  document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('buka'));
+  if(!buka) item.classList.add('buka');
+}
+
+/* Reveal on scroll */
+const io = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('nampak'); io.unobserve(e.target);} });
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* Nav active link */
+const seksyenIds = ['cerita','iktiraf','kenapa','harga','faq'];
+window.addEventListener('scroll', ()=>{
+  let aktif='';
+  seksyenIds.forEach(id=>{
+    const el=document.getElementById(id);
+    if(el && window.scrollY >= el.offsetTop-120) aktif=id;
+  });
+  document.querySelectorAll('.nav-link').forEach(a=>{
+    a.classList.toggle('aktif', a.getAttribute('href')==='#'+aktif);
+  });
+},{passive:true});
+
+/* Modal: tutup bila klik latar */
+document.getElementById('modalLatar').addEventListener('click', e=>{
+  if(e.target.id==='modalLatar') tutupModal();
+});
+
+renderHarga();
+semakStatusBayaran();
 </script>
 </body>
 </html>
