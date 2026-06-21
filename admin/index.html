@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Buluh Kundur — Panel Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600&family=Albert+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --tinta:#0b1a10; --lumut:#13261a; --lumut2:#1b3424;
+  --gading:#f0ead9; --gading2:rgba(240,234,217,.62); --gading3:rgba(240,234,217,.38);
+  --tembaga:#c9a35c; --pucuk:#9fc97e; --bata:#d98a6a;
+  --garis:rgba(240,234,217,.1);
+}
+body{
+  font-family:'Albert Sans',sans-serif;
+  background:var(--tinta);color:var(--gading);
+  font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;
+  min-height:100vh;
+}
+.serif{font-family:'Fraunces',serif}
+::selection{background:var(--tembaga);color:var(--tinta)}
+
+/* ───── LOGIN ───── */
+.login-latar{
+  position:fixed;inset:0;z-index:100;
+  display:flex;align-items:center;justify-content:center;padding:24px;
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 0%,rgba(201,163,92,.1),transparent),
+    var(--tinta);
+}
+.login-kotak{
+  width:100%;max-width:380px;
+  background:var(--lumut);border:1px solid var(--garis);
+  border-radius:20px;padding:38px 32px;
+}
+.login-jenama{
+  font-family:'Fraunces',serif;font-size:24px;font-weight:600;
+  text-align:center;margin-bottom:4px;
+}
+.login-jenama em{font-style:italic;color:var(--tembaga)}
+.login-sub{text-align:center;font-size:13px;color:var(--gading3);margin-bottom:28px}
+.login-label{display:block;font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--gading3);margin-bottom:8px}
+.login-input{
+  width:100%;padding:14px 16px;
+  background:var(--tinta);border:1.5px solid var(--garis);border-radius:12px;
+  font-size:15px;font-family:inherit;color:var(--gading);outline:none;
+  transition:border-color .2s;
+}
+.login-input:focus{border-color:var(--tembaga)}
+.login-btn{
+  width:100%;margin-top:18px;
+  background:var(--tembaga);color:var(--tinta);
+  font-size:15px;font-weight:700;
+  padding:14px;border:none;border-radius:99px;
+  transition:background .2s;
+}
+.login-btn:hover{background:#dab46b}
+.login-btn:disabled{opacity:.5;cursor:wait}
+.login-ralat{
+  color:var(--bata);font-size:13px;text-align:center;
+  margin-top:14px;min-height:18px;
+}
+
+/* ───── APP ───── */
+.app{display:none;max-width:1140px;margin:0 auto;padding:0 20px 60px}
+.app.aktif{display:block}
+
+.app-atas{
+  position:sticky;top:0;z-index:50;
+  display:flex;align-items:center;justify-content:space-between;gap:14px;
+  padding:18px 0;margin-bottom:8px;
+  background:linear-gradient(to bottom,var(--tinta) 70%,transparent);
+}
+.app-jenama{font-family:'Fraunces',serif;font-size:21px;font-weight:600}
+.app-jenama em{font-style:italic;color:var(--tembaga)}
+.app-keluar{
+  font-size:13px;color:var(--gading2);background:none;
+  border:1px solid var(--garis);padding:8px 16px;border-radius:99px;
+  transition:border-color .2s,color .2s;
+}
+.app-keluar:hover{border-color:var(--bata);color:var(--bata)}
+
+/* ───── TOGGLE TEMPOH ───── */
+.tempoh{
+  display:flex;gap:6px;flex-wrap:wrap;margin-bottom:24px;
+  background:var(--lumut);padding:6px;border-radius:14px;
+  border:1px solid var(--garis);width:fit-content;
+}
+.tempoh button{
+  font-size:13.5px;font-weight:600;color:var(--gading2);
+  background:none;border:none;padding:9px 18px;border-radius:9px;
+  transition:background .2s,color .2s;white-space:nowrap;
+}
+.tempoh button:hover{color:var(--gading)}
+.tempoh button.aktif{background:var(--tembaga);color:var(--tinta)}
+
+/* ───── KAD STAT ───── */
+.stat-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:14px;
+}
+@media(max-width:820px){.stat-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:460px){.stat-grid{grid-template-columns:1fr}}
+.stat{
+  background:var(--lumut);border:1px solid var(--garis);
+  border-radius:16px;padding:22px 24px;
+}
+.stat-label{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gading3);margin-bottom:10px}
+.stat-besar{font-family:'Fraunces',serif;font-size:34px;font-weight:500;line-height:1}
+.stat-besar.duit{color:var(--tembaga)}
+.stat-kecil{font-size:12.5px;color:var(--gading2);margin-top:8px}
+
+/* ───── GRAF ───── */
+.graf-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0}
+@media(max-width:820px){.graf-grid{grid-template-columns:1fr}}
+.kad{
+  background:var(--lumut);border:1px solid var(--garis);
+  border-radius:16px;padding:22px 24px;
+}
+.kad-tajuk{font-family:'Fraunces',serif;font-size:17px;font-weight:500;margin-bottom:4px}
+.kad-sub{font-size:12.5px;color:var(--gading3);margin-bottom:18px}
+.graf-bekas{position:relative;height:240px}
+
+/* ───── ITEM TERJUAL ───── */
+.item-baris{
+  display:flex;align-items:center;gap:14px;
+  padding:11px 0;border-bottom:1px solid var(--garis);
+}
+.item-baris:last-child{border-bottom:none}
+.item-nama{flex:1;font-size:14px;font-weight:500;min-width:0}
+.item-bar-luar{flex:1.4;height:8px;background:rgba(240,234,217,.07);border-radius:99px;overflow:hidden}
+.item-bar-dalam{height:100%;background:var(--tembaga);border-radius:99px}
+.item-bil{font-size:13px;color:var(--gading2);min-width:64px;text-align:right;white-space:nowrap}
+
+/* ───── JADUAL CUSTOMER ───── */
+.jadual-atas{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:12px;flex-wrap:wrap;margin:26px 0 14px;
+}
+.jadual-tajuk{font-family:'Fraunces',serif;font-size:20px;font-weight:500}
+.muat-turun{display:flex;gap:8px;flex-wrap:wrap}
+.mt-btn{
+  display:inline-flex;align-items:center;gap:7px;
+  font-size:13px;font-weight:600;color:var(--gading);
+  background:var(--lumut);border:1px solid var(--garis);
+  padding:9px 15px;border-radius:99px;transition:border-color .2s}
+.mt-btn:hover{border-color:var(--tembaga)}
+.mt-btn svg{flex-shrink:0}
+
+.jadual-skrol{
+  background:var(--lumut);border:1px solid var(--garis);
+  border-radius:16px;overflow:hidden;
+}
+.jadual-bekas{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:720px}
+thead th{
+  text-align:left;font-size:10.5px;letter-spacing:1px;text-transform:uppercase;
+  color:var(--gading3);font-weight:700;
+  padding:14px 16px;border-bottom:1px solid var(--garis);white-space:nowrap;
+}
+tbody td{padding:13px 16px;border-bottom:1px solid rgba(240,234,217,.05);vertical-align:top}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:rgba(240,234,217,.02)}
+.lencana{
+  font-size:11px;font-weight:700;padding:3px 10px;border-radius:99px;white-space:nowrap;
+}
+.l-berjaya{background:rgba(159,201,126,.14);color:var(--pucuk)}
+.l-pending{background:rgba(201,163,92,.14);color:var(--tembaga)}
+.l-gagal{background:rgba(217,138,106,.14);color:var(--bata)}
+.td-wa{color:var(--tembaga);text-decoration:none;font-weight:600}
+.td-wa:hover{text-decoration:underline}
+.kosong{text-align:center;padding:44px 20px;color:var(--gading3);font-size:14px}
+
+.app-nota{font-size:12px;color:var(--gading3);text-align:center;margin-top:22px;line-height:1.7}
+
+/* skrolbar nipis */
+.jadual-bekas::-webkit-scrollbar{height:7px}
+.jadual-bekas::-webkit-scrollbar-thumb{background:rgba(240,234,217,.15);border-radius:99px}
+</style>
+</head>
+<body>
+
+<!-- ═══ LOGIN ═══ -->
+<div class="login-latar" id="loginLatar">
+  <div class="login-kotak">
+    <div class="login-jenama">Buluh <em>Kundur</em></div>
+    <div class="login-sub">Panel Admin</div>
+    <label class="login-label" for="kataLaluan">Kata Laluan</label>
+    <input class="login-input" id="kataLaluan" type="password" placeholder="Masukkan kata laluan" autocomplete="current-password">
+    <button class="login-btn" id="loginBtn" onclick="masukLogin()">Log Masuk</button>
+    <div class="login-ralat" id="loginRalat"></div>
+  </div>
+</div>
+
+<!-- ═══ APP ═══ -->
+<div class="app" id="app">
+  <div class="app-atas">
+    <div class="app-jenama">Buluh <em>Kundur</em></div>
+    <button class="app-keluar" onclick="logKeluar()">Log Keluar</button>
+  </div>
+
+  <div class="tempoh" id="tempoh">
+    <button data-t="hari">Hari Ini</button>
+    <button data-t="7hari" class="aktif">7 Hari</button>
+    <button data-t="minggu">Minggu Ini</button>
+    <button data-t="bulan">Bulan Ini</button>
+  </div>
+
+  <!-- STAT -->
+  <div class="stat-grid">
+    <div class="stat">
+      <div class="stat-label">Jualan Disahkan</div>
+      <div class="stat-besar duit" id="sJualan">RM0</div>
+      <div class="stat-kecil" id="sJualanKecil">0 pesanan berjaya</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Jumlah Pesanan</div>
+      <div class="stat-besar" id="sPesanan">0</div>
+      <div class="stat-kecil" id="sPesananKecil">0 berjaya · 0 pending</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Klik / Lawatan</div>
+      <div class="stat-besar" id="sKlik">0</div>
+      <div class="stat-kecil" id="sKlikKecil">0 klik beli</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Kadar Tukar</div>
+      <div class="stat-besar" id="sKadar">0%</div>
+      <div class="stat-kecil">klik beli → bayar</div>
+    </div>
+  </div>
+
+  <!-- GRAF -->
+  <div class="graf-grid">
+    <div class="kad">
+      <div class="kad-tajuk">Klik &amp; Lawatan</div>
+      <div class="kad-sub" id="grafKlikSub">Bilangan klik mengikut hari</div>
+      <div class="graf-bekas"><canvas id="grafKlik"></canvas></div>
+    </div>
+    <div class="kad">
+      <div class="kad-tajuk">Jualan Disahkan</div>
+      <div class="kad-sub" id="grafJualSub">Jumlah jualan (RM) mengikut hari</div>
+      <div class="graf-bekas"><canvas id="grafJual"></canvas></div>
+    </div>
+  </div>
+
+  <!-- ITEM TERJUAL -->
+  <div class="kad">
+    <div class="kad-tajuk">Item Terjual</div>
+    <div class="kad-sub">Pakej mengikut bilangan pesanan berjaya</div>
+    <div id="senaraiItem"><div class="kosong">Tiada jualan dalam tempoh ini</div></div>
+  </div>
+
+  <!-- JADUAL CUSTOMER -->
+  <div class="jadual-atas">
+    <div class="jadual-tajuk">Rekod Pelanggan</div>
+    <div class="muat-turun">
+      <button class="mt-btn" onclick="muatExcel()">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Excel
+      </button>
+      <button class="mt-btn" onclick="muatPDF()">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        PDF
+      </button>
+    </div>
+  </div>
+  <div class="jadual-skrol">
+    <div class="jadual-bekas">
+      <table>
+        <thead>
+          <tr>
+            <th>Masa</th><th>Ref</th><th>Nama</th><th>WhatsApp</th>
+            <th>Item</th><th>Jumlah</th><th>Status</th><th>Alamat</th>
+          </tr>
+        </thead>
+        <tbody id="jadualBadan"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <p class="app-nota">
+    Data dari Google Sheet "Pesanan" &amp; "Klik" · Tempoh dipilih mempengaruhi statistik, graf, item dan muat turun.
+  </p>
+</div>
+
+<script>
+/* ════════════════════════════════════
+   KONFIGURASI
+════════════════════════════════════ */
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbwR1f_Jgw6KO1RdHjT-vV5e3Ll1Fn3TCiPLCHGynkyieYWie94FUwpGfE07cvowM015Lg/exec';
+
+let TOKEN = '';
+let DATA = { pesanan: [], klik: [] };
+let tempohAktif = '7hari';
+let grafKlik = null, grafJual = null;
+
+/* ── LOGIN ── */
+async function masukLogin(){
+  const pw = document.getElementById('kataLaluan').value.trim();
+  const btn = document.getElementById('loginBtn');
+  const ralat = document.getElementById('loginRalat');
+  ralat.textContent = '';
+  if(!pw){ ralat.textContent = 'Sila masukkan kata laluan'; return; }
+  btn.disabled = true; btn.textContent = 'Menyemak...';
+  try{
+    const j = await panggil({ action:'adminLogin', password: pw });
+    if(j.ok && j.token){
+      TOKEN = j.token;
+      try{ sessionStorage.setItem('bk_token', TOKEN); }catch(e){}
+      document.getElementById('loginLatar').style.display = 'none';
+      document.getElementById('app').classList.add('aktif');
+      await muatData();
+    } else {
+      ralat.textContent = j.error || 'Kata laluan salah';
+    }
+  }catch(e){
+    ralat.textContent = 'Sambungan bermasalah. Cuba lagi.';
+  }
+  btn.disabled = false; btn.textContent = 'Log Masuk';
+}
+function logKeluar(){
+  TOKEN = '';
+  try{ sessionStorage.removeItem('bk_token'); }catch(e){}
+  location.reload();
+}
+
+/* ── PANGGIL GAS ── */
+async function panggil(body){
+  const res = await fetch(GAS_URL, {
+    method:'POST',
+    headers:{'Content-Type':'text/plain;charset=utf-8'},
+    body: JSON.stringify(body),
+  });
+  return res.json();
+}
+
+/* ── MUAT DATA ── */
+async function muatData(){
+  const j = await panggil({ action:'adminData', token: TOKEN });
+  if(!j.ok){
+    if(j.error === 'Akses ditolak'){ logKeluar(); return; }
+    return;
+  }
+  DATA.pesanan = j.pesanan || [];
+  DATA.klik = j.klik || [];
+  render();
+}
+
+/* ── JULAT TEMPOH ── */
+function julatTempoh(t){
+  const kini = new Date();
+  let mula = new Date();
+  if(t === 'hari'){
+    mula.setHours(0,0,0,0);
+  } else if(t === '7hari'){
+    mula.setDate(kini.getDate()-6); mula.setHours(0,0,0,0);
+  } else if(t === 'minggu'){
+    const hari = (kini.getDay()+6)%7; // Isnin = 0
+    mula.setDate(kini.getDate()-hari); mula.setHours(0,0,0,0);
+  } else if(t === 'bulan'){
+    mula = new Date(kini.getFullYear(), kini.getMonth(), 1);
+  }
+  return { mula, tamat: kini };
+}
+function dalamTempoh(iso, jt){
+  if(!iso) return false;
+  const d = new Date(iso);
+  return d >= jt.mula && d <= jt.tamat;
+}
+
+/* ── RENDER SEMUA ── */
+function render(){
+  const jt = julatTempoh(tempohAktif);
+  const pesanan = DATA.pesanan.filter(p => dalamTempoh(p.masa, jt));
+  const klik = DATA.klik.filter(k => dalamTempoh(k.masa, jt));
+
+  const berjaya = pesanan.filter(p => String(p.status).toUpperCase() === 'BERJAYA');
+  const pending = pesanan.filter(p => String(p.status).toUpperCase() === 'PENDING');
+  const jualan = berjaya.reduce((j,p)=> j + (Number(p.total)||0), 0);
+  const klikBeli = klik.filter(k => k.jenis === 'beli').length;
+
+  // STAT
+  document.getElementById('sJualan').textContent = 'RM' + jualan.toLocaleString('ms-MY');
+  document.getElementById('sJualanKecil').textContent = berjaya.length + ' pesanan berjaya';
+  document.getElementById('sPesanan').textContent = pesanan.length;
+  document.getElementById('sPesananKecil').textContent = berjaya.length + ' berjaya · ' + pending.length + ' pending';
+  document.getElementById('sKlik').textContent = klik.length;
+  document.getElementById('sKlikKecil').textContent = klikBeli + ' klik beli';
+  const kadar = klikBeli > 0 ? Math.round(berjaya.length / klikBeli * 100) : 0;
+  document.getElementById('sKadar').textContent = kadar + '%';
+
+  renderGraf(jt, klik, berjaya);
+  renderItem(berjaya);
+  renderJadual(pesanan);
+}
+
+/* ── BINA LABEL HARI ── */
+function bahagiHari(jt){
+  const hari = [];
+  const d = new Date(jt.mula);
+  d.setHours(0,0,0,0);
+  const akhir = new Date(jt.tamat);
+  akhir.setHours(0,0,0,0);
+  while(d <= akhir){
+    hari.push(new Date(d));
+    d.setDate(d.getDate()+1);
+  }
+  // Had paparan supaya graf tak terlalu padat
+  return hari;
+}
+function labelHari(d){
+  return d.toLocaleDateString('ms-MY', { day:'numeric', month:'short' });
+}
+function kunciHari(d){
+  return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();
+}
+
+/* ── GRAF ── */
+function renderGraf(jt, klik, berjaya){
+  const hari = bahagiHari(jt);
+  const label = hari.map(labelHari);
+
+  // Kira klik per hari
+  const petaKlik = {}, petaJual = {};
+  hari.forEach(d => { petaKlik[kunciHari(d)] = 0; petaJual[kunciHari(d)] = 0; });
+  klik.forEach(k => {
+    const key = kunciHari(new Date(k.masa));
+    if(key in petaKlik) petaKlik[key]++;
+  });
+  berjaya.forEach(p => {
+    const key = kunciHari(new Date(p.masa));
+    if(key in petaJual) petaJual[key] += (Number(p.total)||0);
+  });
+  const dataKlik = hari.map(d => petaKlik[kunciHari(d)]);
+  const dataJual = hari.map(d => petaJual[kunciHari(d)]);
+
+  const grid = 'rgba(240,234,217,.06)';
+  const teks = 'rgba(240,234,217,.5)';
+  Chart.defaults.font.family = "'Albert Sans',sans-serif";
+  Chart.defaults.color = teks;
+
+  // Graf bar — klik
+  if(grafKlik) grafKlik.destroy();
+  grafKlik = new Chart(document.getElementById('grafKlik'), {
+    type:'bar',
+    data:{ labels: label, datasets:[{
+      data: dataKlik, backgroundColor:'#9fc97e', borderRadius:6, maxBarThickness:34,
+    }]},
+    options: optGraf(grid, false),
+  });
+
+  // Graf garis — jualan
+  if(grafJual) grafJual.destroy();
+  grafJual = new Chart(document.getElementById('grafJual'), {
+    type:'line',
+    data:{ labels: label, datasets:[{
+      data: dataJual, borderColor:'#c9a35c', backgroundColor:'rgba(201,163,92,.12)',
+      fill:true, tension:.32, pointRadius:3, pointBackgroundColor:'#c9a35c', borderWidth:2.5,
+    }]},
+    options: optGraf(grid, true),
+  });
+}
+function optGraf(grid, duit){
+  return {
+    responsive:true, maintainAspectRatio:false,
+    plugins:{ legend:{ display:false }, tooltip:{
+      callbacks:{ label: c => (duit ? 'RM' + c.parsed.y.toLocaleString('ms-MY') : c.parsed.y + ' klik') }
+    }},
+    scales:{
+      x:{ grid:{ display:false }, ticks:{ maxRotation:0, autoSkip:true, maxTicksLimit:8 } },
+      y:{ beginAtZero:true, grid:{ color:grid }, ticks:{
+        precision:0, callback: v => (duit ? 'RM'+v : v)
+      }},
+    },
+  };
+}
+
+/* ── ITEM TERJUAL ── */
+function renderItem(berjaya){
+  const peta = {};
+  berjaya.forEach(p => {
+    const nama = ringkasItem(p.item);
+    peta[nama] = (peta[nama]||0) + 1;
+  });
+  const senarai = Object.entries(peta).sort((a,b)=> b[1]-a[1]);
+  const bekas = document.getElementById('senaraiItem');
+  if(!senarai.length){
+    bekas.innerHTML = '<div class="kosong">Tiada jualan dalam tempoh ini</div>';
+    return;
+  }
+  const maks = senarai[0][1];
+  bekas.innerHTML = senarai.map(([nama, bil]) => `
+    <div class="item-baris">
+      <div class="item-nama">${esc(nama)}</div>
+      <div class="item-bar-luar"><div class="item-bar-dalam" style="width:${Math.round(bil/maks*100)}%"></div></div>
+      <div class="item-bil">${bil} pesanan</div>
+    </div>`).join('');
+}
+function ringkasItem(item){
+  if(!item) return 'Tidak dinyatakan';
+  // Buang bahagian "× N" untuk kumpulkan ikut nama pakej
+  return String(item).replace(/\s*[×x]\s*\d+\s*$/,'').replace(/\s*\(\d+\s*pokok\)/i,'').trim() || String(item);
+}
+
+/* ── JADUAL ── */
+function renderJadual(pesanan){
+  const badan = document.getElementById('jadualBadan');
+  if(!pesanan.length){
+    badan.innerHTML = '<tr><td colspan="8" class="kosong">Tiada pesanan dalam tempoh ini</td></tr>';
+    return;
+  }
+  const urut = [...pesanan].sort((a,b)=> new Date(b.masa) - new Date(a.masa));
+  badan.innerHTML = urut.map(p => {
+    const s = String(p.status).toUpperCase();
+    const kelas = s==='BERJAYA'?'l-berjaya':s==='PENDING'?'l-pending':'l-gagal';
+    const wa = String(p.telefon).replace(/\D/g,'');
+    const waPenuh = wa.indexOf('0')===0 ? '6'+wa : wa;
+    return `<tr>
+      <td>${esc(masaPendek(p.masa))}</td>
+      <td>${esc(p.ref)}</td>
+      <td>${esc(p.nama)}</td>
+      <td>${wa ? `<a class="td-wa" href="https://wa.me/${waPenuh}" target="_blank" rel="noopener">${esc(p.telefon)}</a>` : '-'}</td>
+      <td>${esc(p.item)}</td>
+      <td>RM${esc(p.total)}</td>
+      <td><span class="lencana ${kelas}">${esc(p.status)}</span></td>
+      <td>${esc(p.alamat)}</td>
+    </tr>`;
+  }).join('');
+}
+
+/* ── MUAT TURUN ── */
+function dataTempohSemasa(){
+  const jt = julatTempoh(tempohAktif);
+  return [...DATA.pesanan].filter(p => dalamTempoh(p.masa, jt))
+    .sort((a,b)=> new Date(b.masa) - new Date(a.masa));
+}
+function namaFail(){
+  const label = { hari:'hari-ini', '7hari':'7-hari', minggu:'minggu-ini', bulan:'bulan-ini' }[tempohAktif];
+  return 'rekod-pelanggan-buluh-kundur-' + label;
+}
+function muatExcel(){
+  const rekod = dataTempohSemasa();
+  if(!rekod.length){ alert('Tiada rekod untuk tempoh ini'); return; }
+  const baris = rekod.map(p => ({
+    'Masa': masaPendek(p.masa),
+    'Ref': p.ref,
+    'Nama': p.nama,
+    'WhatsApp': p.telefon,
+    'Emel': p.emel,
+    'Item': p.item,
+    'Bil Pokok': p.bilPokok,
+    'Jumlah (RM)': p.total,
+    'Status': p.status,
+    'Alamat': p.alamat,
+  }));
+  const ws = XLSX.utils.json_to_sheet(baris);
+  ws['!cols'] = [{wch:17},{wch:14},{wch:18},{wch:14},{wch:22},{wch:26},{wch:9},{wch:11},{wch:11},{wch:34}];
+  const wb = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, ws, 'Pesanan');
+  XLSX.writeFile(wb, namaFail() + '.xlsx');
+}
+function muatPDF(){
+  const rekod = dataTempohSemasa();
+  if(!rekod.length){ alert('Tiada rekod untuk tempoh ini'); return; }
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF({ orientation:'landscape' });
+  const labelT = { hari:'Hari Ini', '7hari':'7 Hari', minggu:'Minggu Ini', bulan:'Bulan Ini' }[tempohAktif];
+
+  doc.setFontSize(16); doc.setTextColor(11,26,16);
+  doc.text('Rekod Pelanggan — Buluh Kundur', 14, 16);
+  doc.setFontSize(10); doc.setTextColor(120);
+  doc.text('Tempoh: ' + labelT + '  ·  Dijana: ' + masaPendek(new Date().toISOString()), 14, 22);
+
+  doc.autoTable({
+    startY: 28,
+    head: [['Masa','Ref','Nama','WhatsApp','Item','RM','Status','Alamat']],
+    body: rekod.map(p => [
+      masaPendek(p.masa), p.ref, p.nama, p.telefon,
+      p.item, 'RM'+p.total, p.status, p.alamat,
+    ]),
+    styles:{ fontSize:8, cellPadding:2.5, overflow:'linebreak' },
+    headStyles:{ fillColor:[19,38,26], textColor:[240,234,217] },
+    columnStyles:{ 7:{ cellWidth:50 } },
+    alternateRowStyles:{ fillColor:[245,243,237] },
+  });
+  doc.save(namaFail() + '.pdf');
+}
+
+/* ── UTILITI ── */
+function masaPendek(iso){
+  if(!iso) return '-';
+  const d = new Date(iso);
+  return d.toLocaleString('ms-MY', { day:'2-digit', month:'2-digit', year:'numeric', hour:'2-digit', minute:'2-digit', hour12:false });
+}
+function esc(s){
+  return String(s==null?'':s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+}
+
+/* ── TOGGLE TEMPOH ── */
+document.getElementById('tempoh').addEventListener('click', e => {
+  const btn = e.target.closest('button');
+  if(!btn) return;
+  document.querySelectorAll('#tempoh button').forEach(b => b.classList.remove('aktif'));
+  btn.classList.add('aktif');
+  tempohAktif = btn.dataset.t;
+  render();
+});
+
+/* ── ENTER untuk login ── */
+document.getElementById('kataLaluan').addEventListener('keydown', e => {
+  if(e.key === 'Enter') masukLogin();
+});
+
+/* ── Auto log masuk jika token masih ada ── */
+(function(){
+  let t = '';
+  try{ t = sessionStorage.getItem('bk_token') || ''; }catch(e){}
+  if(t){
+    TOKEN = t;
+    document.getElementById('loginLatar').style.display = 'none';
+    document.getElementById('app').classList.add('aktif');
+    muatData();
+  }
+})();
+</script>
+</body>
+</html>
