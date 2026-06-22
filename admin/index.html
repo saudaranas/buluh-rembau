@@ -269,6 +269,33 @@ tbody tr:hover{background:rgba(240,234,217,.02)}
   border:1px solid var(--garis);
 }
 
+/* ───── NOTIFIKASI TELEGRAM ───── */
+.tele-nota{
+  background:rgba(201,163,92,.07);border:1px solid rgba(201,163,92,.2);
+  border-radius:12px;padding:13px 16px;margin-bottom:16px;
+  font-size:12.5px;color:var(--gading2);line-height:1.6;
+}
+.tele-nota strong{color:var(--tembaga)}
+.tele-baris{
+  display:flex;align-items:center;gap:14px;
+  background:var(--lumut);border:1px solid var(--garis);
+  border-radius:14px;padding:14px 18px;margin-bottom:10px;
+}
+.tele-baris.tak-aktif{opacity:.5}
+.tele-info{flex:1;min-width:0}
+.tele-nama{font-size:14.5px;font-weight:600}
+.tele-id{font-size:12.5px;color:var(--gading3);margin-top:1px}
+.tele-fb{font-size:11px;color:var(--tembaga);margin-top:3px}
+.tele-aksi{display:flex;gap:7px;flex-shrink:0}
+.tele-aksi button{
+  font-size:12px;font-weight:600;padding:7px 12px;border-radius:8px;
+  border:1px solid var(--garis);background:none;color:var(--gading2);
+  transition:border-color .2s,color .2s;white-space:nowrap;
+}
+.tele-uji:hover{border-color:var(--pucuk);color:var(--pucuk)}
+.tele-edit:hover{border-color:var(--tembaga);color:var(--tembaga)}
+.tele-padam:hover{border-color:var(--bata);color:var(--bata)}
+
 /* skrolbar nipis */
 .jadual-bekas::-webkit-scrollbar{height:7px}
 .jadual-bekas::-webkit-scrollbar-thumb{background:rgba(240,234,217,.15);border-radius:99px}
@@ -385,9 +412,45 @@ tbody tr:hover{background:rgba(240,234,217,.02)}
   </div>
   <div class="pakej-grid" id="pakejGrid"></div>
 
+  <!-- NOTIFIKASI TELEGRAM -->
+  <div class="pakej-atas">
+    <div class="pakej-tajuk">Notifikasi Telegram</div>
+    <button class="btn-tambah" onclick="bukaEditTele(null)">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      Tambah Admin
+    </button>
+  </div>
+  <div class="tele-nota">
+    Setiap admin perlu cari bot di Telegram dan tekan <strong>Start</strong> dahulu, kalau tidak notif tak sampai. Untuk dapatkan Chat ID, buka <strong>@userinfobot</strong> di Telegram.
+  </div>
+  <div id="teleSenarai"></div>
+
   <p class="app-nota">
-    Data dari Google Sheet "Pesanan", "Klik" &amp; "Pakej" · Edit pakej terus mengemaskini website · Tempoh dipilih mempengaruhi statistik, graf, item dan muat turun.
+    Data dari Google Sheet "Pesanan", "Klik", "Pakej" &amp; "Admin Telegram" · Edit pakej &amp; admin terus mengemaskini sistem · Tempoh dipilih mempengaruhi statistik, graf, item dan muat turun.
   </p>
+</div>
+
+<!-- ═══ MODAL EDIT ADMIN TELEGRAM ═══ -->
+<div class="medit-latar" id="teleEditLatar">
+  <div class="medit">
+    <div class="medit-atas">
+      <div class="medit-tajuk" id="teleEditTajuk">Tambah Admin</div>
+      <button class="btn-tutup" onclick="tutupEditTele()" aria-label="Tutup" style="background:rgba(240,234,217,.08);border:none;width:32px;height:32px;border-radius:50%;color:var(--gading2);font-size:15px">✕</button>
+    </div>
+    <div class="medit-badan">
+      <input type="hidden" id="teLama">
+      <div class="medit-kump">
+        <label class="medit-label" for="teNamaIn">Nama admin</label>
+        <input class="medit-input" id="teNamaIn" type="text" placeholder="cth: Pak Soffiuddin">
+      </div>
+      <div class="medit-kump">
+        <label class="medit-label" for="teIdIn">Telegram Chat ID</label>
+        <input class="medit-input" id="teIdIn" type="text" placeholder="cth: 1523007964">
+      </div>
+      <label class="medit-cek"><input type="checkbox" id="teAktifIn" checked><span>Aktif (terima notifikasi)</span></label>
+      <button class="medit-btn" id="teSimpanBtn" onclick="simpanTele()">Simpan Admin</button>
+    </div>
+  </div>
 </div>
 
 <!-- ═══ MODAL EDIT PAKEJ ═══ -->
@@ -513,7 +576,9 @@ async function muatPakejDashboard(){
   if(j.ok){
     PAKEJ_DASH = j.pakej || [];
     renderPakejGrid();
+    render();  // render semula supaya label item terjual ada bil pokok + harga
   }
+  muatTele();
 }
 
 function renderPakejGrid(){
@@ -615,6 +680,84 @@ async function padamPakej(id, nama){
   } else {
     alert(j.error || 'Gagal padam pakej');
   }
+}
+
+/* ════════════════════════════════════
+   NOTIFIKASI TELEGRAM (ADMIN)
+════════════════════════════════════ */
+let TELE_ADMIN = [], TELE_FALLBACK = '';
+
+async function muatTele(){
+  const j = await panggil({ action:'adminTelegram', sub:'senarai', token: TOKEN });
+  if(j.ok){
+    TELE_ADMIN = j.admin || [];
+    TELE_FALLBACK = j.fallback || '';
+    renderTele();
+  }
+}
+function renderTele(){
+  const bekas = document.getElementById('teleSenarai');
+  if(!TELE_ADMIN.length){
+    bekas.innerHTML = `<div class="tele-baris">
+      <div class="tele-info">
+        <div class="tele-nama">Belum ada admin ditambah</div>
+        <div class="tele-id">Notif dihantar ke Chat ID lalai: ${esc(TELE_FALLBACK)}</div>
+        <div class="tele-fb">Tambah admin di atas untuk urus penerima notif</div>
+      </div>
+    </div>`;
+    return;
+  }
+  bekas.innerHTML = TELE_ADMIN.map(function(a){
+    return `<div class="tele-baris ${a.aktif?'':'tak-aktif'}">
+      <div class="tele-info">
+        <div class="tele-nama">${esc(a.nama||'Tanpa nama')}${a.aktif?'':' · tak aktif'}</div>
+        <div class="tele-id">Chat ID: ${esc(a.chatId)}</div>
+      </div>
+      <div class="tele-aksi">
+        <button class="tele-uji" onclick="ujiTele('${esc(a.chatId)}')">Uji</button>
+        <button class="tele-edit" onclick="bukaEditTele('${esc(a.chatId)}')">Edit</button>
+        <button class="tele-padam" onclick="padamTele('${esc(a.chatId)}', '${esc(a.nama||a.chatId)}')">Padam</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+function bukaEditTele(chatId){
+  const baru = (chatId === null);
+  document.getElementById('teleEditTajuk').textContent = baru ? 'Tambah Admin' : 'Edit Admin';
+  const a = baru ? {nama:'',chatId:'',aktif:true}
+                 : TELE_ADMIN.find(function(x){ return x.chatId === chatId; }) || {nama:'',chatId:'',aktif:true};
+  document.getElementById('teLama').value = a.chatId || '';
+  document.getElementById('teNamaIn').value = a.nama || '';
+  document.getElementById('teIdIn').value = a.chatId || '';
+  document.getElementById('teIdIn').readOnly = !baru;  // ID tak boleh tukar bila edit
+  document.getElementById('teAktifIn').checked = a.aktif !== false;
+  document.getElementById('teleEditLatar').classList.add('buka');
+}
+function tutupEditTele(){
+  document.getElementById('teleEditLatar').classList.remove('buka');
+}
+async function simpanTele(){
+  const nama = document.getElementById('teNamaIn').value.trim();
+  const chatId = document.getElementById('teIdIn').value.replace(/[^\d-]/g,'').trim();
+  if(!chatId){ alert('Sila isi Telegram Chat ID (nombor sahaja)'); return; }
+  const btn = document.getElementById('teSimpanBtn');
+  btn.disabled = true; btn.textContent = 'Menyimpan...';
+  const j = await panggil({ action:'adminTelegram', sub:'simpan', token: TOKEN,
+    nama: nama, chatId: chatId, aktif: document.getElementById('teAktifIn').checked });
+  btn.disabled = false; btn.textContent = 'Simpan Admin';
+  if(j.ok){ tutupEditTele(); await muatTele(); }
+  else { alert(j.error || 'Gagal simpan'); }
+}
+async function padamTele(chatId, nama){
+  if(!confirm('Padam admin "' + nama + '" dari senarai notifikasi?')) return;
+  const j = await panggil({ action:'adminTelegram', sub:'padam', token: TOKEN, chatId: chatId });
+  if(j.ok){ await muatTele(); }
+  else { alert(j.error || 'Gagal padam'); }
+}
+async function ujiTele(chatId){
+  const j = await panggil({ action:'adminTelegram', sub:'uji', token: TOKEN, chatId: chatId });
+  if(j.ok){ alert('Mesej ujian dihantar! Semak Telegram admin tersebut.\n\nKalau tak sampai, pastikan admin itu dah tekan Start pada bot.'); }
+  else { alert(j.error || 'Gagal hantar ujian'); }
 }
 
 /* ── JULAT TEMPOH ── */
@@ -762,7 +905,7 @@ function renderItem(berjaya){
   const maks = senarai[0][1];
   bekas.innerHTML = senarai.map(([nama, bil]) => `
     <div class="item-baris">
-      <div class="item-nama">${esc(nama)}</div>
+      <div class="item-nama">${esc(labelItem(nama))}</div>
       <div class="item-bar-luar"><div class="item-bar-dalam" style="width:${Math.round(bil/maks*100)}%"></div></div>
       <div class="item-bil">${bil} pesanan</div>
     </div>`).join('');
@@ -771,6 +914,15 @@ function ringkasItem(item){
   if(!item) return 'Tidak dinyatakan';
   // Buang bahagian "× N" untuk kumpulkan ikut nama pakej
   return String(item).replace(/\s*[×x]\s*\d+\s*$/,'').replace(/\s*\(\d+\s*pokok\)/i,'').trim() || String(item);
+}
+/* Tambah butiran bil pokok + harga di sebelah nama, cth:
+   "Pakej Kebun (5 pokok, RM200)". Padan dengan data pakej. */
+function labelItem(nama){
+  const p = (PAKEJ_DASH || []).find(function(x){ return x.nama === nama; });
+  if(p){
+    return nama + ' (' + p.bil + ' pokok, RM' + p.harga + ')';
+  }
+  return nama;
 }
 
 /* ── JADUAL ── */
@@ -885,6 +1037,11 @@ document.getElementById('kataLaluan').addEventListener('keydown', e => {
 /* ── Tutup modal pakej bila klik latar ── */
 document.getElementById('meditLatar').addEventListener('click', e => {
   if(e.target.id === 'meditLatar') tutupEditPakej();
+});
+
+/* ── Tutup modal telegram bila klik latar ── */
+document.getElementById('teleEditLatar').addEventListener('click', e => {
+  if(e.target.id === 'teleEditLatar') tutupEditTele();
 });
 
 /* ── Auto log masuk jika token masih ada ── */
