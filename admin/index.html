@@ -181,6 +181,94 @@ tbody tr:hover{background:rgba(240,234,217,.02)}
 
 .app-nota{font-size:12px;color:var(--gading3);text-align:center;margin-top:22px;line-height:1.7}
 
+/* ───── URUS PAKEJ ───── */
+.pakej-atas{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:12px;flex-wrap:wrap;margin:40px 0 16px;
+}
+.pakej-tajuk{font-family:'Fraunces',serif;font-size:20px;font-weight:500}
+.btn-tambah{
+  display:inline-flex;align-items:center;gap:7px;
+  font-size:13.5px;font-weight:700;color:var(--tinta);
+  background:var(--tembaga);border:none;
+  padding:10px 18px;border-radius:99px;transition:background .2s;
+}
+.btn-tambah:hover{background:#dab46b}
+.pakej-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}
+@media(max-width:820px){.pakej-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.pakej-grid{grid-template-columns:1fr}}
+.pk-kad{
+  background:var(--lumut);border:1px solid var(--garis);
+  border-radius:16px;overflow:hidden;display:flex;flex-direction:column;
+  position:relative;
+}
+.pk-kad.tak-aktif{opacity:.5}
+.pk-foto{height:120px;background-size:cover;background-position:center;background-color:#1b3424}
+.pk-lencana{
+  position:absolute;top:10px;left:10px;
+  background:var(--tembaga);color:var(--tinta);
+  font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;
+  padding:3px 9px;border-radius:99px;
+}
+.pk-isi{padding:15px 16px;flex:1;display:flex;flex-direction:column}
+.pk-nama{font-family:'Fraunces',serif;font-size:16px;font-weight:500;margin-bottom:2px}
+.pk-bil{font-size:12px;color:var(--gading3);margin-bottom:10px}
+.pk-harga{font-family:'Fraunces',serif;font-size:22px;font-weight:500;color:var(--tembaga)}
+.pk-nota{font-size:12px;color:var(--gading2);margin:6px 0 14px;flex:1}
+.pk-aksi{display:flex;gap:7px}
+.pk-aksi button{
+  flex:1;font-size:12.5px;font-weight:600;
+  padding:8px;border-radius:9px;border:1px solid var(--garis);
+  background:none;color:var(--gading2);transition:border-color .2s,color .2s;
+}
+.pk-edit:hover{border-color:var(--tembaga);color:var(--tembaga)}
+.pk-padam:hover{border-color:var(--bata);color:var(--bata)}
+
+/* Modal edit pakej */
+.medit-latar{
+  position:fixed;inset:0;z-index:200;
+  background:rgba(4,10,6,.8);backdrop-filter:blur(6px);
+  display:none;align-items:center;justify-content:center;padding:20px;
+}
+.medit-latar.buka{display:flex}
+.medit{
+  background:var(--lumut);border:1px solid var(--garis);
+  border-radius:20px;width:100%;max-width:440px;
+  max-height:90svh;overflow-y:auto;
+}
+.medit-atas{
+  display:flex;justify-content:space-between;align-items:center;gap:12px;
+  padding:20px 24px;border-bottom:1px solid var(--garis);
+  position:sticky;top:0;background:var(--lumut);
+}
+.medit-tajuk{font-family:'Fraunces',serif;font-size:19px;font-weight:500}
+.medit-badan{padding:20px 24px}
+.medit-baris{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+.medit-kump{margin-bottom:14px}
+.medit-label{display:block;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gading3);margin-bottom:7px}
+.medit-input{
+  width:100%;padding:12px 14px;background:var(--tinta);
+  border:1.5px solid var(--garis);border-radius:10px;
+  font-size:14px;font-family:inherit;color:var(--gading);outline:none;
+  transition:border-color .2s;
+}
+.medit-input:focus{border-color:var(--tembaga)}
+.medit-cek{display:flex;align-items:center;gap:10px;margin-bottom:8px;cursor:pointer}
+.medit-cek input{width:18px;height:18px;accent-color:var(--tembaga)}
+.medit-cek span{font-size:14px;color:var(--gading2)}
+.medit-btn{
+  width:100%;margin-top:8px;background:var(--tembaga);color:var(--tinta);
+  font-size:15px;font-weight:700;padding:14px;border:none;border-radius:99px;
+  transition:background .2s;
+}
+.medit-btn:hover{background:#dab46b}
+.medit-btn:disabled{opacity:.5;cursor:wait}
+.medit-prev{
+  height:90px;border-radius:10px;margin-top:8px;
+  background-size:cover;background-position:center;background-color:var(--tinta);
+  border:1px solid var(--garis);
+}
+
 /* skrolbar nipis */
 .jadual-bekas::-webkit-scrollbar{height:7px}
 .jadual-bekas::-webkit-scrollbar-thumb{background:rgba(240,234,217,.15);border-radius:99px}
@@ -287,9 +375,68 @@ tbody tr:hover{background:rgba(240,234,217,.02)}
     </div>
   </div>
 
+  <!-- URUS PAKEJ -->
+  <div class="pakej-atas">
+    <div class="pakej-tajuk">Urus Pakej</div>
+    <button class="btn-tambah" onclick="bukaEditPakej(null)">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      Tambah Pakej
+    </button>
+  </div>
+  <div class="pakej-grid" id="pakejGrid"></div>
+
   <p class="app-nota">
-    Data dari Google Sheet "Pesanan" &amp; "Klik" · Tempoh dipilih mempengaruhi statistik, graf, item dan muat turun.
+    Data dari Google Sheet "Pesanan", "Klik" &amp; "Pakej" · Edit pakej terus mengemaskini website · Tempoh dipilih mempengaruhi statistik, graf, item dan muat turun.
   </p>
+</div>
+
+<!-- ═══ MODAL EDIT PAKEJ ═══ -->
+<div class="medit-latar" id="meditLatar">
+  <div class="medit">
+    <div class="medit-atas">
+      <div class="medit-tajuk" id="meditTajuk">Edit Pakej</div>
+      <button class="btn-tutup" onclick="tutupEditPakej()" aria-label="Tutup" style="background:rgba(240,234,217,.08);border:none;width:32px;height:32px;border-radius:50%;color:var(--gading2);font-size:15px">✕</button>
+    </div>
+    <div class="medit-badan">
+      <input type="hidden" id="pkId">
+      <div class="medit-kump">
+        <label class="medit-label" for="pkNamaIn">Nama pakej</label>
+        <input class="medit-input" id="pkNamaIn" type="text" placeholder="cth: Pakej Kebun">
+      </div>
+      <div class="medit-baris">
+        <div class="medit-kump" style="margin:0">
+          <label class="medit-label" for="pkBilIn">Bil. pokok</label>
+          <input class="medit-input" id="pkBilIn" type="number" min="1" placeholder="5">
+        </div>
+        <div class="medit-kump" style="margin:0">
+          <label class="medit-label" for="pkHargaIn">Harga (RM)</label>
+          <input class="medit-input" id="pkHargaIn" type="number" min="0" placeholder="200" oninput="kiraSeUnit()">
+        </div>
+      </div>
+      <div class="medit-baris">
+        <div class="medit-kump" style="margin:0">
+          <label class="medit-label" for="pkSeUnitIn">RM sepokok</label>
+          <input class="medit-input" id="pkSeUnitIn" type="number" min="0" placeholder="40">
+        </div>
+        <div class="medit-kump" style="margin:0">
+          <label class="medit-label" for="pkJimatIn">Jimat (RM)</label>
+          <input class="medit-input" id="pkJimatIn" type="number" min="0" placeholder="0">
+        </div>
+      </div>
+      <div class="medit-kump">
+        <label class="medit-label" for="pkNotaIn">Nota ringkas</label>
+        <input class="medit-input" id="pkNotaIn" type="text" placeholder="cth: Untuk halaman rumah">
+      </div>
+      <div class="medit-kump">
+        <label class="medit-label" for="pkFotoIn">Pautan gambar</label>
+        <input class="medit-input" id="pkFotoIn" type="url" placeholder="https://..." oninput="prevFoto()">
+        <div class="medit-prev" id="pkPrev"></div>
+      </div>
+      <label class="medit-cek"><input type="checkbox" id="pkPopularIn"><span>Tanda "Paling Popular"</span></label>
+      <label class="medit-cek"><input type="checkbox" id="pkAktifIn" checked><span>Aktif (papar di website)</span></label>
+      <button class="medit-btn" id="pkSimpanBtn" onclick="simpanPakej()">Simpan Pakej</button>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -353,6 +500,121 @@ async function muatData(){
   DATA.pesanan = j.pesanan || [];
   DATA.klik = j.klik || [];
   render();
+  muatPakejDashboard();
+}
+
+/* ════════════════════════════════════
+   URUS PAKEJ
+════════════════════════════════════ */
+let PAKEJ_DASH = [];
+
+async function muatPakejDashboard(){
+  const j = await panggil({ action:'adminPakej', sub:'senarai', token: TOKEN });
+  if(j.ok){
+    PAKEJ_DASH = j.pakej || [];
+    renderPakejGrid();
+  }
+}
+
+function renderPakejGrid(){
+  const grid = document.getElementById('pakejGrid');
+  if(!PAKEJ_DASH.length){
+    grid.innerHTML = '<div class="kosong">Tiada pakej lagi. Tekan "Tambah Pakej" untuk mula.</div>';
+    return;
+  }
+  grid.innerHTML = PAKEJ_DASH.map(function(p){
+    return `<div class="pk-kad ${p.aktif?'':'tak-aktif'}">
+      ${p.popular?'<div class="pk-lencana">Popular</div>':''}
+      <div class="pk-foto" style="background-image:url('${esc(p.foto)}')"></div>
+      <div class="pk-isi">
+        <div class="pk-nama">${esc(p.nama)}</div>
+        <div class="pk-bil">${esc(p.bil)} pokok${p.aktif?'':' · tak aktif'}</div>
+        <div class="pk-harga">RM${esc(p.harga)}</div>
+        <div class="pk-nota">${esc(p.nota||'')}</div>
+        <div class="pk-aksi">
+          <button class="pk-edit" onclick="bukaEditPakej(${p.id})">Edit</button>
+          <button class="pk-padam" onclick="padamPakej(${p.id}, '${esc(p.nama)}')">Padam</button>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function bukaEditPakej(id){
+  const baru = (id === null);
+  document.getElementById('meditTajuk').textContent = baru ? 'Tambah Pakej' : 'Edit Pakej';
+  const p = baru ? {id:'',bil:'',nama:'',harga:'',seunit:'',jimat:'',nota:'',popular:false,aktif:true,foto:''}
+                 : PAKEJ_DASH.find(function(x){ return x.id === id; }) || {};
+  document.getElementById('pkId').value = p.id || '';
+  document.getElementById('pkNamaIn').value = p.nama || '';
+  document.getElementById('pkBilIn').value = p.bil || '';
+  document.getElementById('pkHargaIn').value = p.harga || '';
+  document.getElementById('pkSeUnitIn').value = p.seunit || '';
+  document.getElementById('pkJimatIn').value = p.jimat || '';
+  document.getElementById('pkNotaIn').value = p.nota || '';
+  document.getElementById('pkFotoIn').value = p.foto || '';
+  document.getElementById('pkPopularIn').checked = !!p.popular;
+  document.getElementById('pkAktifIn').checked = p.aktif !== false;
+  prevFoto();
+  document.getElementById('meditLatar').classList.add('buka');
+}
+function tutupEditPakej(){
+  document.getElementById('meditLatar').classList.remove('buka');
+}
+function kiraSeUnit(){
+  const harga = Number(document.getElementById('pkHargaIn').value)||0;
+  const bil = Number(document.getElementById('pkBilIn').value)||0;
+  if(harga && bil){
+    document.getElementById('pkSeUnitIn').value = Math.round(harga/bil);
+  }
+}
+function prevFoto(){
+  const url = document.getElementById('pkFotoIn').value.trim();
+  document.getElementById('pkPrev').style.backgroundImage = url ? `url('${url}')` : 'none';
+}
+
+async function simpanPakej(){
+  const nama = document.getElementById('pkNamaIn').value.trim();
+  const bil = Number(document.getElementById('pkBilIn').value);
+  const harga = Number(document.getElementById('pkHargaIn').value);
+  if(!nama){ alert('Sila isi nama pakej'); return; }
+  if(!bil || bil < 1){ alert('Bil. pokok mesti sekurangnya 1'); return; }
+  if(!harga || harga < 0){ alert('Sila isi harga'); return; }
+
+  const idVal = document.getElementById('pkId').value;
+  const pakej = {
+    id: idVal ? Number(idVal) : null,
+    nama: nama,
+    bil: bil,
+    harga: harga,
+    seunit: Number(document.getElementById('pkSeUnitIn').value) || Math.round(harga/bil),
+    jimat: Number(document.getElementById('pkJimatIn').value) || 0,
+    nota: document.getElementById('pkNotaIn').value.trim(),
+    foto: document.getElementById('pkFotoIn').value.trim(),
+    popular: document.getElementById('pkPopularIn').checked,
+    aktif: document.getElementById('pkAktifIn').checked,
+  };
+
+  const btn = document.getElementById('pkSimpanBtn');
+  btn.disabled = true; btn.textContent = 'Menyimpan...';
+  const j = await panggil({ action:'adminPakej', sub:'simpan', token: TOKEN, pakej: pakej });
+  btn.disabled = false; btn.textContent = 'Simpan Pakej';
+  if(j.ok){
+    tutupEditPakej();
+    await muatPakejDashboard();
+  } else {
+    alert(j.error || 'Gagal simpan pakej');
+  }
+}
+
+async function padamPakej(id, nama){
+  if(!confirm('Padam pakej "' + nama + '"? Tindakan ini tak boleh diundur.')) return;
+  const j = await panggil({ action:'adminPakej', sub:'padam', token: TOKEN, id: id });
+  if(j.ok){
+    await muatPakejDashboard();
+  } else {
+    alert(j.error || 'Gagal padam pakej');
+  }
 }
 
 /* ── JULAT TEMPOH ── */
@@ -618,6 +880,11 @@ document.getElementById('tempoh').addEventListener('click', e => {
 /* ── ENTER untuk login ── */
 document.getElementById('kataLaluan').addEventListener('keydown', e => {
   if(e.key === 'Enter') masukLogin();
+});
+
+/* ── Tutup modal pakej bila klik latar ── */
+document.getElementById('meditLatar').addEventListener('click', e => {
+  if(e.target.id === 'meditLatar') tutupEditPakej();
 });
 
 /* ── Auto log masuk jika token masih ada ── */
