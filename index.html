@@ -1006,13 +1006,17 @@ const CFG = {
   wa: '60123830649',
 };
 
-/* ── PAKEJ — harga premium ── */
-const PAKEJ = [
+/* ── PAKEJ SIMPANAN (fallback) ──
+   Digunakan kalau gagal ambil dari Sheet. Pakej sebenar diuruskan
+   dalam dashboard /admin/ dan disimpan dalam Google Sheet. */
+const PAKEJ_FALLBACK = [
   {id:1, bil:1,  nama:'Satu Pokok',     harga:50,  seunit:50, jimat:0,   nota:'Untuk mencuba',          foto:'https://i.postimg.cc/bYnpBZqV/d2723f58-317d-4493-a0e3-e32e6ff6010c.jpg'},
   {id:2, bil:3,  nama:'Pakej Bertiga',  harga:135, seunit:45, jimat:15,  nota:'Untuk halaman rumah',    foto:'https://i.postimg.cc/15y2rX4x/a127077a-83d7-475a-b50c-de411d287e1f.jpg'},
   {id:3, bil:5,  nama:'Pakej Kebun',    harga:200, seunit:40, jimat:50,  nota:'Paling popular', popular:true, foto:'https://i.postimg.cc/285T5Z3M/6f70f27b-b9c8-41f3-b60c-19037deeb6a5.jpg'},
   {id:4, bil:10, nama:'Pakej Ladang',   harga:350, seunit:35, jimat:150, nota:'Untuk memulakan ladang', foto:'https://i.postimg.cc/wj8trK8Y/f950169a-79cb-492e-aaf1-55418e073028.jpg'},
 ];
+
+let PAKEJ = PAKEJ_FALLBACK;   // mula dengan fallback, ganti bila Sheet sampai
 
 let pakejDipilih = null, qty = 1;
 
@@ -1033,6 +1037,7 @@ function renderHarga(){
 /* ── CHECKOUT ── */
 function bukaCheckout(id){
   pakejDipilih = PAKEJ.find(p=>p.id===id);
+  rekodKlik('beli', pakejDipilih ? pakejDipilih.nama : '');
   qty = 1;
   kemaskiniModal();
   document.getElementById('panelBorang').style.display='block';
@@ -1165,8 +1170,53 @@ document.getElementById('modalLatar').addEventListener('click', e=>{
   if(e.target.id==='modalLatar') tutupModal();
 });
 
-renderHarga();
+/* ── MUAT PAKEJ dari Sheet (dengan fallback) ── */
+async function muatPakej(){
+  try{
+    const res = await fetch(CFG.gasUrl, {
+      method:'POST',
+      headers:{'Content-Type':'text/plain;charset=utf-8'},
+      body: JSON.stringify({ action:'getPakej' }),
+    });
+    const j = await res.json();
+    if(j.ok && Array.isArray(j.pakej) && j.pakej.length){
+      PAKEJ = j.pakej;
+    }
+  }catch(e){
+    // Gagal — kekal guna PAKEJ_FALLBACK yang sedia ada
+    console.warn('Guna pakej simpanan:', e);
+  }
+  renderHarga();
+}
+
+muatPakej();
 semakStatusBayaran();
+
+/* ════════════════════════════════════
+   TRACKING KLIK → GAS (untuk dashboard /admin/)
+════════════════════════════════════ */
+function rekodKlik(jenis, pakej){
+  try{
+    fetch(CFG.gasUrl, {
+      method:'POST',
+      headers:{'Content-Type':'text/plain;charset=utf-8'},
+      body: JSON.stringify({ action:'rekodKlik', jenis: jenis, pakej: pakej || '' }),
+      keepalive: true,
+    }).catch(function(){});
+  }catch(e){}
+}
+
+/* Rekod satu LAWATAN bila website dibuka (sekali per sesi) */
+(function(){
+  try{
+    if(!sessionStorage.getItem('bk_lawat')){
+      sessionStorage.setItem('bk_lawat','1');
+      rekodKlik('lawat');
+    }
+  }catch(e){
+    rekodKlik('lawat');
+  }
+})();
 </script>
 </body>
 </html>
