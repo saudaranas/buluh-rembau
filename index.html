@@ -326,8 +326,8 @@ h2 em{font-style:italic;color:var(--tembaga)}
 /* ───── HARGA ───── */
 #harga{background:var(--lumut);border-top:1px solid rgba(240,234,217,.06);border-bottom:1px solid rgba(240,234,217,.06)}
 .harga-grid{
-  display:grid;grid-template-columns:repeat(4,1fr);
-  gap:13px;margin-top:42px;
+  display:grid;grid-template-columns:repeat(var(--kol,4),1fr);
+  gap:13px;margin-top:42px;max-width:var(--lebar,none);margin-left:auto;margin-right:auto;
 }
 @media(max-width:920px){.harga-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:520px){.harga-grid{grid-template-columns:1fr}}
@@ -378,6 +378,34 @@ h2 em{font-style:italic;color:var(--tembaga)}
 }
 .harga-nota span{display:inline-flex;align-items:center;gap:7px}
 .harga-nota svg{flex-shrink:0;color:var(--tembaga)}
+
+/* ───── PAKEJ TANAM SEEKAR ───── */
+.ekar{
+  margin-top:56px;background:var(--tinta);
+  border:1px solid var(--tembaga);border-radius:22px;
+  display:grid;grid-template-columns:1.1fr 1fr;overflow:hidden;
+}
+@media(max-width:820px){.ekar{grid-template-columns:1fr}}
+.ekar-kiri{padding:38px 36px}
+.ekar-kanan{padding:38px 36px;background:rgba(201,163,92,.06);border-left:1px solid rgba(201,163,92,.2)}
+@media(max-width:820px){.ekar-kiri,.ekar-kanan{padding:28px 24px}.ekar-kanan{border-left:none;border-top:1px solid rgba(201,163,92,.2)}}
+.ekar h3{font-family:'Fraunces',serif;font-size:30px;font-weight:500;line-height:1.2;margin:10px 0 14px}
+.ekar h3 em{font-style:italic;color:var(--tembaga)}
+.ekar-kiri p{font-size:15px;color:var(--gading2);line-height:1.75;margin-bottom:12px}
+.ekar-harga{font-family:'Fraunces',serif;font-size:40px;font-weight:500;color:var(--tembaga);line-height:1}
+.ekar-harga span{font-family:'Albert Sans';font-size:15px;color:var(--gading3);font-weight:500}
+.ekar-sub{font-size:12.5px;color:var(--gading3);margin:6px 0 20px}
+.ekar-senarai{list-style:none;margin:0 0 24px;padding:0}
+.ekar-senarai li{display:flex;gap:10px;font-size:14.5px;color:var(--gading);padding:7px 0;border-bottom:1px solid rgba(240,234,217,.07)}
+.ekar-senarai li:last-child{border-bottom:none}
+.ekar-senarai svg{flex-shrink:0;color:var(--pucuk);margin-top:4px}
+.ekar-btn{
+  display:block;text-align:center;text-decoration:none;
+  background:var(--tembaga);color:var(--tinta);font-size:15px;font-weight:700;
+  padding:14px;border-radius:99px;transition:background .2s;
+}
+.ekar-btn:hover{background:#dab46b}
+.ekar-nota{font-size:12.5px;color:var(--gading3);text-align:center;margin-top:12px}
 
 /* ───── FAQ ───── */
 .faq-list{margin-top:36px}
@@ -604,6 +632,7 @@ footer{background:#07120b;font-size:13.5px;color:var(--gading3)}
     <a class="nav-link" href="#iktiraf">Pengiktirafan</a>
     <a class="nav-link" href="#kenapa">Kenapa Buluh</a>
     <a class="nav-link" href="#harga">Harga</a>
+    <a class="nav-link" href="#ekar">Pakej Ekar</a>
     <a class="nav-link" href="#faq">FAQ</a>
   </div>
   <a href="#harga" class="nav-beli">Beli Sekarang</a>
@@ -846,6 +875,30 @@ footer{background:#07120b;font-size:13.5px;color:var(--gading3)}
     <p class="reveal" style="text-align:center;margin-top:20px;font-size:14px;color:var(--gading2)">
       Ada soalan sebelum membeli? <a href="https://wa.me/60123830649?text=Assalamualaikum%2C%20saya%20nak%20tanya%20tentang%20anak%20buluh%20Kundur" target="_blank" rel="noopener" style="color:var(--tembaga);font-weight:600;text-decoration:none;border-bottom:1px solid var(--tembaga)">WhatsApp kami dulu →</a>
     </p>
+
+    <!-- ═══ PAKEJ TANAM SEEKAR ═══ -->
+    <div class="ekar reveal" id="ekar">
+      <div class="ekar-kiri">
+        <span class="eyebrow">Untuk Tanah Anda</span>
+        <h3>Ada tanah? Kami <em>tanamkan</em> untuk anda.</h3>
+        <p>Pakej lengkap untuk pemilik tanah yang mahu memulakan ladang buluh betong tanpa perlu urus sendiri. Pasukan dari Kampung Kundur Ulu datang ke tapak anda — dari menanda barisan hingga pokok mula hidup.</p>
+        <p>Sesuai untuk tanah terbiar, bekas sawah, koperasi atau projek ladang buluh berskala.</p>
+      </div>
+      <div class="ekar-kanan">
+        <div class="ekar-harga">RM9,000 <span>/ ekar</span></div>
+        <div class="ekar-sub">Termasuk anak pokok, tanam, baja &amp; pemantauan</div>
+        <ul class="ekar-senarai">
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>162 anak buluh betong dari ladang Kundur</span></li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Penandaan barisan, gali lubang &amp; tanam oleh pasukan kami</span></li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Baja fosfat &amp; baja organik</span></li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Lawatan pemantauan tapak selama 6 bulan</span></li>
+        </ul>
+        <a class="ekar-btn" id="btnEkar" target="_blank" rel="noopener"
+           href="https://wa.me/60123830649?text=Assalamualaikum%2C%20saya%20berminat%20dengan%20Pakej%20Tanam%20Seekar%20buluh%20Kundur.%20Lokasi%20tanah%20saya%3A%20"
+           onclick="rekodKlik('ekar','Pakej Tanam Seekar')">Tanya Pakej Ekar via WhatsApp</a>
+        <div class="ekar-nota">Tarikh tanam &amp; butiran akhir disahkan selepas tinjauan tapak.</div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -880,6 +933,10 @@ footer{background:#07120b;font-size:13.5px;color:var(--gading3)}
       <div class="faq-item">
         <button class="faq-soal" onclick="toggelFAQ(this)">Macam mana penghantaran anak pokok?<span class="faq-icon">+</span></button>
         <div class="faq-jawab"><p>Anak pokok dibungkus teliti dengan akar terlindung dan dihantar ke seluruh Semenanjung Malaysia. Tempoh penghantaran biasanya 3–5 hari bekerja selepas bayaran disahkan.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-soal" onclick="toggelFAQ(this)">Saya ada tanah. Boleh pasukan Kundur tanamkan?<span class="faq-icon">+</span></button>
+        <div class="faq-jawab"><p>Boleh. Pakej Tanam Seekar merangkumi 162 anak pokok, kerja menanda barisan, menggali dan menanam, baja, serta lawatan pemantauan selama 6 bulan. WhatsApp kami dengan lokasi tanah anda dan kami akan atur tinjauan tapak terlebih dahulu.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-soal" onclick="toggelFAQ(this)">Boleh lawat ladang dulu?<span class="faq-icon">+</span></button>
@@ -1011,7 +1068,6 @@ const CFG = {
    dalam dashboard /admin/ dan disimpan dalam Google Sheet. */
 const PAKEJ_FALLBACK = [
   {id:1, bil:1,  nama:'Satu Pokok',     harga:50,  seunit:50, jimat:0,   nota:'Untuk mencuba',          foto:'https://i.postimg.cc/bYnpBZqV/d2723f58-317d-4493-a0e3-e32e6ff6010c.jpg'},
-  {id:2, bil:3,  nama:'Pakej Bertiga',  harga:135, seunit:45, jimat:15,  nota:'Untuk halaman rumah',    foto:'https://i.postimg.cc/15y2rX4x/a127077a-83d7-475a-b50c-de411d287e1f.jpg'},
   {id:3, bil:5,  nama:'Pakej Kebun',    harga:200, seunit:40, jimat:50,  nota:'Paling popular', popular:true, foto:'https://i.postimg.cc/285T5Z3M/6f70f27b-b9c8-41f3-b60c-19037deeb6a5.jpg'},
   {id:4, bil:10, nama:'Pakej Ladang',   harga:350, seunit:35, jimat:150, nota:'Untuk memulakan ladang', foto:'https://i.postimg.cc/wj8trK8Y/f950169a-79cb-492e-aaf1-55418e073028.jpg'},
 ];
@@ -1021,7 +1077,11 @@ let PAKEJ = PAKEJ_FALLBACK;   // mula dengan fallback, ganti bila Sheet sampai
 let pakejDipilih = null, qty = 1;
 
 function renderHarga(){
-  document.getElementById('gridHarga').innerHTML = PAKEJ.map(p=>`
+  const g = document.getElementById('gridHarga');
+  const n = Math.min(PAKEJ.length, 4);
+  g.style.setProperty('--kol', n);
+  g.style.setProperty('--lebar', n < 4 ? (n * 300) + 'px' : 'none');
+  g.innerHTML = PAKEJ.map(p=>`
     <div class="h-kad ${p.popular?'popular':''}">
       ${p.popular?'<div class="h-lencana">Paling Popular</div>':''}
       <div class="h-foto" style="background-image:url('${p.foto}')" role="img" aria-label="${p.nama} — ${p.bil} anak pokok"></div>
